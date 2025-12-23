@@ -19,7 +19,7 @@ public class DrinkController {
     }
 
     @GetMapping
-    public List<Drink> getAllDrinks() {
+    public List<Drink> findDrinks() {
         return drinkRepository.findAll();
     }
 }

@@ -11,4 +11,6 @@ public interface DrinkRepository extends JpaRepository<Drink, Integer> {
 
     List<Drink> findByNameContainingIgnoreCase(String name);
 
+    List<Drink> findBySweetnessScore(int targetSweetness);
+
 }

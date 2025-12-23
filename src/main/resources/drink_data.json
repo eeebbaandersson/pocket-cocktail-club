@@ -1,0 +1,443 @@
+
+[
+  // BITTER
+  // EXTRAS
+
+  // GIN
+  {
+    "name": "French 75",
+    "sweetness_score": -1,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "Gin", "quantity": 30, "unit": "ml", "is_alcoholic": true},
+      {"name": "Syrup", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Lemon juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Champagne", "quantity": 90, "unit": "ml", "is_alcoholic": true}
+    ],
+    "instructions": "Pour gin, syrup and lemon juice into a shaker with ice. Shake until well chilled. Strain into a champagne-/ or coupe glass and top it off with the champagne."
+  },
+  {
+    "name": "Gimlet",
+    "sweetness_score": -2,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "Gin", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Combine gin, lime juice, and syrup in a mixing glass with ice. Stir until well chilled. Strain into a coupe glass."
+  },
+  {
+    "name": "Gin Sour",
+    "sweetness_score": -2,
+    "categories": ["Sour"],
+    "ingredients": [
+      {"name": "Gin", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lemon juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Egg white", "quantity": 30, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Pour all ingredients into a shaker. Dry shake first to create foam, add ice and shake again to well-chilled. Strain into a coupe glass."
+  },
+  {
+    "name": "Negroni Sour",
+    "sweetness_score": -1,
+    "categories": ["Sour"],
+    "ingredients": [
+      {"name": "Gin", "quantity": 20, "unit": "ml", "is_alcoholic": true},
+      {"name": "Sweet vermouth", "quantity": 20, "unit": "ml", "is_alcoholic": true},
+      {"name": "Campari", "quantity": 20, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lemon juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Egg white", "quantity": 30, "unit": "ml", "is_alcoholic": false}
+
+    ],
+    "instructions": "Pour all ingredients in a shaker. Dry shake first to create foam, add ice and shake again to chill the drink. Strain into a coupe glass and add garnish of choice."
+  },
+  {
+    "name": "Pegu Club",
+    "sweetness_score": -1,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "Gin", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Cointreau", "quantity": 20, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Angostura bitter", "quantity": 1, "unit": "dashes", "is_alcoholic": true},
+      {"name": "Orange bitter", "quantity": 1, "unit": "dashes", "is_alcoholic": true}
+
+    ],
+    "instructions": "Pour all ingredients in a shaker with ice. Shake until well-chilled and strain into a cocktail glass of choice."
+  },
+  {
+    "name": "Ramos Gin Fizz",
+    "sweetness_score": 1,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "Gin", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Cream", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Orange blossom water", "quantity": 30, "unit": "dashes", "is_alcoholic": false},
+      {"name": "Eqq white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Soda", "quantity": 30, "unit": "ml", "is_alcoholic": false}
+
+    ],
+    "instructions": "Pour all ingredients except for the soda into a shaker. Add ice and shake until well-chilled. Strain into a Collins glass and top if off with soda."
+  },
+  {
+    "name": "Silver Fizz",
+    "sweetness_score": -1,
+    "categories": [],
+    "ingredients": [
+      {"name": "Gin", "quantity": 45, "unit": "ml", "is_alcoholic": true},
+      {"name": "Syrup", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Lemon juice", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Egg white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Soda", "quantity": 50, "unit": "ml", "is_alcoholic": false}
+
+    ],
+    "instructions": "Pour all ingredients except for the soda into a shaker. Dry shake first to create foam, add ice and shake again to chill the drink. Strain into a ice-filled highball glass and top it off with soda. Garnish with a lemon slice."
+  },
+  {
+    "name": "Southside",
+    "sweetness_score": -1,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "Gin", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Mint", "quantity": 8, "unit": "leaf", "is_alcoholic": false}
+    ],
+    "instructions": "Carefully muddle the mint leafs together with the syrup in a shaker. Add the remaining ingredients as well as ice and shake until well-chilled. Double strain into a coupe glass and garnish with a mint leaf. "
+  },
+  {
+    "name": "Tom Collins",
+    "sweetness_score": -1,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "Gin", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lemon juice", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Soda", "quantity": 50, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Pour all ingredients into a shaker with ice and shake until well-chilled. Strain into a ice-filled Collins glass. Top it off with soda and garnish with a lemon slice."
+  },
+  {
+    "name": "White Lady",
+    "sweetness_score": -1,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "Gin", "quantity": 45, "unit": "ml", "is_alcoholic": true},
+      {"name": "Cointreau", "quantity": 20, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lemon juice", "quantity": 20, "unit": "ml", "is_alcoholic": false}
+
+    ],
+    "instructions": "Pour gin, cointreau and lemon juice into a shaker with ice. Shake until well-chilled and strain into a cocktail glass of choice."
+  },
+
+  // LIQUEUR
+  {
+    "name": "43 Sour",
+    "sweetness_score": -2,
+    "categories": ["Sour"],
+    "ingredients": [
+      {"name": "Liqueur 43", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lemon juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Eqq white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Angostura bitter", "quantity": 3, "unit": "dashes", "is_alcoholic": true}
+    ],
+    "instructions": "Combine Liqueur 43, lemon juice, syrup and egg white in a shaker. Dry shake first to create foam, add ice and shake again to chill the drink. Strain into a coupe glass and add a few drops of Angostura bitter."
+  },
+  {
+    "name": "Amaretto Sour",
+    "sweetness_score": -1,
+    "categories": ["Sour"],
+    "ingredients": [
+      {"name": "Amaretto", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lemon juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Egg white", "quantity": 30, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Pour all ingredients into a shaker. Dry shake first to create foam, add ice and shake again to well-chilled. Strain into an Old-Fashioned glass an garnish with a maraschino-cherry."
+  },
+  {
+    "name": "Limoncello Sour",
+    "sweetness_score": -1,
+    "categories": ["Sour"],
+    "ingredients": [
+      {"name": "Limoncello", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lemon juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Egg white", "quantity": 30, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Pour all ingredients into a shaker. Dry shake first to create foam, add ice and shake again to well-chilled. Strain into a coupe glass an garnish with a lemon slice."
+  },
+
+
+  // ROM
+  {
+    "name": "Airmail",
+    "sweetness_score": 1,
+    "categories": [],
+    "ingredients": [
+      {"name": "White rum", "quantity": 40, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Honey syrup", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Champagne", "quantity": 30, "unit": "ml", "is_alcoholic": true}
+    ],
+    "instructions": "Pour rum, lime juice and syrup into a shaker with ice. Shake until well chilled. Strain into a coupe glass and top if off with champagne. Garnish with a mint leaf. "
+  },
+  {
+    "name": "Cuba Libre",
+    "sweetness_score": 0,
+    "categories":[],
+    "ingredients": [
+      {"name": "White rum", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Coca-Cola", "quantity": 120, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Pour rum and lime juice into a ice-filled highball glass. Top it off with Coca-Cola and stir carefully. Garnish with a lime while."
+  },
+  {
+    "name": "Daiquiri",
+    "sweetness_score": -2,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "White rum", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Pour rum, lime juice and syrup into a shaker with ice. Shake until well chilled. Strain into a coupe glass."
+  },
+  {
+    "name": "Dark and Stormy",
+    "sweetness_score": 0,
+    "categories": ["Moscow Mule"],
+    "ingredients": [
+      {"name": "Dark rum", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Ginger beer", "quantity": 100, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Pour rum and lime juice into a ice-filled highball glass. Add ginger beer and stir the drink carefully. Garnish with a lime while."
+  },
+  {
+    "name": "Fidel Castro",
+    "sweetness_score": 0,
+    "categories": ["Moscow Mule"],
+    "ingredients": [
+      {"name": "Dark rum", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Ginger ale", "quantity": 100, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Pour rum and lime juice into a ice-filled highball glass. Add ginger ale and stir the drink carefully. Garnish with a lime while."
+  },
+  {
+    "name": "Hotel Nacional",
+    "sweetness_score": -1,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "White rum", "quantity": 45, "unit": "ml", "is_alcoholic": true},
+      {"name": "Apricot Brandy", "quantity": 10, "unit": "ml", "is_alcoholic": true},
+      {"name": "Pineapple juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 15, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Combine all ingredients into a shaker with ice. Shake until well chilled. Pour into a cocktail glass of choice and garnish with a lime while."
+  },
+  {
+    "name": "Jungle Bird",
+    "sweetness_score": 0,
+    "categories": ["Tropical"],
+    "ingredients": [
+      {"name": "Dark rum", "quantity": 45, "unit": "ml", "is_alcoholic": true},
+      {"name": "Campari", "quantity": 20, "unit": "ml", "is_alcoholic": true},
+      {"name": "Syrup", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Pineapple juice", "quantity": 45, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Combine all ingredients into shaker with ice. Shake until well chilled. Strain into an Old Fashioned-glass and garnish with a pineapple leaf."
+  },
+  {
+    "name": "Mojito",
+    "sweetness_score": -2,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "White rum", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Mint", "quantity": 8, "unit": "leaf", "is_alcoholic": false},
+      {"name": "Soda", "quantity": 40, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Pour rum, lime juice and syrup into a cocktail-glass of choice. Add the mint leafs and muddle carefully. Fill up the glass with crushed ice and stir. Top it off with soda and garnish with a lime while."
+  },
+  {
+    "name": "Old Cuban",
+    "sweetness_score": -1,
+    "categories": [],
+    "ingredients": [
+      {"name": "Dark rum", "quantity": 45, "unit": "ml", "is_alcoholic": true},
+      {"name": "Syrup", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Lime juice", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Angostura bitter", "quantity": 2, "unit": "dashes", "is_alcoholic": true},
+      {"name": "Mint", "quantity": 8, "unit": "leaf", "is_alcoholic": false},
+      {"name": "Champagne", "quantity": 60, "unit": "ml", "is_alcoholic": true}
+    ],
+    "instructions": "Combine all ingredients except from the champagne into a shaker with ice. Shake until well chilled and double strain into a cocktail glass of choice. Top it off with the champagne and garnish with a mint leaf. "
+  },
+  {
+    "name": "Piña Colada",
+    "sweetness_score": 4,
+    "categories": [],
+    "ingredients": [
+      {"name": "White rum", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Sweetened coconut milk", "quantity": 45, "unit": "ml", "is_alcoholic": false},
+      {"name": "Pineapple juice", "quantity": 45, "unit": "ml", "is_alcoholic": false},
+      {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Pour all ingredients into a shaker with ice and shake until well-chilled. Strain into a Hurricane glass with crushed ice. Garnish with a pineapple slice. "
+  },
+  {
+    "name": "Rum Collins",
+    "sweetness_score": -1,
+    "categories": [],
+    "ingredients": [
+      {"name": "White rum", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lemon juice", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Soda", "quantity": 50, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Pour all ingredients into a shaker with ice and shake until well-chilled. Strain into a ice-filled Collins glass. Top it off with soda and garnish with a lemon slice."
+  },
+  {
+    "name": "Rum Sour",
+    "sweetness_score": -2,
+    "categories": ["Classic", "Sour"],
+    "ingredients": [
+      {"name": "Dark rum", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lemon juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Eqq white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Angostura bitter", "quantity": 3, "unit": "dashes", "is_alcoholic": true}
+    ],
+    "instructions": "Combine rum, lemon juice, syrup and egg white in a shaker. Dry shake first to create foam, add ice and shake again to chill the drink. Strain into a coupe glass and add a few drops of Angostura bitter."
+  },
+  // SPARKLING
+  // TEQUILA
+  // VODKA
+
+  // WHISKEY
+
+  {
+    "name": "Gold Rush",
+    "sweetness_score": 2,
+    "categories": [],
+    "ingredients": [
+      {"name": "Bourbon", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lemon juice", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Honey syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Combine all ingredients in a shaker together with ice. Shake until well-chilled. Strain into an ice-filled Old-Fashioned glass and garnish with a lemon slice."
+  },
+  {
+    "name": "New York Sour",
+    "sweetness_score": -1,
+    "categories": ["Sour"],
+    "ingredients": [
+      {"name": "Bourbon", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lemon juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Red wine", "quantity": 15, "unit": "ml", "is_alcoholic": true}
+    ],
+    "instructions": "Combine bourbon, lemon juice, syrup and egg white in a shaker. Dry shake first to create foam, add ice and shake again to chill the drink. Strain into an Old-Fashioned. Carefully float the red wine on top off the drink by pouring it over the back of a spoon."
+  },
+  {
+    "name": "Old Fashioned",
+    "sweetness_score": 2,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "Bourbon", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Syrup", "quantity": 10, "unit": "ml", "is_alcoholic": false},
+      {"name": "Angostura bitter", "quantity": 2, "unit": "dashes", "is_alcoholic": true}
+    ],
+    "instructions": "Stir all ingredients in a ice-filled mixing glass until the drink becomes well-chilled. Add a big ice-cube to an Old-Fashioned and strain the drink over it. Add zest from an orange peel by squeezing it over the drink, then drop it in the glass as garnish. "
+  },
+  {
+    "name": "Penicillin",
+    "sweetness_score": -2,
+    "categories": [],
+    "ingredients": [
+      {"name": "Scottish whiskey ", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Honey syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Lemon juice", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Single malt scottish whiskey", "quantity": 7.5, "unit": "ml", "is_alcoholic": true},
+      {"name": "Ginger", "quantity": 3, "unit": "slices", "is_alcoholic": false}
+
+    ],
+    "instructions": "Muddle the ginger in a shaker and add the remaining ingredients, except for the single malt whiskey. Add ice and shake until well-chilled. Double strain into an ice-filled Old-Fashioned glass. Carefully float the single malt whiskey on top off the drink by pouring it over the back of a spoon. Garnish with a lemon slice."
+  },
+  {
+    "name": "Rattlesnake",
+    "sweetness_score": -3,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "Rye Whiskey", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lemon juice", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Absint", "quantity": 2, "unit": "dashes", "is_alcoholic": true},
+      {"name": "Eqq white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Angostura bitter", "quantity": 2, "unit": "dashes", "is_alcoholic": true}
+    ],
+    "instructions": "Combine all ingredients in a shaker. Dry shake to create foam, add ice and shake again to chill the drink. Strain into a cocktail glass of choice and garnish with a few dashes of Angostura bitter."
+  },
+  {
+    "name": "Suffering Bastard",
+    "sweetness_score": -2,
+    "categories": ["Moscow Mule"],
+    "ingredients": [
+      {"name": "Bourbon", "quantity": 30, "unit": "ml", "is_alcoholic": true},
+      {"name": "Gin", "quantity": 30, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Angostura bitter", "quantity": 2, "unit": "dashes", "is_alcoholic": true},
+      {"name": "Ginger beer", "quantity": 100, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Pour bourbon, gin, lime juice into a shaker with ice. Shake until well-chilled. Strain into a ice-filled Collins glass and top it off with the ginger beer. Stir carefully and garish with a mint sprig."
+  },
+  {
+    "name": "Whiskey Daisy",
+    "sweetness_score": -3,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "Bourbon", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Cointreau", "quantity": 20, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lemon juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 10, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Combine all ingredients in a shaker with ice. Shake until well-chilled. Strain into a cocktail glass of choice."
+  },
+  {
+    "name": "Whiskey Smash",
+    "sweetness_score": -1,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "Bourbon", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Lemon wedges", "quantity": 3, "unit": "ml", "is_alcoholic": false},
+      {"name": "Mint", "quantity": 6, "unit": "leaf", "is_alcoholic": false}
+    ],
+    "instructions": "Muddle the lemon wedges in a shaker. Add bourbon, syrup, mint leaves as well as ice and shake until well-chilled. Double strain into a Old-Fashioned glass filled with ice. Garnish with a mint sprig."
+  },
+  {
+    "name": "Whiskey Sour",
+    "sweetness_score": -3,
+    "categories": ["Classic", "Sour"],
+    "ingredients": [
+      {"name": "Bourbon", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lemon juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Eqq white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Angostura bitter", "quantity": 3, "unit": "dashes", "is_alcoholic": true}
+    ],
+    "instructions": "Combine bourbon, lemon juice, syrup and egg white in a shaker. Dry shake first to create foam, add ice and shake again to chill the drink. Strain into a coupe glass and add a few drops of Angostura bitter."
+  }
+]
