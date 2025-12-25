@@ -1,5 +1,6 @@
 package org.example.drinkapi.model;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "Drinks")
 @NoArgsConstructor
+@JsonPropertyOrder({ "id", "name", "categories", "sweetnessScore", "drinkIngredients", "instructions" })
 public class Drink {
 
     @Id
@@ -26,7 +28,6 @@ public class Drink {
 
     @OneToMany(mappedBy = "drink", cascade =  CascadeType.ALL, orphanRemoval = true)
     private List<DrinkIngredient> drinkIngredients = new ArrayList<>();
-
 
     @ManyToMany
     @JoinTable(
