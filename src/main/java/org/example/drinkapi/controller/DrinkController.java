@@ -77,6 +77,7 @@ public class DrinkController {
 
 
 
+    // Konverterar entiteter till DTO för att bara behålla/presentera relevant data
     private DrinkDTO convertToDTO(Drink drink) {
         DrinkDTO dto = new DrinkDTO();
         dto.setName(drink.getName());
@@ -99,6 +100,5 @@ public class DrinkController {
                 }).toList());
 
         return dto;
-
     }
 }

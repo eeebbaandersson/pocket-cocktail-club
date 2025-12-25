@@ -17,15 +17,29 @@
     "instructions": "Pour gin, syrup and lemon juice into a shaker with ice. Shake until well chilled. Strain into a champagne-/ or coupe glass and top it off with the champagne."
   },
   {
-    "name": "Gimlet",
-    "sweetness_score": -2,
-    "categories": ["Classic"],
+    "name": "Gin Basil Smash",
+    "sweetness_score": -1,
+    "categories": [],
     "ingredients": [
       {"name": "Gin", "quantity": 60, "unit": "ml", "is_alcoholic": true},
-      {"name": "Lime juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
-      {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false}
+      {"name": "Lemon juice", "quantity": 2, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 2, "unit": "ml", "is_alcoholic": false},
+      {"name": "Basil", "quantity": 12, "unit": "leaf", "is_alcoholic": false}
     ],
-    "instructions": "Combine gin, lime juice, and syrup in a mixing glass with ice. Stir until well chilled. Strain into a coupe glass."
+    "instructions": "Muddle the basil together with syrup in a shaker. Add gin, lemon juice and ice. Shake until well-chilled and strain into an ice-filled Old-fashioned glass. Garnish with a basil sprig."
+  },
+  {
+    "name": "Gin Gin Mule",
+    "sweetness_score": 0,
+    "categories": ["Moscow Mule"],
+    "ingredients": [
+      {"name": "Gin", "quantity": 45, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Mint", "quantity": 8, "unit": "leaf", "is_alcoholic": false},
+      {"name": "Ginger Beer", "quantity": 30, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Muddle the mint together with syrup and lime juice in a shaker. Add gin and ice. Shake well to chill the drink and strain into an ice-filled Highball-glass. Top it off with ginger beer and garnish with a mint sprig."
   },
   {
     "name": "Gin Sour",
@@ -38,6 +52,17 @@
       {"name": "Egg white", "quantity": 30, "unit": "ml", "is_alcoholic": false}
     ],
     "instructions": "Pour all ingredients into a shaker. Dry shake first to create foam, add ice and shake again to well-chilled. Strain into a coupe glass."
+  },
+  {
+    "name": "Gimlet",
+    "sweetness_score": -2,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "Gin", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Combine gin, lime juice, and syrup in a mixing glass with ice. Stir until well chilled. Strain into a coupe glass."
   },
   {
     "name": "Negroni Sour",
