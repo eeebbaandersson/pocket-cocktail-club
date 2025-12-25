@@ -5,9 +5,7 @@ import org.example.drinkapi.dto.DrinkIngredientDTO;
 import org.example.drinkapi.model.Category;
 import org.example.drinkapi.model.Drink;
 import org.example.drinkapi.repository.DrinkRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,15 +19,63 @@ public class DrinkController {
         this.drinkRepository = drinkRepository;
     }
 
-    @GetMapping
-    public List<DrinkDTO> getAllDrinks() {
-        List<Drink> drinks = drinkRepository.findByNameContainingIgnoreCase("Gimlet");
+    // Standard: Hämta alla eller sök på namn via api/drinks?name=Gimlet
 
-        // Mappar om varje Drink-entitet till en DrinkDTO
-        return drinks.stream()
-                .map(this::convertToDTO)
-                .toList();
+    @GetMapping
+    public List<DrinkDTO> getDrinks(@RequestParam(required = false) String name) {
+        List<Drink> drinks;
+      if (name != null) {
+          drinks = drinkRepository.findByNameContainingIgnoreCase(name);
+      } else {
+          drinks = drinkRepository.findAll();
+      }
+      return drinks.stream().map(this::convertToDTO).toList();
     }
+
+    // Sök via kategori /api/drinks/category/Classic
+    @GetMapping("/category/{category}")
+    public List<DrinkDTO> getByCategory(@PathVariable String category) {
+        return drinkRepository.findByCategoriesNameIgnoreCase(category)
+                .stream().map(this::convertToDTO).toList();
+    }
+
+    // Sök via Ingrediens; /api/drinks/ingredient/Gin
+    @GetMapping("/ingredient/{ingredient}")
+    public List<DrinkDTO> getByIngredient(@PathVariable String ingredient) {
+        return drinkRepository.findByDrinkIngredientsIngredientNameIgnoreCase(ingredient)
+                .stream().map(this::convertToDTO).toList();
+    }
+
+    // Sök via kombination /api/drinks/search?spirit=Gin&sweetness=-2
+    @GetMapping("/search")
+    public List<DrinkDTO> getSpiritAndSweetness(
+            @RequestParam String spirit,
+            @RequestParam int sweetness) {
+        return drinkRepository.findBySweetnessScoreAndDrinkIngredientsIngredientNameIgnoreCase(sweetness, spirit)
+                .stream().map(this::convertToDTO).toList();
+    }
+
+    // Sök via flera ingredienser
+    @GetMapping("/search/ingredients")
+    public List<DrinkDTO> getByMultipleIngredients(@RequestParam List<String> names) {
+        List<String> lowerCaseNames = names.stream()
+                .map(String::toLowerCase)
+                .toList();
+
+        return drinkRepository.findByAllIngredients(lowerCaseNames,(long) names.size())
+                .stream().map(this::convertToDTO).toList();
+
+    }
+
+    // Generera en slumpad drink /api/drinks/random
+    @GetMapping("/random")
+    public DrinkDTO getRandom() {
+        return drinkRepository.findByRandomDrink()
+                .map(this::convertToDTO)
+                .orElseThrow(() -> new RuntimeException("Found no drinks"));
+    }
+
+
 
     private DrinkDTO convertToDTO(Drink drink) {
         DrinkDTO dto = new DrinkDTO();
