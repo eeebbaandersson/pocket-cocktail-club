@@ -2,6 +2,21 @@
 console.log("JavaScript-filen är laddad!");
 alert("JS fungerar!");
 
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('searchInput');
+
+    // Sätter markören i sökfältet direkt
+    searchInput.focus();
+
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key == 'Enter') {
+            searchDrinks();
+        }
+
+    });
+
+});
+
 
 async function getRandomDrink() {
     try {
@@ -14,15 +29,37 @@ async function getRandomDrink() {
 }
 
 async function searchDrinks() {
-    const query = document.getElementById('searchInput').value;
+    const query = document.getElementById('searchInput').value.trim();
     if (!query) return;
 
+    let url = '';
+
+    if (query.includes(',')) {
+
+        const ingredients = query.split(',').map(s => s.trim()).filter(s => s !== "");
+
+        const params = new URLSearchParams();
+        ingredients.forEach(name => params.append('names', name));
+
+        url = `/api/drinks/search/ingredients?${params.toString()}`;
+    } else {
+        url = `/api/drinks/search/all?query=${encodeURIComponent(query)}`
+    }
+
+    console.log("Anropar URL;", url); // För felsökning
+
     try {
-        const response = await fetch(`/api/drinks?name=${encodeURIComponent(query)}`);
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Serverfel");
         const drinks = await response.json();
-        displayDrinks(drinks);
+
+        if (drinks.length === 0) {
+            document.getElementById('drinkDisplay').innerHTML = '<p>Inga drinkar hittades...</p>';
+        } else {
+            displayDrinks(drinks);
+        }
     } catch (error) {
-        console.error("Fel vid sökning:", error);
+        console.error("Error during search:", error);
     }
 }
 
@@ -36,7 +73,7 @@ function displayDrinks(drinks) {
         card.innerHTML = `
             <h2>${drink.name}</h2>
             <p><strong>Category:</strong> ${drink.categories.join(', ')}</p>
-            <p><strong>Sweetness:</strong> ${drink.sweetnessScore}</p>
+            <p><strong>Sweet-/sourness:</strong> ${drink.sweetnessScore}</p>
             <h3>Ingredients:</h3>
             <ul>
                 ${drink.ingredients.map(ing => `<li>${ing.quantity} ${ing.unit} ${ing.name}</li>`).join('')}

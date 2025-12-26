@@ -8,6 +8,7 @@ import org.example.drinkapi.repository.DrinkRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/drinks")
@@ -39,6 +40,16 @@ public class DrinkController {
                 .stream().map(this::convertToDTO).toList();
     }
 
+    @GetMapping("/search/all")
+    public List<DrinkDTO> universalSearch(@RequestParam String query) {
+        // Hämtar entiteter från databsen via repositoryt
+        // Skickar 'query' till både namn- och kategori-sök
+        List<Drink> drinks = drinkRepository.findByNameContainingIgnoreCaseOrCategoriesNameIgnoreCase(query, query);
+
+        // Mappa/omvandla entiteterna till DTO:s innan de skickas till frontend
+        return drinks.stream().map(this::convertToDTO).collect(Collectors.toList());
+    }
+
     // Sök via Ingrediens; /api/drinks/ingredient/Gin
     @GetMapping("/ingredient/{ingredient}")
     public List<DrinkDTO> getByIngredient(@PathVariable String ingredient) {
@@ -47,7 +58,7 @@ public class DrinkController {
     }
 
     // Sök via kombination /api/drinks/search?spirit=Gin&sweetness=-2
-    @GetMapping("/search")
+    @GetMapping("/search/filters")
     public List<DrinkDTO> getSpiritAndSweetness(
             @RequestParam String spirit,
             @RequestParam int sweetness) {

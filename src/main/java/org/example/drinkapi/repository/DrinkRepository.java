@@ -18,6 +18,9 @@ public interface DrinkRepository extends JpaRepository<Drink, Integer> {
     // Sök på kategori
     List<Drink> findByCategoriesNameIgnoreCase(String categoryName);
 
+    // Universal sökning: Hittar drinkar drinkar där nament innehåller sökordet eller där en kategori heter exakt som sökordet
+    List<Drink> findByNameContainingIgnoreCaseOrCategoriesNameIgnoreCase(String name, String categoryName);
+
     // Sök på ingrediens (DrinkIngredients -> Ingredients -> Name)
     List<Drink> findByDrinkIngredientsIngredientNameIgnoreCase(String ingredientName);
 

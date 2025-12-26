@@ -26,7 +26,7 @@
       {"name": "Syrup", "quantity": 2, "unit": "ml", "is_alcoholic": false},
       {"name": "Basil", "quantity": 12, "unit": "leaf", "is_alcoholic": false}
     ],
-    "instructions": "Muddle the basil together with syrup in a shaker. Add gin, lemon juice and ice. Shake until well-chilled and strain into an ice-filled Old-fashioned glass. Garnish with a basil sprig."
+    "instructions": "Muddle the basil together with syrup in a shaker. Add gin, lemon juice and ice. Shake until well-chilled and strain into an ice-filled Old-Fashioned glass. Garnish with a basil sprig."
   },
   {
     "name": "Gin Gin Mule",
@@ -281,7 +281,7 @@
       {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
       {"name": "Pineapple juice", "quantity": 45, "unit": "ml", "is_alcoholic": false}
     ],
-    "instructions": "Combine all ingredients into shaker with ice. Shake until well chilled. Strain into an Old Fashioned-glass and garnish with a pineapple leaf."
+    "instructions": "Combine all ingredients into shaker with ice. Shake until well chilled. Strain into an Old-Fashioned glass and garnish with a pineapple leaf."
   },
   {
     "name": "Mojito",
@@ -374,7 +374,7 @@
       {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
       {"name": "Red wine", "quantity": 15, "unit": "ml", "is_alcoholic": true}
     ],
-    "instructions": "Combine bourbon, lemon juice, syrup and egg white in a shaker. Dry shake first to create foam, add ice and shake again to chill the drink. Strain into an Old-Fashioned. Carefully float the red wine on top off the drink by pouring it over the back of a spoon."
+    "instructions": "Combine bourbon, lemon juice, syrup and egg white in a shaker. Dry shake first to create foam, add ice and shake again to chill the drink. Strain into an Old-Fashioned glass. Carefully float the red wine on top off the drink by pouring it over the back of a spoon."
   },
   {
     "name": "Old Fashioned",
@@ -385,7 +385,7 @@
       {"name": "Syrup", "quantity": 10, "unit": "ml", "is_alcoholic": false},
       {"name": "Angostura bitter", "quantity": 2, "unit": "dashes", "is_alcoholic": true}
     ],
-    "instructions": "Stir all ingredients in a ice-filled mixing glass until the drink becomes well-chilled. Add a big ice-cube to an Old-Fashioned and strain the drink over it. Add zest from an orange peel by squeezing it over the drink, then drop it in the glass as garnish. "
+    "instructions": "Stir all ingredients in a ice-filled mixing glass until the drink becomes well-chilled. Add a big ice-cube to an Old-Fashioned glass and strain the drink over it. Add zest from an orange peel by squeezing it over the drink, then drop it in the glass as garnish. "
   },
   {
     "name": "Penicillin",
