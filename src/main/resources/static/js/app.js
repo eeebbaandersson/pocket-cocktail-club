@@ -1,7 +1,4 @@
 
-console.log("JavaScript-filen är laddad!");
-alert("JS fungerar!");
-
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
 
