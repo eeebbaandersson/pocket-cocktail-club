@@ -26,15 +26,22 @@ async function getRandomDrink() {
 }
 
 async function searchDrinks() {
-    const query = document.getElementById('searchInput').value.trim();
+    const searchInput = document.getElementById('searchInput');
+    const query = searchInput.value.trim().toLocaleLowerCase();
+
     if (!query) return;
+
+    // Om användaren skriver "random"--> Slumpa fram en drink
+    if (query === 'random') {
+        await getRandomDrink();
+        searchInput.value = '';
+        return;
+    }
 
     let url = '';
 
     if (query.includes(',')) {
-
         const ingredients = query.split(',').map(s => s.trim()).filter(s => s !== "");
-
         const params = new URLSearchParams();
         ingredients.forEach(name => params.append('names', name));
 
@@ -42,7 +49,6 @@ async function searchDrinks() {
     } else {
         url = `/api/drinks/search/all?query=${encodeURIComponent(query)}`
     }
-
     console.log("Anropar URL;", url); // För felsökning
 
     try {

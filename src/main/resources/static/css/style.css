@@ -4,36 +4,60 @@ body {
 
     background: linear-gradient(
             135deg,
-            #1d4b6e 0%,
-            #5789ad 20%,/* Ljusare blå (toppen/vänster) */
-            #c9e7ff 50%,
-            #5789ad 80%,/* Din primära blå från bild 2 */
-            #09293e 100%  /* En djupare blå för skugga (botten/höger) */
-    );
-    background-attachment: fixed;
+            #6297bd 0%, /* Din dämpade ljuskälla */ #3d6383 30%, /* EN MELLANTON: Hjälper ljuset att "blöda" ut mjukare */ #224363 70%, /* Din djupa marinblå */ #131e2c 100% /* Din mörkblå för djup */
+    ) fixed;
     color: white;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 5vh;
+    padding-top: 10vh;
     font-family: sans-serif;
+}
+
+.page-wrapper {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    padding-left: 3%;
+    gap: 3%;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    color: white;
+    margin: 0;
+    /* öka värdet för att flytta hero-text längre mot kanten */
+   transform: translateX(-100px);
+    min-width: fit-content;
+    white-space: nowrap;
+}
+
+.search-area {
+    display: flex;
+    justify-content: center;
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
 .glass-inputField {
     background-color: rgba(255, 255, 255, 0.08); /* Transparens */
     backdrop-filter: blur(10px);
-
     border: 1px solid rgba(255, 255, 255, 0.15); /* Lysande kant */
     border-radius: 10px;
-
-    max-width: 350px;
-    font-size: 14pt;
-    padding: 8px 15px;
+    width: 350px;
+    font-size: 1.1rem;
+    padding: 10px 15px;
     color: rgba(255, 255, 255, 0.6);
     outline: none;
-
 }
 
 /* Place holder-färg */
