@@ -1,59 +1,52 @@
 body {
     margin: 0;
     min-height: 100vh;
-
     background: linear-gradient(
             135deg,
-            #6297bd 0%, /* Din dämpade ljuskälla */ #3d6383 30%, /* EN MELLANTON: Hjälper ljuset att "blöda" ut mjukare */ #224363 70%, /* Din djupa marinblå */ #131e2c 100% /* Din mörkblå för djup */
+            #6297bd 0%, /* Din dämpade ljuskälla */
+            #3d6383 30%, /* EN MELLANTON: Hjälper ljuset att "blöda" ut mjukare */
+            #224363 70%, /* Din djupa marinblå */
+            #131e2c 100% /* Din mörkblå för djup */
     ) fixed;
-    color: white;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 10vh;
     font-family: sans-serif;
+    color: white;
 }
 
 .page-wrapper {
     display: flex;
     align-items: center;
     min-height: 100vh;
-    padding-left: 3%;
-    gap: 3%;
+    padding-left: 11%;
+    /* Gap styr avståndet mellan rubriken och sökfältet */
+    gap: 220px;
 }
 
 .hero-title {
-    font-size: 4.5rem;
+    font-size: 4.7rem;
     font-weight: 800;
     line-height: 0.9;
     letter-spacing: -0.05em;
-    color: white;
     margin: 0;
+
     /* öka värdet för att flytta hero-text längre mot kanten */
-   transform: translateX(-100px);
+    transform: translateX(0px);
     min-width: fit-content;
-    white-space: nowrap;
 }
 
 .search-area {
     display: flex;
-    justify-content: center;
-}
-
-.center-content {
-    display: flex;
     flex-direction: column;
+    gap: 25px;
     align-items: center;
 }
 
-
 .glass-inputField {
-    background-color: rgba(255, 255, 255, 0.08); /* Transparens */
+    background: rgba(255, 255, 255, 0.05); /* Transparens */
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15); /* Lysande kant */
     border-radius: 10px;
-    width: 350px;
+    width: 400px;
     font-size: 1.1rem;
     padding: 10px 15px;
     color: rgba(255, 255, 255, 0.6);
@@ -62,6 +55,70 @@ body {
 
 /* Place holder-färg */
 .glass-inputField::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.6);
 }
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 500px;
+}
+
+.glass-button {
+    background: rgba(255, 255, 255, 0.05); /* Transparens */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Lysande kant */
+    border-radius: 10px;
+
+    color: rgba(255, 255, 255, 0.6);
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.glass-button.active {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transform: translatey(0);
+}
+
+.sweetness-container {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sweetness-container label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    opacity: 0.8;
+}
+
+.glass-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    outline: none;
+    backdrop-filter: blur(5px);
+}
+
+.glass-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+}
+
 

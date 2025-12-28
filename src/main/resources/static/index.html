@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>-DRINK API-</title>
+    <title>Pocket Cocktail Club</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -11,7 +11,23 @@
         <h1 class="hero-title">Pocket <br> Cocktail <br> Club</h1>
 
         <div class="search-area">
-            <input type="text" id="searchInput" class="glass-inputField" placeholder="Enter name, category or ingredients...">
+            <input type="text" id="searchInput" class="glass-inputField" placeholder="Search by name, category or ingredients..." >
+
+            <div class="filter-buttons">
+                <button class="glass-button">BITTER</button>
+                <button class="glass-button">GIN</button>
+                <button class="glass-button">WHISKEY</button>
+                <button class="glass-button">RUM</button>
+                <button class="glass-button">TEQUILA</button>
+                <button class="glass-button">VODKA</button>
+                <button class="glass-button">LIQUEUR</button>
+            </div>
+
+            <div class="sweetness-container">
+                <label>SWEETNESS: <span id="sweetnessValue"></span></label>
+                <input type="range" min="-5" max="5" value="0" class="glass-slider" id="sweetnessSlider">
+            </div>
+
         </div>
     </div>
 </header>
