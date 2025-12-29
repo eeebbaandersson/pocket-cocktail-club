@@ -58,7 +58,7 @@ public class DrinkController {
     }
 
     // Sök via kombination /api/drinks/search?spirit=Gin&sweetness=-2
-    @GetMapping("/search/filters")
+    @GetMapping("/filter/combined")
     public List<DrinkDTO> getSpiritAndSweetness(
             @RequestParam String spirit,
             @RequestParam int sweetness) {

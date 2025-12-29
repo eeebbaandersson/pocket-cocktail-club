@@ -1,4 +1,5 @@
 
+
 async function getRandomDrink() {
     try {
         const response = await fetch('/api/drinks/random');
@@ -84,32 +85,95 @@ function displayDrinks(drinks) {
     });
 }
 
+let currentSelectedSpirit = null;
+let currentSweetnessValue = 0;
+
+async function combinedFilterSearch() {
+    if (!currentSelectedSpirit) {
+        console.log("Ingen spritsort vald - avbryter sökning");
+        return;
+    }
+
+    const url = `/api/drinks/filter/combined?spirit=${encodeURIComponent(currentSelectedSpirit)}&sweetness=${currentSweetnessValue}`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Serverfel vid filtrering");
+
+        const drinks = await  response.json();
+        displayDrinks(drinks);
+    } catch (error) {
+        console.log("Fel i kombinerad sökning:", error);
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
     // Hämta alla element en gång när sidan laddats
     const searchInput = document.getElementById('searchInput');
+    const spiritButtons = document.querySelectorAll('.spirit-btn');
     const slider = document.getElementById('sweetnessSlider');
 
-    // Sätter markören i sökfältet direkt
+    // Sätter markör i sökfät direkt
     if (searchInput) searchInput.focus();
 
+
     if (slider) {
-        updateLabelHighlights(slider.value);
-
-        // Lyssnar på slider-rörelser
-        slider.addEventListener('input',function() {
-
-            updateLabelHighlights(this.value);
-            filterCocktails(this.value);
-        });
+        // Sätter startvärde för sötma direkt från sliderns HTML-värde
+        currentSweetnessValue = slider.value;
+        updateLabelHighlights(currentSweetnessValue);
     }
 
+
+    // --Sökning 1: FRI SÖKNING (Namn/Kategori/Ingredienser)--
     if (searchInput) {
         searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 searchDrinks();
             }
         });
+    }
 
+    // --Sökning 2: KOMBINERAD FILTRERING (Sprit + Sötma)--
+
+    // Lyssnar på sprit-knapparna
+    spiritButtons.forEach(button => {
+        button.addEventListener('click', function() {
+
+            // Kontrollerar om en knapp redan aktiv/klickad på
+            const wasAlreadyActive = this.classList.contains('active');
+
+            // Tar bort 'active' från ALLA knappa (nollställning)
+            spiritButtons.forEach(btn => btn.classList.remove('active'));
+
+            if (wasAlreadyActive) {
+                // Om den redan var aktiv --> Avmerker/sätt till null
+                currentSelectedSpirit = null;
+            } else
+                // Om den inte var aktiv --> Aktivera knappen
+                this.classList.add('active');
+            currentSelectedSpirit = this.innerText.trim().toLocaleLowerCase();
+
+            // Utför sökningen
+            combinedFilterSearch();
+        });
+    });
+
+    // Lyssnar på slider-rörelser
+    if (slider) {
+        slider.addEventListener('input', function() {
+
+            // Uppdaterar tillstånd
+            updateLabelHighlights(this.value);
+
+            // Uppdaterar
+            currentSweetnessValue = this.value;
+
+            // Kör kombinerad sökmetod
+            combinedFilterSearch();
+        });
     }
 });
+
+
 

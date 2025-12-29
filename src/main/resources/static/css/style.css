@@ -97,7 +97,7 @@ body {
     border-color: rgba(255, 255, 255, 0.3);
     color: #fff;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-    transform: translatey(0);
+    transform: translateY(1px);
 }
 
 .sweetness-container {
@@ -153,8 +153,6 @@ body {
     width: 100%;
     padding: 0 4px;
     box-sizing: border-box;
-
-
 }
 
 .slider-labels span {
