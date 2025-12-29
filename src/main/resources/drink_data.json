@@ -37,7 +37,7 @@
       {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
       {"name": "Syrup", "quantity": 15, "unit": "ml", "is_alcoholic": false},
       {"name": "Mint", "quantity": 8, "unit": "leaf", "is_alcoholic": false},
-      {"name": "Ginger Beer", "quantity": 30, "unit": "ml", "is_alcoholic": false}
+      {"name": "Ginger beer", "quantity": 30, "unit": "ml", "is_alcoholic": false}
     ],
     "instructions": "Muddle the mint together with syrup and lime juice in a shaker. Add gin and ice. Shake well to chill the drink and strain into an ice-filled Highball-glass. Top it off with ginger beer and garnish with a mint sprig."
   },

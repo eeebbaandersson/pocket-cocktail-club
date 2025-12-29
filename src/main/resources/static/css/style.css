@@ -16,21 +16,30 @@ body {
     display: flex;
     align-items: center;
     min-height: 100vh;
-    padding-left: 11%;
+    padding-left: 12%;
     /* Gap styr avståndet mellan rubriken och sökfältet */
-    gap: 220px;
+    gap: 170px;
 }
 
 .hero-title {
     font-size: 4.7rem;
     font-weight: 800;
     line-height: 0.9;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.04em;
     margin: 0;
 
     /* öka värdet för att flytta hero-text längre mot kanten */
     transform: translateX(0px);
     min-width: fit-content;
+
+    /* Ge texten en färg för att upplevas som mer subtil + inte ta allt fokus i bilden/ från search-fältet?
+     Addera en hint av blåare färg, som återanvänds på andra ställen (drink-carden ex)?*/
+    /*color: #224363;*/
+    /*opacity: 0.9;*/
+
+    /*Alt. 2. */
+    color: white;
+    opacity: 0.8;
 }
 
 .search-area {
@@ -38,6 +47,9 @@ body {
     flex-direction: column;
     gap: 25px;
     align-items: center;
+    /* Flyttar ner sökområdet med x px från mitten-centreringen*/
+    transform: translateY(30px);
+
 }
 
 .glass-inputField {
@@ -89,7 +101,7 @@ body {
 }
 
 .sweetness-container {
-    margin-top: 20px;
+    margin-top: 10px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -97,7 +109,7 @@ body {
 }
 
 .sweetness-container label {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     opacity: 0.8;
@@ -106,19 +118,68 @@ body {
 .glass-slider {
     -webkit-appearance: none;
     width: 100%;
-    height: 8px;
+    margin: 0;
+    height: 4px;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
+    border-radius: 2px;
     outline: none;
     backdrop-filter: blur(5px);
 }
 
 .glass-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     background: white;
+    opacity: 0.8;
+    margin: 0;
     border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 10px;
+    padding: 0 8px;
+    box-sizing: border-box;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 100%;
+    padding: 0 4px;
+    box-sizing: border-box;
+
+
+}
+
+.slider-labels span {
+    font-size: 0.95rem;
+    letter-spacing: 0.1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.4);
+    transition: all 0.2s ease;
+    width: 20px;
+    display: flex;
+    justify-content:center;
+    margin-left: -10px;
+    margin-right: -10px;
+
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.slider-labels span.active {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: scale(1.2) translateY(2px);
+    opacity: 1;
+}
+
+
 
 

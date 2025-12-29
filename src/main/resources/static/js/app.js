@@ -1,20 +1,4 @@
 
-document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('searchInput');
-
-    // Sätter markören i sökfältet direkt
-    searchInput.focus();
-
-    searchInput.addEventListener('keypress', (e) => {
-        if (e.key == 'Enter') {
-            searchDrinks();
-        }
-
-    });
-
-});
-
-
 async function getRandomDrink() {
     try {
         const response = await fetch('/api/drinks/random');
@@ -66,6 +50,18 @@ async function searchDrinks() {
     }
 }
 
+function updateLabelHighlights (value) {
+    const labels = document.querySelectorAll('.slider-labels span:not(.spacer)');
+
+    labels.forEach((label) => {
+        if (label.innerText === value) {
+            label.classList.add('active');
+        } else {
+            label.classList.remove('active');
+        }
+    });
+}
+
 function displayDrinks(drinks) {
     const display = document.getElementById('drinkDisplay');
     display.innerHTML = '';
@@ -87,3 +83,33 @@ function displayDrinks(drinks) {
         display.append(card);
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Hämta alla element en gång när sidan laddats
+    const searchInput = document.getElementById('searchInput');
+    const slider = document.getElementById('sweetnessSlider');
+
+    // Sätter markören i sökfältet direkt
+    if (searchInput) searchInput.focus();
+
+    if (slider) {
+        updateLabelHighlights(slider.value);
+
+        // Lyssnar på slider-rörelser
+        slider.addEventListener('input',function() {
+
+            updateLabelHighlights(this.value);
+            filterCocktails(this.value);
+        });
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchDrinks();
+            }
+        });
+
+    }
+});
+

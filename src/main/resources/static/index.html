@@ -16,16 +16,26 @@
             <div class="filter-buttons">
                 <button class="glass-button">BITTER</button>
                 <button class="glass-button">GIN</button>
-                <button class="glass-button">WHISKEY</button>
+                <button class="glass-button">LIQUEUR</button>
                 <button class="glass-button">RUM</button>
                 <button class="glass-button">TEQUILA</button>
                 <button class="glass-button">VODKA</button>
-                <button class="glass-button">LIQUEUR</button>
+                <button class="glass-button">WHISKEY</button>
             </div>
 
             <div class="sweetness-container">
-                <label>SWEETNESS: <span id="sweetnessValue"></span></label>
-                <input type="range" min="-5" max="5" value="0" class="glass-slider" id="sweetnessSlider">
+
+
+                <div class="slider-wrapper">
+                    <label>Sweetness: <span id="sweetnessValue"></span></label>
+                    <input type="range" min="-5" max="5" value="0" class="glass-slider" id="sweetnessSlider">
+
+                    <div class="slider-labels">
+                        <span>-5</span><span>-4</span><span>-3</span><span>-2</span><span>-1</span>
+                        <span class="spacer"></span>
+                        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                    </div>
+                </div>
             </div>
 
         </div>
