@@ -23,7 +23,6 @@ public class DrinkController {
     }
 
     // Standard: Hämta alla eller sök på namn via api/drinks?name=Gimlet
-
     @GetMapping
     public List<DrinkDTO> getDrinks(@RequestParam(required = false) String name) {
         List<Drink> drinks;
@@ -44,7 +43,7 @@ public class DrinkController {
 
     @GetMapping("/search/all")
     public List<DrinkDTO> universalSearch(@RequestParam String query) {
-        // Hämtar entiteter från databsen via repositoryt
+        // Hämtar entiteter från databsen via repository
         // Skickar 'query' till både namn- och kategori-sök
         List<Drink> drinks = drinkRepository.findByNameContainingIgnoreCaseOrCategoriesNameIgnoreCase(query, query);
 
@@ -109,8 +108,6 @@ public class DrinkController {
                 .map(this::convertToDTO)
                 .orElseThrow(() -> new RuntimeException("Found no drinks"));
     }
-
-
 
     // Konverterar entiteter till DTO för att bara behålla/presentera relevant data
     private DrinkDTO convertToDTO(Drink drink) {
