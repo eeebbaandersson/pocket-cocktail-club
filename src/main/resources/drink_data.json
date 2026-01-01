@@ -350,6 +350,40 @@
   // SPARKLING
   // TEQUILA
   // VODKA
+  {
+    "name": "Espresso Martini",
+    "sweetness_score": 3,
+    "categories": ["Martini"],
+    "ingredients": [
+      {"name": "Vodka", "quantity": 40, "unit": "ml", "is_alcoholic": true},
+      {"name": "Kahlua", "quantity": 20, "unit": "ml", "is_alcoholic": true},
+      {"name": "Espresso", "quantity": 60, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "To be added..."
+  },
+  {
+    "name": "Kamikaze",
+    "sweetness_score": -4,
+    "categories": [],
+    "ingredients": [
+      {"name": "Vodka", "quantity": 40, "unit": "ml", "is_alcoholic": true},
+      {"name": "Cointreau", "quantity": 20, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 20, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Pour all ingredients into a shaker, add ice and shake until well-chilled. Strain into a Martini-glass and garnish with a lime wheel."
+  },
+  {
+    "name": "Lemon Drop",
+    "sweetness_score": -1,
+    "categories": [],
+    "ingredients": [
+      {"name": "Vodka", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Cointreau", "quantity": 15, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lemon juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 30, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Coat the rim of a Martini-glass with lemon juice and and dip it in sugar. Pour all ingredients into a shaker, add ice and shake until well-chilled. Stain onto the prepared glass and garnish with a lemon peel."
+  },
 
   // WHISKEY
 

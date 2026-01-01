@@ -7,6 +7,8 @@ import org.example.drinkapi.model.Drink;
 import org.example.drinkapi.repository.DrinkRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,7 +64,29 @@ public class DrinkController {
     public List<DrinkDTO> getSpiritAndSweetness(
             @RequestParam String spirit,
             @RequestParam int sweetness) {
-        return drinkRepository.findBySweetnessScoreAndDrinkIngredientsIngredientNameIgnoreCase(sweetness, spirit)
+
+        // Tillfällig lösning för att inte behöva vara super specifik när man anger spritsort i sökning/trycker på knapparna
+        List<String> searchTerms = new ArrayList<>();
+
+        if (spirit.equalsIgnoreCase("whiskey")){
+            searchTerms.addAll(Arrays.asList("whiskey", "bourbon", "rye", "scotch"));
+        } else {
+            searchTerms.add(spirit);
+        }
+
+        if (spirit.equalsIgnoreCase("rum")){
+            searchTerms.addAll(Arrays.asList("white rum", "dark rum"));
+        } else {
+            searchTerms.add(spirit);
+        }
+
+        if (spirit.equalsIgnoreCase("coffee")){
+            searchTerms.addAll(Arrays.asList("espresso", "cold-brew"));
+        } else {
+            searchTerms.add(spirit);
+        }
+
+        return drinkRepository.findBySweetnessScoreAndDrinkIngredientsIngredientNameInIgnoreCase(sweetness,searchTerms)
                 .stream().map(this::convertToDTO).toList();
     }
 

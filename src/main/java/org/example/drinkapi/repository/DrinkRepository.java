@@ -25,7 +25,7 @@ public interface DrinkRepository extends JpaRepository<Drink, Integer> {
     List<Drink> findByDrinkIngredientsIngredientNameIgnoreCase(String ingredientName);
 
     // Sök på kombination: Sprit + Sötma (ingrediens + sötma-värde)
-    List<Drink> findBySweetnessScoreAndDrinkIngredientsIngredientNameIgnoreCase(int sweetness, String ingredientName);
+    List<Drink> findBySweetnessScoreAndDrinkIngredientsIngredientNameInIgnoreCase(int sweetness, List<String> ingredientNames);
 
     // Hitta slumpmässig drink (Här behövs "Native Query" för SQL har inbyggd RAND-funktion)
     @Query(value = "SELECT * FROM Drinks ORDER BY RAND() LIMIT 1", nativeQuery = true)

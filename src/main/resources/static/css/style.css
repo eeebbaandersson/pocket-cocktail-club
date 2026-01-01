@@ -6,7 +6,7 @@ body {
             #6297bd 0%, /* Din dämpade ljuskälla */
             #3d6383 30%, /* EN MELLANTON: Hjälper ljuset att "blöda" ut mjukare */
             #224363 70%, /* Din djupa marinblå */
-            #131e2c 100% /* Din mörkblå för djup */
+            #182c43 100% /* Din mörkblå för djup */
     ) fixed;
     font-family: sans-serif;
     color: white;
@@ -53,7 +53,7 @@ body {
 }
 
 .glass-inputField {
-    background: rgba(255, 255, 255, 0.05); /* Transparens */
+    background: rgba(255, 255, 255, 0.03); /* Transparens */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15); /* Lysande kant */
@@ -61,7 +61,7 @@ body {
     width: 400px;
     font-size: 1.1rem;
     padding: 10px 15px;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.5);
     outline: none;
 }
 
@@ -79,13 +79,13 @@ body {
 }
 
 .glass-button {
-    background: rgba(255, 255, 255, 0.05); /* Transparens */
+    background: rgba(255, 255, 255, 0.03); /* Transparens */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15); /* Lysande kant */
     border-radius: 10px;
 
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.5);
     padding: 8px 16px;
     font-size: 0.85rem;
     transition: all 0.3s ease;
@@ -93,11 +93,12 @@ body {
 }
 
 .glass-button.active {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgb(70, 141, 204, 0.7);
     border-color: rgba(255, 255, 255, 0.3);
     color: #fff;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-    transform: translateY(1px);
+    box-shadow: 0 0 10px rgb(103, 181, 255);
+    transform: scale(0.98);
+
 }
 
 .sweetness-container {
@@ -173,10 +174,12 @@ body {
 
 .slider-labels span.active {
     color: #fff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 10px rgba(103, 181, 255, 0.5);
     transform: scale(1.2) translateY(2px);
     opacity: 1;
 }
+
+
 
 
 
