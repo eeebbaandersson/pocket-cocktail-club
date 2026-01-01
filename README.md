@@ -50,7 +50,7 @@ The application is designed to be plug-and-play:
 * Once the terminal shows that the application has started, open your browser and navigate to http://localhost:8080.
 
 
-!
+
 
 
 
