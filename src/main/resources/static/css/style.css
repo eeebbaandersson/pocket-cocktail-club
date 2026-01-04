@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -45,12 +49,62 @@ body {
 .search-area {
     display: flex;
     flex-direction: column;
-    gap: 25px;
     align-items: center;
+    gap: 25px;
     /* Flyttar ner sökområdet med x px från mitten-centreringen*/
     transform: translateY(30px);
-
 }
+
+.search-input-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.search-icon {
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url('../assets/search-icon.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: invert(1);
+    color: rgba(255, 255, 255, 0.6);
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.search-submit-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.search-submit-btn img,
+.search-submit-btn svg {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+    opacity: 0.6;
+}
+
+
 
 .glass-inputField {
     background: rgba(255, 255, 255, 0.03); /* Transparens */
@@ -58,10 +112,11 @@ body {
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15); /* Lysande kant */
     border-radius: 10px;
-    width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px 12px 45px;
     font-size: 1.1rem;
-    padding: 10px 15px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.6);
     outline: none;
 }
 
@@ -74,8 +129,10 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
-    max-width: 500px;
+    gap: 12px;
+    max-width: 450px;
+    width: 100%;
+    margin: 0;
 }
 
 .glass-button {
@@ -84,13 +141,22 @@ body {
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15); /* Lysande kant */
     border-radius: 10px;
+    color: rgba(255, 255, 255, 0.6);
 
-    color: rgba(255, 255, 255, 0.5);
-    padding: 8px 16px;
-    font-size: 0.85rem;
+    font-size: 0.90rem;
     transition: all 0.3s ease;
     text-transform: uppercase;
+
+    flex: 0 0 auto;
+
+    padding: 10px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
+
+
 
 .glass-button.active {
     background: rgb(70, 141, 204, 0.7);
@@ -103,7 +169,11 @@ body {
 
 .sweetness-container {
     margin-top: 10px;
+    max-width: 450px;
     width: 100%;
+    /* Centrerar behållaren */
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -114,6 +184,9 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     opacity: 0.8;
+    display: block;
+    text-align: left;
+    margin-bottom: 3px;
 }
 
 .glass-slider {
@@ -141,9 +214,9 @@ body {
 .slider-wrapper {
     position: relative;
     width: 100%;
-    max-width: 500px;
+    max-width: 450px;
     margin-top: 10px;
-    padding: 0 8px;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -152,7 +225,7 @@ body {
     justify-content: space-between;
     margin-top: 10px;
     width: 100%;
-    padding: 0 4px;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -162,7 +235,8 @@ body {
     font-weight: 500;
     color: rgba(255, 255, 255, 0.4);
     transition: all 0.2s ease;
-    width: 20px;
+
+    width: 30px;
     display: flex;
     justify-content:center;
     margin-left: -10px;

@@ -111,6 +111,7 @@ async function combinedFilterSearch() {
 document.addEventListener('DOMContentLoaded', () => {
     // Hämta alla element en gång när sidan laddats
     const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.querySelector('.search-submit-btn');
     const spiritButtons = document.querySelectorAll('.spirit-btn');
     const slider = document.getElementById('sweetnessSlider');
 
@@ -131,6 +132,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'Enter') {
                 searchDrinks();
             }
+        });
+    }
+
+    if (searchBtn) {
+        searchBtn.addEventListener('click', () =>{
+            searchDrinks();
         });
     }
 
