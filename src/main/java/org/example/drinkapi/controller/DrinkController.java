@@ -43,7 +43,7 @@ public class DrinkController {
 
     @GetMapping("/search/all")
     public List<DrinkDTO> universalSearch(@RequestParam String query) {
-        // Hämtar entiteter från databsen via repository
+        // Hämtar entiteter från databasen via repository
         // Skickar 'query' till både namn- och kategori-sök
         List<Drink> drinks = drinkRepository.findByNameContainingIgnoreCaseOrCategoriesNameIgnoreCase(query, query);
 
@@ -68,20 +68,19 @@ public class DrinkController {
         List<String> searchTerms = new ArrayList<>();
 
         if (spirit.equalsIgnoreCase("whiskey")){
-            searchTerms.addAll(Arrays.asList("whiskey", "bourbon", "rye", "scotch"));
-        } else {
-            searchTerms.add(spirit);
+            searchTerms.addAll(Arrays.asList("whiskey", "bourbon", "rye", "scotch", "rye whiskey", "scottish whiskey"));
+        }
+        else if (spirit.equalsIgnoreCase("rum")){
+            searchTerms.addAll(Arrays.asList("white rum", "dark rum", "rum"));
+        }
+        else if (spirit.equalsIgnoreCase("coffee")) {
+            searchTerms.addAll(Arrays.asList("espresso", "cold-brew", "coffee"));
+        }
+        else if (spirit.equalsIgnoreCase("liqueur")) {
+            searchTerms.addAll(Arrays.asList("liqueur", "liqueur 43", "amaretto", "limoncello"));
         }
 
-        if (spirit.equalsIgnoreCase("rum")){
-            searchTerms.addAll(Arrays.asList("white rum", "dark rum"));
-        } else {
-            searchTerms.add(spirit);
-        }
-
-        if (spirit.equalsIgnoreCase("coffee")){
-            searchTerms.addAll(Arrays.asList("espresso", "cold-brew"));
-        } else {
+        else {
             searchTerms.add(spirit);
         }
 

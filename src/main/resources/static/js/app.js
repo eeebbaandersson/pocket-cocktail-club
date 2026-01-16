@@ -1,4 +1,16 @@
 
+let allDrinks = [];
+
+async function loadAllDrinks() {
+    try {
+        const response = await fetch(`/api/drinks`);
+        allDrinks = await response.json();
+        console.log("Antal drinkar laddade i minnet:", allDrinks.length);
+        updateButtonCounter();
+    } catch (error) {
+        console.error("Kunde inte ladda drink-data för räknaren",error)
+    }
+}
 
 async function getRandomDrink() {
     try {
@@ -63,6 +75,70 @@ function updateLabelHighlights (value) {
     });
 }
 
+function updateButtonCounter() {
+    const showResultButton = document.getElementById('showResultsButton');
+    // Avbryt om knappet eller datan intr laddats ännu
+    if (!showResultButton || !allDrinks || allDrinks.length === 0) return;
+
+    // Om ingen spritsort är vald -> Visa neutral text/inaktiverad knapp
+    if (!currentSelectedSpirit) {
+        showResultButton.innerText = "Show Cocktails";
+        showResultButton.disabled = true;
+        showResultButton.style.opacity = "0.5";
+        return;
+    }
+
+    // Filtrerar listan med drinkar
+    const matches = allDrinks.filter(drink => {
+        let searchTerms = [];
+        const selected = currentSelectedSpirit.toLowerCase();
+
+        // Filtreringslogik från DrinkController
+        if (selected === "whiskey") {
+            searchTerms = ["whiskey", "bourbon", "rye", "scotch", "rye whiskey", "scottish whiskey"];
+        } else if (selected === "rum") {
+            searchTerms = ["white rum", "dark rum", "rum"];
+        } else if (selected === "coffee") {
+            searchTerms = ["espresso", "cold-brew", "coffee"];
+        } else if (selected === "liqueur") {
+            searchTerms = ["liqueur", "liqueur 43", "amaretto", "limoncello"];
+        }
+        else {
+            searchTerms = [selected];
+        }
+
+        // Spirit Match --> Leta efter hela ordet för att undvika "Ginger" vid "Gin"-sökning
+        const spiritMatch = drink.ingredients.some(ing => {
+            const ingName = ing.name.toLowerCase();
+            return searchTerms.some(term => {
+                // Regex \b (word boundary) --> Se till att ordet matchar exakt
+                const regex = new RegExp(`\\b${term}\\b`, 'i');
+                return regex.test(ingName);
+            });
+        });
+
+        // Sweetness Match
+        const sweetnessMatch = Number(drink.sweetnessScore) === Number(currentSweetnessValue);
+        return spiritMatch && sweetnessMatch;
+    });
+
+    console.log(`Filter: ${currentSelectedSpirit} | Score: ${currentSweetnessValue}`);
+    console.log("Matchade drinkar:", matches.map(d => d.name));
+
+
+    // Uppdaterar knappen dynamiskt
+    if (matches.length > 0) {
+        showResultButton.innerText = `Show ${matches.length} Cocktails`;
+        showResultButton.disabled = false;
+        showResultButton.style.opacity = "1";
+    } else {
+        showResultButton.innerText = "No matches found"
+        showResultButton.disabled = true;
+        showResultButton.style.opacity = "0.5"; // Gör knappen blekare om inga träffar hittades
+    }
+}
+
+// Korrigera här för att visa drinkar i listavy med länk istället för alla objekt lit nu, skapa mall html-fil för drink-card?
 function displayDrinks(drinks) {
     const display = document.getElementById('drinkDisplay');
     display.innerHTML = '';
@@ -108,12 +184,14 @@ async function combinedFilterSearch() {
 }
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
     // Hämta alla element en gång när sidan laddats
     const searchInput = document.getElementById('searchInput');
     const searchBtn = document.querySelector('.search-submit-btn');
     const spiritButtons = document.querySelectorAll('.spirit-btn');
     const slider = document.getElementById('sweetnessSlider');
+    const showResultButton = document.getElementById('showResultsButton');
 
     // Sätter markör i sökfät direkt
     if (searchInput) searchInput.focus();
@@ -126,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --Sökning 1: FRI SÖKNING (Namn/Kategori/Ingredienser)--
+    // --Sökning 1: FRI SÖKNING -- (Körs vvia klick/Enter)--
     if (searchInput) {
         searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
@@ -154,15 +232,15 @@ document.addEventListener('DOMContentLoaded', () => {
             spiritButtons.forEach(btn => btn.classList.remove('active'));
 
             if (wasAlreadyActive) {
-                // Om den redan var aktiv --> Avmerker/sätt till null
+                // Om den redan var aktiv --> Avmarkera/sätt till null
                 currentSelectedSpirit = null;
             } else
                 // Om den inte var aktiv --> Aktivera knappen
                 this.classList.add('active');
-            currentSelectedSpirit = this.innerText.trim().toLocaleLowerCase();
+            currentSelectedSpirit = this.innerText.trim().toLowerCase();
 
-            // Utför sökningen
-            combinedFilterSearch();
+            updateButtonCounter();
+
         });
     });
 
@@ -172,14 +250,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Uppdaterar tillstånd
             updateLabelHighlights(this.value);
-
-            // Uppdaterar
             currentSweetnessValue = this.value;
-
-            // Kör kombinerad sökmetod
-            combinedFilterSearch();
+            updateButtonCounter();
         });
     }
+
+    // När knappen aktiveras visa resultet baserat på värden från sprit-knapp+sweetness-slidern
+    if (showResultButton) {
+        showResultButton.addEventListener('click', () => {
+            combinedFilterSearch();
+            // Byt framöver ut detta mot dirigering till ny landningssida
+            // window.location.href = 'searchDisplay.html';
+        })
+    }
+
+    loadAllDrinks();
 });
 
 
