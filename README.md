@@ -21,7 +21,7 @@ The application features multiple ways to find the perfect recipe:
 * Database: MySQL
 * Frontend: HTML5, CSS3, Vanilla JavaScript (ES6+)
 
-## 📋 Requirements:
+## 📋 Requirements
 * JDK 25 or higher
 * MySQL Server
 * Maven (for dependency management)
@@ -30,10 +30,10 @@ The application features multiple ways to find the perfect recipe:
 ## 🚀 Installation & setup
 To get the project running on your local machine follow these steps:
 
-### 1. Clone the repository:
+### 1. Clone the repository
 * git clone https://github.com/eeebbaandersson/pocket-cocktail-club.git
 
-### 2. Database Configuration:
+### 2. Database Configuration
  * Create a MySQL database named cocktail_db. (It is important to use this exact name for the application to function correctly).
  * In src/main/resources/, create a file named application.properties.
  * Copy the content from application.properties.example into your new file.

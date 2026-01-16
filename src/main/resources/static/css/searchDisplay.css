@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(
+            135deg,
+            #6297bd 0%, /* Din dämpade ljuskälla */
+            #3d6383 30%, /* EN MELLANTON: Hjälper ljuset att "blöda" ut mjukare */
+            #224363 70%, /* Din djupa marinblå */
+            #182c43 100% /* Din mörkblå för djup */
+    ) fixed;
+    font-family: sans-serif;
+    color: white;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 50px 50px;
+    /* Trycker ner alla objekt från toppen*/
+    margin-top: 150px;
+
+}
+
+.hero-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    margin-top: 30px;
+
+    /* öka värdet för att flytta hero-text längre mot kanten */
+    transform: translateX(0px);
+    min-width: fit-content;
+
+    color: white;
+    opacity: 0.8;
+}
+
+
+
+.search-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-input-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+.search-icon {
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url('../assets/search-icon.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: invert(1);
+    color: rgba(255, 255, 255, 0.6);
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.search-submit-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.search-submit-btn img,
+.search-submit-btn svg {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+    opacity: 0.6;
+}
+
+.glass-inputField {
+    background: rgba(255, 255, 255, 0.03); /* Transparens */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Lysande kant */
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px 12px 45px;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.6);
+    outline: none;
+}
+
+/* Place holder-färg */
+.glass-inputField::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.recipe-card-placeholder {
+    height: 250px;
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Lysande kant */
+    border-radius: 10px;
+}
+
+.recipe-grid {
+    display: grid;
+    /* Skapar så många kolumner som får plats, minst 180px breda styck */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 60px;
+    justify-content: center;
+}
