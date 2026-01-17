@@ -82,7 +82,7 @@ function updateButtonCounter() {
 
     // Om ingen spritsort är vald -> Visa neutral text/inaktiverad knapp
     if (!currentSelectedSpirit) {
-        showResultButton.innerText = "Show Cocktails";
+        showResultButton.innerText = "Show Matches";
         showResultButton.disabled = true;
         showResultButton.style.opacity = "0.5";
         return;
@@ -128,13 +128,15 @@ function updateButtonCounter() {
 
     // Uppdaterar knappen dynamiskt
     if (matches.length > 0) {
-        showResultButton.innerText = `Show ${matches.length} Cocktails`;
+        // Träff: Aktivera
+        showResultButton.innerText = `Show Matches (${matches.length}) `;
         showResultButton.disabled = false;
         showResultButton.style.opacity = "1";
     } else {
+        // Ingen träff: avaktivera
         showResultButton.innerText = "No matches found"
         showResultButton.disabled = true;
-        showResultButton.style.opacity = "0.5"; // Gör knappen blekare om inga träffar hittades
+        showResultButton.style.opacity = "0.3"; // Gör knappen blekare om inga träffar hittades
     }
 }
 
@@ -204,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --Sökning 1: FRI SÖKNING -- (Körs vvia klick/Enter)--
+    // --Sökning 1: FRI SÖKNING -- (Körs via klick/Enter)--
     if (searchInput) {
         searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
