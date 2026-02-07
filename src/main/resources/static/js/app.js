@@ -173,7 +173,7 @@ function updateButtonCounter() {
         let searchTerms = [];
         const selected = currentSelectedSpirit.toLowerCase();
 
-        // Filtreringslogik från DrinkController
+        // Filtreringslogik som matchar DrinkController(backend)
         if (selected === "whiskey") {
             searchTerms = ["whiskey", "bourbon", "rye", "scotch", "rye whiskey", "scottish whiskey", "Single malt scottish whiskey"];
         } else if (selected === "rum") {
@@ -182,6 +182,8 @@ function updateButtonCounter() {
             searchTerms = ["espresso", "cold-brew", "coffee"];
         } else if (selected === "liqueur") {
             searchTerms = ["liqueur", "liqueur 43", "amaretto", "limoncello"];
+        } else if (selected === "bitter") {
+            searchTerms = ["aperol", "campari"];
         }
         else {
             searchTerms = [selected];

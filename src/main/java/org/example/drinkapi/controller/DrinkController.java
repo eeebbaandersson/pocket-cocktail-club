@@ -67,17 +67,16 @@ public class DrinkController {
         // Tillfällig lösning för att inte behöva vara super specifik när man anger spritsort i sökning/trycker på knapparna
         List<String> searchTerms = new ArrayList<>();
 
-        if (spirit.equalsIgnoreCase("whiskey")){
+        if (spirit.equalsIgnoreCase("whiskey")) {
             searchTerms.addAll(Arrays.asList("whiskey", "bourbon", "rye", "scotch", "rye whiskey", "scottish whiskey", "Single malt scottish whiskey"));
-        }
-        else if (spirit.equalsIgnoreCase("rum")){
+        } else if (spirit.equalsIgnoreCase("rum")) {
             searchTerms.addAll(Arrays.asList("white rum", "dark rum", "rum"));
-        }
-        else if (spirit.equalsIgnoreCase("coffee")) {
+        } else if (spirit.equalsIgnoreCase("coffee")) {
             searchTerms.addAll(Arrays.asList("espresso", "cold-brew", "coffee"));
-        }
-        else if (spirit.equalsIgnoreCase("liqueur")) {
+        } else if (spirit.equalsIgnoreCase("liqueur")) {
             searchTerms.addAll(Arrays.asList("liqueur", "liqueur 43", "amaretto", "limoncello"));
+        } else if (spirit.equalsIgnoreCase("bitter")) {
+            searchTerms.addAll(Arrays.asList("aperol", "campari"));
         }
 
         else {
