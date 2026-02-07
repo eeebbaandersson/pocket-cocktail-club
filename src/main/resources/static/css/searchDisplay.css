@@ -25,7 +25,8 @@ body {
 main {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding-bottom: 50px;
 }
 
@@ -168,7 +169,7 @@ main {
 
 .card-content h3 {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     letter-spacing: 0.05em;
     color: #fff;
 }
@@ -195,6 +196,23 @@ main {
     gap: 25px;
     width: 90%;
     max-width: 1200px;
-    margin-top: 40px;
+    margin-top: 10px;
 
+}
+
+.result-info {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto 10px auto;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 10px;
+}
+
+#resultCountText {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 300;
 }

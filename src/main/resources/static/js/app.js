@@ -44,6 +44,12 @@ async function initSearchFromUrl() {
     const ingredients = params.get('ingredients');
     const type = params.get('type');
 
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        if (query) searchInput.value = query;
+        else if (ingredients) searchInput.value = ingredients;
+    }
+
     const spirit = params.get('spirit');
     const sweetness = params.get('sweetness');
 
@@ -71,9 +77,11 @@ async function initSearchFromUrl() {
 
 async function executeFetchAndDisplay(apiUrl) {
     const grid = document.querySelector('.recipe-grid');
+    const countText = document.getElementById('resultCountText');
     if (!grid) return;
 
     try {
+        if (countText) countText.innerText = "";
 
         const response = await fetch(apiUrl);
         if (!response.ok) throw new Error("Serverfel");
@@ -81,6 +89,16 @@ async function executeFetchAndDisplay(apiUrl) {
 
         // Hantera både enstaka drinkar (random) och listor
         const drinkList = Array.isArray(drinks) ? drinks : [drinks];
+
+        if (countText) {
+            const count = drinkList.length;
+            if (count === 0) {
+                countText.innerText = "No recipes found";
+            } else {
+                countText.innerText = count === 1 ? `1 recipe` : ` ${count} recipes`;
+            }
+        }
+
         renderDrinkGrid(drinkList, grid);
 
     } catch (error) {
@@ -93,10 +111,11 @@ async function executeFetchAndDisplay(apiUrl) {
 function renderDrinkGrid(drinks, container) {
     container.innerHTML = ''; // Rensar placeholders
 
-    if (drinks.length === 0) {
-        container.innerHTML = '<p class="no-results">No cocktails matched your search.</p>';
-        return;
-    }
+    // Ta bort denna rad då felmedelandet blir samma som redan visas från countText i executeFetchAndDisplay()
+    // if (drinks.length === 0) {
+    //     container.innerHTML = '<p class="no-results">No cocktails matched your search.</p>';
+    //     return;
+    // }
 
     drinks.forEach(drink => {
         const card = document.createElement('article');
