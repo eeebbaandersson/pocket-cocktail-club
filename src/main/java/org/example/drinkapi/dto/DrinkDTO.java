@@ -4,7 +4,7 @@ import java.util.List;
 
 public class DrinkDTO {
     private String name;
-    private Integer sweetnessScore;;
+    private Integer sweetnessScore;
     private List<String> categories;
     private String instructions;
     private List<DrinkIngredientDTO> ingredients;

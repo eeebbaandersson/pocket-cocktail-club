@@ -68,7 +68,7 @@ public class DrinkController {
         List<String> searchTerms = new ArrayList<>();
 
         if (spirit.equalsIgnoreCase("whiskey")){
-            searchTerms.addAll(Arrays.asList("whiskey", "bourbon", "rye", "scotch", "rye whiskey", "scottish whiskey"));
+            searchTerms.addAll(Arrays.asList("whiskey", "bourbon", "rye", "scotch", "rye whiskey", "scottish whiskey", "Single malt scottish whiskey"));
         }
         else if (spirit.equalsIgnoreCase("rum")){
             searchTerms.addAll(Arrays.asList("white rum", "dark rum", "rum"));

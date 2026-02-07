@@ -5,6 +5,54 @@
 
   // GIN
   {
+    "name": "Clover Club",
+    "sweetness_score": -1,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "Gin", "quantity": 45, "unit": "ml", "is_alcoholic": true},
+      {"name": "Dry vermouth", "quantity": 15, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lemon juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Raspberry syrup", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Egg white", "quantity": 30, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Combine all ingredients in a shaker. Dry shake first to create foam, add ice and shake again to chill the drink. Strain into a cocktail glass of choice and garnish with fresh raspberries or a lemon twist."
+  },
+  {
+    "name": "Dry Martini",
+    "sweetness_score": -5,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "Gin", "quantity": 50, "unit": "ml", "is_alcoholic": true},
+      {"name": "Dry vermouth", "quantity": 10, "unit": "ml", "is_alcoholic": true}
+    ],
+    "instructions": "Pour gin and vermouth into a mixing glass, add ice and stir until well-chilled. Strain into a Martini glass and garnish with a lemon twist."
+  },
+  {
+    "name": "Eastern Standard",
+    "sweetness_score": -1,
+    "categories": [],
+    "ingredients": [
+      {"name": "Gin", "quantity": 50, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 25, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Fresh cucumber", "quantity": 3, "unit": "slices", "is_alcoholic": false},
+      {"name": "Fresh mint", "quantity": 3, "unit": "leaves", "is_alcoholic": false}
+    ],
+    "instructions": "Muddle the cucumber slices in a shake. Add mint and the remaining ingredients. Shake with ice until chilled and double strain into a cocktail glass of choice. "
+  },
+  {
+    "name": "Fallen Angel",
+    "sweetness_score": -3,
+    "categories": ["Classic"],
+    "ingredients": [
+      {"name": "Gin", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Crème de menthe", "quantity": 2, "unit": "dashes", "is_alcoholic": true},
+      {"name": "Angostura bitter", "quantity": 1, "unit": "dash", "is_alcoholic": true}
+    ],
+    "instructions": "Pour all ingredients into a shaker with ice. Shake until well-chilled. Strain into a cocktail glass of choice and garnish with a mint sprig"
+  },
+  {
     "name": "French 75",
     "sweetness_score": -1,
     "categories": ["Classic"],
@@ -14,7 +62,7 @@
       {"name": "Lemon juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
       {"name": "Champagne", "quantity": 90, "unit": "ml", "is_alcoholic": true}
     ],
-    "instructions": "Pour gin, syrup and lemon juice into a shaker with ice. Shake until well chilled. Strain into a champagne-/ or coupe glass and top it off with the champagne."
+    "instructions": "Pour gin, syrup and lemon juice into a shaker with ice. Shake until well-chilled. Strain into a champagne-/ or coupe glass and top it off with the champagne."
   },
   {
     "name": "Gin Basil Smash",
@@ -62,7 +110,7 @@
       {"name": "Lime juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
       {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false}
     ],
-    "instructions": "Combine gin, lime juice, and syrup in a mixing glass with ice. Stir until well chilled. Strain into a coupe glass."
+    "instructions": "Combine gin, lime juice, and syrup in a mixing glass with ice. Stir until well-chilled. Strain into a coupe glass."
   },
   {
     "name": "Negroni Sour",
@@ -211,7 +259,7 @@
       {"name": "Honey syrup", "quantity": 15, "unit": "ml", "is_alcoholic": false},
       {"name": "Champagne", "quantity": 30, "unit": "ml", "is_alcoholic": true}
     ],
-    "instructions": "Pour rum, lime juice and syrup into a shaker with ice. Shake until well chilled. Strain into a coupe glass and top if off with champagne. Garnish with a mint leaf. "
+    "instructions": "Pour rum, lime juice and syrup into a shaker with ice. Shake until well-chilled. Strain into a coupe glass and top if off with champagne. Garnish with a mint leaf. "
   },
   {
     "name": "Cuba Libre",
@@ -233,7 +281,7 @@
       {"name": "Lime juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
       {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false}
     ],
-    "instructions": "Pour rum, lime juice and syrup into a shaker with ice. Shake until well chilled. Strain into a coupe glass."
+    "instructions": "Pour rum, lime juice and syrup into a shaker with ice. Shake until well-chilled. Strain into a coupe glass."
   },
   {
     "name": "Dark and Stormy",
@@ -268,7 +316,7 @@
       {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
       {"name": "Syrup", "quantity": 15, "unit": "ml", "is_alcoholic": false}
     ],
-    "instructions": "Combine all ingredients into a shaker with ice. Shake until well chilled. Pour into a cocktail glass of choice and garnish with a lime while."
+    "instructions": "Combine all ingredients into a shaker with ice. Shake until well-chilled. Pour into a cocktail glass of choice and garnish with a lime while."
   },
   {
     "name": "Jungle Bird",
@@ -281,7 +329,7 @@
       {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
       {"name": "Pineapple juice", "quantity": 45, "unit": "ml", "is_alcoholic": false}
     ],
-    "instructions": "Combine all ingredients into shaker with ice. Shake until well chilled. Strain into an Old-Fashioned glass and garnish with a pineapple leaf."
+    "instructions": "Combine all ingredients into shaker with ice. Shake until well-chilled. Strain into an Old-Fashioned glass and garnish with a pineapple leaf."
   },
   {
     "name": "Mojito",

@@ -95,7 +95,7 @@ function updateButtonCounter() {
 
         // Filtreringslogik från DrinkController
         if (selected === "whiskey") {
-            searchTerms = ["whiskey", "bourbon", "rye", "scotch", "rye whiskey", "scottish whiskey"];
+            searchTerms = ["whiskey", "bourbon", "rye", "scotch", "rye whiskey", "scottish whiskey", "Single malt scottish whiskey"];
         } else if (selected === "rum") {
             searchTerms = ["white rum", "dark rum", "rum"];
         } else if (selected === "coffee") {
@@ -151,7 +151,7 @@ function displayDrinks(drinks) {
         card.innerHTML = `
             <h2>${drink.name}</h2>
             <p><strong>Category:</strong> ${drink.categories.join(', ')}</p>
-            <p><strong>Sweet-/sourness:</strong> ${drink.sweetnessScore}</p>
+            <p><strong>Sweetness:</strong> ${drink.sweetnessScore}</p>
             <h3>Ingredients:</h3>
             <ul>
                 ${drink.ingredients.map(ing => `<li>${ing.quantity} ${ing.unit} ${ing.name}</li>`).join('')}
