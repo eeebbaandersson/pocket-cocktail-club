@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SearchDisplay</title>
+    <title>SearchResult</title>
     <link rel="stylesheet" href="css/searchDisplay.css">
 
 </head>
@@ -10,7 +10,9 @@
 <header>
 
     <div class="page-wrapper">
-        <h1 class="hero-title">Pocket Cocktail Club</h1>
+        <a href="index.html" class="hero-logo-link">
+            <h1 class="hero-title">Pocket Cocktail Club</h1>
+        </a>
 
             <div class="search-input-wrapper">
                 <span class="search-icon"></span>
@@ -20,21 +22,11 @@
                     <img src="assets/search-arrow.svg" alt="Search">
                 </button>
             </div>
-<!--        <label>X recipes</label>-->
-
-        <div class="recipe-grid">
-            <article class="recipe-card-placeholder"></article>
-            <article class="recipe-card-placeholder"></article>
-            <article class="recipe-card-placeholder"></article>
-            <article class="recipe-card-placeholder"></article>
-            <article class="recipe-card-placeholder"></article>
-
-        </div>
-
     </div>
 
 </header>
 <main id="drinkDisplay" class="drinkCard">
+    <div class="recipe-grid"></div>
 </main>
 
 <script src="/js/app.js"></script>
