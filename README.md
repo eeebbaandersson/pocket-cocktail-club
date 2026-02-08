@@ -2,6 +2,7 @@
 
 <p align="center">
   <img src="screenshots/app-preview.png" alt="Pocket Cocktail Club Preview" width="1000">
+<img src="screenshots/app-preview2.png" alt="Pocket Cocktail Club Preview" width="1000">
 </p>
 
 Pocket Cocktail Club - a full-stack web application built with Java Spring Boot, MySQL and JavaScript.
