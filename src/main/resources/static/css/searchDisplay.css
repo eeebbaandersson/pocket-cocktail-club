@@ -159,7 +159,8 @@ main {
     height: 150px;
     object-fit: cover;
     border-radius: 10px;
-    background: rgba(0,0,0,0.2);
+    /*background: rgba(0,0,0,0.1);*/
+    background: transparent;
     transition: opacity 0.3s ease;
 }
 
@@ -169,9 +170,9 @@ main {
 
 .card-content h3 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     letter-spacing: 0.05em;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .card-tags {

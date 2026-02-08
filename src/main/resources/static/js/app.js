@@ -136,7 +136,8 @@ function renderDrinkGrid(drinks, container) {
 
         card.addEventListener('click', () => {
             console.log("Visa detaljer för:", drink.id);
-            // Addera länk här senare till den egna drinksidan?
+            const drinkName = encodeURIComponent(drink.name);
+            window.location.href = `recipeDetail.html?name=${drinkName}`;
         });
 
         container.append(card);
