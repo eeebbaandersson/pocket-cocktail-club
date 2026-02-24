@@ -1,18 +1,18 @@
-/*body {*/
-/*    margin: 0;*/
-/*    min-height: 100vh;*/
-/*    background: #f1f0ec;*/
-/*}*/
+body {
+    margin: 0;
+    min-height: 100vh;
+    /*background: #f1f0ec;*/
+}
 
 .clean-white-card {
     background: white;
-    color: #182c43; /* Mörkblå text för läsbarhet */
+    color: #224363;
     border-radius: 20px;
     padding: 0;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
     margin-top: 40px;
 }
 
@@ -24,7 +24,46 @@
 
 .recipe-title-section {
     padding: 30px;
-    border-bottom: 1px solid #eee;
+}
+
+.recipe-title-section h2 {
+    font-size: 2.2rem;
+    margin: 0 0 10px 0;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.category-wrapper {
+    margin-bottom: 4px;
+}
+
+.sweetness-wrapper {
+    margin-bottom: 10px;
+}
+
+.category-link {
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3d6383;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.category-link:hover {
+    color: #3d6383;
+    border-bottom: 1px solid #3d6383; /* En subtil linje dyker upp */
+    cursor: pointer;
+}
+
+.sweetness-badge {
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3d6383;
 }
 
 .recipe-grid-layout {
@@ -32,6 +71,23 @@
     grid-template-columns: 1fr 2fr;
     gap: 40px;
     padding: 30px;
+}
+
+
+.ingredients-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ingredients-list li {
+    margin-bottom: 6px;
+}
+
+.instructions-text ol li {
+    margin-bottom: 2px;
+    padding-left: 3px;
+    line-height: 1.6;
 }
 
 .back-btn {

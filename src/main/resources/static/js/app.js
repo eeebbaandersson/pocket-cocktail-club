@@ -111,15 +111,13 @@ async function executeFetchAndDisplay(apiUrl) {
 function renderDrinkGrid(drinks, container) {
     container.innerHTML = ''; // Rensar placeholders
 
-    // Ta bort denna rad då felmedelandet blir samma som redan visas från countText i executeFetchAndDisplay()
-    // if (drinks.length === 0) {
-    //     container.innerHTML = '<p class="no-results">No cocktails matched your search.</p>';
-    //     return;
-    // }
-
     drinks.forEach(drink => {
         const card = document.createElement('article');
         card.className = 'recipe-card';
+
+        const hasCategory = drink.categories && drink.categories.length > 0 && drink.categories[0].trim() != "";
+
+        const categoryText = hasCategory ? drink.categories[0] : '&nbsp';
 
         // Bygger kort med den nya designen
         card.innerHTML = `
@@ -127,11 +125,12 @@ function renderDrinkGrid(drinks, container) {
         <div class="card-content">
             <h3>${drink.name}</h3>
             <div class="card-tags">
-                <div class="tag-row">${drink.categories[0] || 'Cocktail'}</div>
-                 <div class="tag-row">Sweetness: ${drink.sweetnessScore}</div>
+                <div class="tag-row" style="${!hasCategory ? 'visibility: hidden;' : ''}">
+                    ${categoryText}
+                </div>
+                <div class="tag-row">Sweetness: ${drink.sweetnessScore}</div>
             </div>
         </div>
-       
     `;
 
         card.addEventListener('click', () => {
@@ -158,7 +157,7 @@ function updateLabelHighlights (value) {
 
 function updateButtonCounter() {
     const showResultButton = document.getElementById('showResultsButton');
-    // Avbryt om knappet eller datan intr laddats ännu
+    // Avbryt om knappet eller datan inte laddats ännu
     if (!showResultButton || !allDrinks || allDrinks.length === 0) return;
 
     // Om ingen spritsort är vald -> Visa neutral text/inaktiverad knapp
@@ -295,6 +294,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
-
-
-
