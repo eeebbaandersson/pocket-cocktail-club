@@ -3,7 +3,6 @@
 <p align="center">
   <img src="screenshots/app-preview.png" alt="Pocket Cocktail Club Preview" width="1000">
 <img src="screenshots/app-preview2.png" alt="Pocket Cocktail Club Preview" width="1000">
-<img src="screenshots/app-preview3.png" alt="Pocket Cocktail Club Preview" width="1000">
 </p>
 
 Pocket Cocktail Club - a full-stack web application built with Java Spring Boot, MySQL and JavaScript.
@@ -50,3 +49,17 @@ The application is designed to be plug-and-play:
 ### 4. Run the Application
 * Launch the project via IntelliJ IDEA or use the terminal: ./mvnw spring-boot:run.
 * Once the terminal shows that the application has started, open your browser and navigate to http://localhost:8080.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
