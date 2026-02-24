@@ -54,7 +54,7 @@ body {
 
 .category-link:hover {
     color: #3d6383;
-    border-bottom: 1px solid #3d6383; /* En subtil linje dyker upp */
+    border-bottom: 1px solid #3d6383;
     cursor: pointer;
 }
 
