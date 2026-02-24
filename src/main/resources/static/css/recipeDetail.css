@@ -58,6 +58,12 @@ body {
     cursor: pointer;
 }
 
+.category-separator {
+    color: rgba(61, 99, 131, 0.69);
+    font-size: 0.85rem;
+    pointer-events: none;
+}
+
 .sweetness-badge {
     text-transform: uppercase;
     letter-spacing: 1.5px;

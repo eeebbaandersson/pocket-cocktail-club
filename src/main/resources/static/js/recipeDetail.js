@@ -36,9 +36,12 @@ function renderFullRecipe(drink) {
                 
           <div class="category-wrapper">
                 ${hasCategory
-        ? `<a href="searchDisplay.html?query=${encodeURIComponent(drink.categories[0])}" class="category-link">${categoryDisplay}</a>`
-        : `<span class="category-link" style="visibility: hidden;">&nbsp;</span>`
-    }
+                    ? drink.categories.map((cat, index) => `
+                      <a href="searchDisplay.html?query=${encodeURIComponent(cat)}" class="category-link">${cat}</a>
+                       ${index < drink.categories.length - 1 ? '<span class="category-separator"> | </span>' : ''}
+                        `).join('')
+                    : `<span class="category-link" style="visibility: hidden;">&nbsp;</span>`
+                }
             </div>
 
             <div class="sweetness-wrapper">
