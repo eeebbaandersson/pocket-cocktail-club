@@ -1,5 +1,5 @@
 
-src/main/resources/application.properties
+
 
 !src/main/resources/application.properties.example
 
@@ -9,6 +9,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 .DS_Store
+
+*.log
+.docker/
 
 ### STS ###
 .apt_generated
@@ -37,5 +40,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-
