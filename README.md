@@ -17,7 +17,7 @@ It allows the user to easily find and discover new drink recipes based on differ
 The application features multiple ways to find the perfect recipe:
 
 * **Smart Search:** Find recipes by Name, Category (e.g. "Classic", "Sour") or list preferred ingredients (separated by `,` ).
-* **Interactive Taste Filter:** Use the spirit quick-select buttons in combination with a dynamic **Sweetness Slider** to find drinks that matches both preferred base spirit and desired flavor profile (ranging from bitter to sweet).
+* **Interactive Taste Filter:** Use the spirit quick-select buttons in combination with a dynamic **Sweetness Slider** to find drinks that match both preferred base spirit and desired flavor profile (ranging from bitter to sweet).
 * **Randomizer:** Not sure what you are looking for? Enter "Random" to get a surprise recipe.
 
 ## 🛠️ Tech Stack
@@ -39,7 +39,7 @@ To get the project running on your local machine, follow these steps:
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/eeebbaandersson/pocket-cocktail-club.git
-cd pocket-cocktail-club
+cd pocket-cocktail-club # <-- Make sure you are inside the project folder
 ```
 
 ### 2. Run with Docker (Fastest Way ⚡️)
