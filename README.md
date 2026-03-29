@@ -1,76 +1,86 @@
-# [Pocket Cocktail Club] 🍸
+# 🍸 Pocket Cocktail Club 
+**Your compass in the cocktail jungle – A curated guide for the home bartender or a night out.**
 
 <p align="center">
 <img src="screenshots/app-preview.png" alt="Pocket Cocktail Club Preview" width="1000">
-<img src="screenshots/app-preview2.png" alt="Pocket Cocktail Club Preview" width="1000">
-<img src="screenshots/app-preview3.png" alt="Pocket Cocktail Club Preview" width="1000">
 </p>
 
-Pocket Cocktail Club is a full-stack web application built with **Java Spring Boot**, **MySQL** and **JavaScript**.
-It allows the user to easily find and discover new drink recipes based on different search terms or specific preferences.
+**Pocket Cocktail Club** is a full-stack web application built with **Java Spring Boot**, **MySQL** and **JavaScript**.
 
-⚠️ **Note:** This project is currently a Work in Progress as I continue to refine features and the design.
+Unsure what a "New York Sour" actually contains while standing at the bar? 
+Look it up instantly before you order. Whether you're exploring the city's nightlife or mixing drinks in your own kitchen, this app allows you to easily discover recipes based on your specific preferences, available ingredients, or desired flavor profile.
+
+⚠️ **Note –** This project is currently a Work in Progress as I continue to refine features and the UI.
 
 ---
 
-## ✨ Features
-The application features multiple ways to find the perfect recipe:
+## ✨ Key Features & User Guide
+* 🔍 **Smart Navigation (Search)** – Quickly look up unfamiliar drinks at the bar by Name or Category (e.g., "Classic", "Sour").
+* 🍹 **The Home Mixologist (Ingredient Filter)** – Don't know what to make? List the ingredients you have (separated by `,`) to find matching recipes in seconds.
+* 🧭 **Flavor Compass (Taste Filter)** – Use the **Sweetness Slider** to discover new favorites based on your preferred flavor profile, ranging from bitter to sweet.
+* 🎲 **Roulette Mode** - Feeling adventurous? Simply enter "Random" to let the app pick a surprise curated recipe for you.
 
-* **Smart Search:** Find recipes by Name, Category (e.g. "Classic", "Sour") or list preferred ingredients (separated by `,` ).
-* **Interactive Taste Filter:** Use the spirit quick-select buttons in combination with a dynamic **Sweetness Slider** to find drinks that match both preferred base spirit and desired flavor profile (ranging from bitter to sweet).
-* **Randomizer:** Not sure what you are looking for? Enter "Random" to get a surprise recipe.
+---
 
 ## 🛠️ Tech Stack
-* **Backend:** Java 25, Spring Boot (Spring Web, Spring Data JPA)
-* **Database:** MySQL
-* **Frontend:** HTML5, CSS3, Vanilla JavaScript (ES6+)
-* **DevOps:** Docker, Docker Compose, GitHub Actions (CI/CD)
-
+* **Backend –** Java 25 & Spring Boot (Spring Web, Spring Data JPA)
+* **Database –** MySQL
+* **Frontend –** HTML5, Modern CSS, Vanilla JavaScript
+* **DevOps –** Docker, Docker Compose, GitHub Actions (CI/CD)
 
 ## 📋 Requirements
-* **Docker & Docker Desktop** (Recommended - runs everything with one command)
-* **Alternative (Manual Setup):** JDK 25, MySQL Server, and Maven.
+* **Docker & Docker Desktop –** Recommended (runs everything with one command)
+* **Alternative (Manual Setup) –** JDK 25, MySQL Server, and Maven.
 
 ---
 
 ## 🚀 Installation & setup
-To get the project running on your local machine, follow these steps:
+Get the club running in two simple steps:
 
-### 1. Clone the repository
+### 1. Clone and Enter
 ```bash
 git clone https://github.com/eeebbaandersson/pocket-cocktail-club.git
 cd pocket-cocktail-club # <-- Make sure you are inside the project folder
 ```
 
-### 2. Run with Docker (Fastest Way ⚡️)
-You don't need to manually configure a database or install Java. Docker handles everything, including networking and data initialization:
+### 2. Launch with Docker ⚡️
 ```bash
 docker-compose up --build
 ```
-* **Application:** http://localhost:8080
-* **Database:** Runs in the background on port  `3306`.
-* **Initialization:** Cocktail data is automatically imported from `drink_data.json` on the first startup.
+* **Application –** http://localhost:8080
+* **Note –** Database setup and drink data import (from `drink_data.json`) are handled automatically.
+
 
 ---
 
-### 3. Manual Setup 
-If you prefer to run the project directly in your IDE (e.g., IntelliJ IDEA):
-1. **Start the Database:** You can start just the MySQL container: docker-compose up db
-2. **Configuration:** The app uses environment variables for the connection but has safe defaults (`root`/`root`) in `application.properties`.
-3. **Run the Application:** Launch `DrinkApiApplication` in your IDE or use the terminal:
-```bash
-./mvnw spring-boot:run
-```
+## 📦 Alternative Setup & CI/CD
+<details>
+<summary><b>Pull Pre-built Image (GHCR)</b></summary>
+Every GitHub Release automatically pushes a fresh image to our registry:
 
-## 📦 GitHub Packages & CI/CD
-This project uses GitHub Actions for automated builds. Every time a new **Release** is published on GitHub, a Docker image is automatically built and pushed to the GitHub Container Registry (GHCR).
-To pull the latest pre-built image:
 ```bash
 docker pull ghcr.io/eeebbaandersson/drink-api:latest
 ```
+</details>
 
-## 🛠️ Data Initialization
-The application is designed to be plug-and-play:
-* **Schema:** Hibernate is set to `ddl-auto=update`, which automatically generates the database tables.
-* **Data:** Initial cocktail data is imported from `src/main/resources/drink_data.json` automatically on startup.
-* **Note:** Manual execution of `schema.sql` is not required.
+
+<details>
+<summary><b>Manual IDE Execution</b></summary>
+
+Start Database: Run only the MySQL container: docker-compose up db
+
+Configuration: Check application.properties (Defaults: root/root)
+
+Run Application: Launch DrinkApiApplication in your IDE or via terminal:
+
+```bash
+./mvnw spring-boot:run
+```
+</details>
+
+
+## 🛠️ Data & Automation
+
+* **Plug-and-play –** Hibernate `ddl-auto=update` manages your database tables automatically.
+* **Auto-Init –** Initial cocktail data is imported from `src/main/resources/drink_data.json` on the first startup.
+* **No Manual SQL –** Execution of `schema.sql` is not required.
