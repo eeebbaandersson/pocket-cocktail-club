@@ -7,10 +7,10 @@ body {
     min-height: 100vh;
     background: linear-gradient(
             135deg,
-            #6297bd 0%, /* Din dämpade ljuskälla */
-            #3d6383 30%, /* EN MELLANTON: Hjälper ljuset att "blöda" ut mjukare */
-            #224363 70%, /* Din djupa marinblå */
-            #182c43 100% /* Din mörkblå för djup */
+            #6297bd 0%,
+            #3d6383 30%,
+            #224363 70%,
+            #182c43 100%
     ) fixed;
     font-family: sans-serif;
     color: white;
@@ -298,8 +298,3 @@ body {
 #showResultsButton:not(:disabled):active {
     transform: translateY(0) scale(0.99);
 }
-
-
-
-
-

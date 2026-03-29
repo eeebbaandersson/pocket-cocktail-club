@@ -1,11 +1,32 @@
 body {
     margin: 0;
     min-height: 100vh;
-    /*background: #f1f0ec;*/
+    background: linear-gradient(135deg, #e0e6ed 0%, #f5f7fa 100%);
+    background-attachment: fixed;
+}
+
+.hero-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    margin-top: 10px;
+
+    transform: translateX(0px);
+    min-width: fit-content;
+    color: #224363;
+}
+
+.hero-logo-link {
+    text-decoration: none;
+    display: block;
+    width: fit-content;
 }
 
 .clean-white-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: #224363;
     border-radius: 20px;
     padding: 0;
@@ -13,7 +34,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     width: 100%;
     max-width: 900px;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .recipe-hero-img {
@@ -26,12 +47,31 @@ body {
     padding: 30px;
 }
 
-.recipe-title-section h2 {
-    font-size: 2.2rem;
-    margin: 0 0 10px 0;
-    font-weight: 800;
+.recipe-title {
+    font-size: 3.0rem;
+    margin: 0 0 20px 0;
+    font-weight: bold;
     letter-spacing: -1px;
+
+    position: relative;
+    display: block;
+    width: 60%;
+    padding-bottom: 15px;
 }
+
+.recipe-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 90px;
+    height: 5px;
+    background-color: #224363;
+    border-radius: 12px;
+}
+
+
 
 .category-wrapper {
     margin-bottom: 4px;
@@ -43,9 +83,9 @@ body {
 
 .category-link {
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 700;
     color: #3d6383;
     text-decoration: none;
     transition: all 0.2s ease;
@@ -66,8 +106,8 @@ body {
 
 .sweetness-badge {
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-size: 0.85rem;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
     font-weight: 600;
     color: #3d6383;
 }
@@ -76,9 +116,8 @@ body {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 40px;
-    padding: 30px;
+    padding: 40px 60px;
 }
-
 
 .ingredients-list ul {
     list-style: none;
@@ -99,8 +138,8 @@ body {
 .back-btn {
     margin-top: 20px;
     background: transparent;
-    border: 1px solid white;
-    color: white;
+    border: 1px solid #3d6383;
+    color: #3d6383;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;

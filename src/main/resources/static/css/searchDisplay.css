@@ -3,10 +3,10 @@ body {
     min-height: 100vh;
     background: linear-gradient(
             135deg,
-            #6297bd 0%, /* Din dämpade ljuskälla */
-            #3d6383 30%, /* EN MELLANTON: Hjälper ljuset att "blöda" ut mjukare */
-            #224363 70%, /* Din djupa marinblå */
-            #182c43 100% /* Din mörkblå för djup */
+            #6297bd 0%,
+            #3d6383 30%,
+            #224363 70%,
+            #182c43 100%
     ) fixed;
     font-family: sans-serif;
     color: white;
@@ -17,7 +17,6 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px 50px;
-    /* Trycker ner alla objekt från toppen*/
     margin-top: 80px;
 
 }
@@ -31,13 +30,12 @@ main {
 }
 
 .hero-title {
-    font-size: 2.3rem;
+    font-size: 2.4rem;
     font-weight: 800;
     line-height: 0.9;
     letter-spacing: -0.04em;
-    margin-top: 30px;
+    margin-top: 10px;
 
-    /* öka värdet för att flytta hero-text längre mot kanten */
     transform: translateX(0px);
     min-width: fit-content;
 
@@ -113,10 +111,10 @@ main {
 }
 
 .glass-inputField {
-    background: rgba(255, 255, 255, 0.03); /* Transparens */
+    background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15); /* Lysande kant */
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 10px;
     width: 100%;
     box-sizing: border-box;
@@ -126,16 +124,16 @@ main {
     outline: none;
 }
 
-/* Place holder-färg */
+
 .glass-inputField::placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
 
 .recipe-card{
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15); /* Lysande kant */
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 15px;
     overflow: hidden;
     padding: 10px;
@@ -147,7 +145,7 @@ main {
 }
 
 .recipe-card:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
     border-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
     transition: all 0.3s ease;
@@ -179,7 +177,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    margin-top: 8px;
+    margin-top: 10px;
     font-size: 0.75rem;
     text-transform: uppercase;
     opacity: 0.7;
@@ -192,7 +190,6 @@ main {
 
 .recipe-grid {
     display: grid;
-    /* Skapar så många kolumner som får plats, minst 180px breda styck */
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 25px;
     width: 90%;

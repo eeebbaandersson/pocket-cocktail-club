@@ -32,7 +32,7 @@ function renderFullRecipe(drink) {
     content.innerHTML = `
     <div class="recipe-header">
             <div class="recipe-title-section">
-                <h2>${drink.name}</h2>
+                <h2 class="recipe-title">${drink.name}</h2>
                 
           <div class="category-wrapper">
                 ${hasCategory
