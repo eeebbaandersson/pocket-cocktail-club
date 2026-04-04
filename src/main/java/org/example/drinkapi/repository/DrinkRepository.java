@@ -12,22 +12,17 @@ import java.util.Optional;
 @Repository
 public interface DrinkRepository extends JpaRepository<Drink, Integer> {
 
-    // Sök på namn
+
     List<Drink> findByNameContainingIgnoreCase(String name);
 
-    // Sök på kategori
     List<Drink> findByCategoriesNameIgnoreCase(String categoryName);
 
-    // Universal sökning: Hittar drinkar där nament innehåller sökordet eller där en kategori heter exakt som sökordet
     List<Drink> findByNameContainingIgnoreCaseOrCategoriesNameIgnoreCase(String name, String categoryName);
 
-    // Sök på ingrediens (DrinkIngredients -> Ingredients -> Name)
     List<Drink> findByDrinkIngredientsIngredientNameIgnoreCase(String ingredientName);
 
-    // Sök på kombination: Sprit + Sötma (ingrediens + sötma-värde)
     List<Drink> findBySweetnessScoreAndDrinkIngredientsIngredientNameInIgnoreCase(int sweetness, List<String> ingredientNames);
 
-    // Hitta slumpmässig drink
     @Query(value = "SELECT * FROM Drinks ORDER BY RAND() LIMIT 1", nativeQuery = true)
     Optional<Drink> findByRandomDrink();
 
