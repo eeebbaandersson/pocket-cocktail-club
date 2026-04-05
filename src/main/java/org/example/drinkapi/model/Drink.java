@@ -12,8 +12,8 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
-@Table(name = "Drinks")
 @NoArgsConstructor
+@Table(name = "Drinks")
 @JsonPropertyOrder({ "id", "name", "categories", "sweetnessScore", "drinkIngredients", "instructions" })
 public class Drink {
 

@@ -1,6 +1,7 @@
 package org.example.drinkapi.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,8 +9,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "Ingredients")
 @NoArgsConstructor
+@Table(name = "Ingredients")
 public class Ingredient {
 
     @Id
@@ -22,5 +23,10 @@ public class Ingredient {
 
     @Column(name = "is_alcoholic")
     private boolean isAlcoholic;
+
+    public Ingredient(String name, boolean isAlcoholic) {
+        this.name = name;
+        this.isAlcoholic = isAlcoholic;
+    }
 
 }
