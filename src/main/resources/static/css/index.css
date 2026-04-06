@@ -31,8 +31,6 @@ body {
     line-height: 0.9;
     letter-spacing: -0.02em;
     margin: 0;
-
-    /* öka värdet för att flytta hero-text längre mot kanten */
     transform: translateX(0px);
     min-width: fit-content;
 
@@ -45,7 +43,6 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 0;
-    /* Flyttar ner sökområdet med x px från mitten-centreringen*/
     transform: translateY(90px);
     width: 450px;
 }
@@ -105,11 +102,11 @@ body {
 }
 
 .glass-inputField {
-    background: rgba(255, 255, 255, 0.03); /* Transparens */
+    background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15); /* Lysande kant */
-    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
     width: 100%;
     box-sizing: border-box;
     padding: 12px 16px 12px 45px;
@@ -138,7 +135,7 @@ body {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15); /* Lysande kant */
-    border-radius: 10px;
+    border-radius: 12px;
     color: rgba(255, 255, 255, 0.6);
     font-size: 0.90rem;
     letter-spacing: 0.05em;

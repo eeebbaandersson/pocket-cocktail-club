@@ -123,12 +123,13 @@ function renderDrinkGrid(drinks, container) {
         card.innerHTML = `
         <div class="card-image" style="background-image: url('${drink.imageUrl || 'assets/default-drink.jpg'}')"></div>
         <div class="card-content">
+         <div class="card-tags">
+               <div class="category-wrapper" style="${!hasCategory ? 'display: none;' : 'margin-bottom: 8px;'}">
+                <span class="category-link">${categoryText}</span>
+            </div>
             <h3>${drink.name}</h3>
-            <div class="card-tags">
-                <div class="tag-row" style="${!hasCategory ? 'visibility: hidden;' : ''}">
-                    ${categoryText}
-                </div>
-                <div class="tag-row">Sweetness: ${drink.sweetnessScore}</div>
+           
+            <div class="tag-row">Sweetness: ${drink.sweetnessScore}</div>
             </div>
         </div>
     `;
