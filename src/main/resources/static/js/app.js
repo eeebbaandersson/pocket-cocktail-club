@@ -119,18 +119,18 @@ function renderDrinkGrid(drinks, container) {
 
         const categoryText = hasCategory ? drink.categories[0] : '&nbsp';
 
-        // Bygger kort med den nya designen
+        // Builds drink card
         card.innerHTML = `
         <div class="card-image" style="background-image: url('${drink.imageUrl || 'assets/default-drink.jpg'}')"></div>
         <div class="card-content">
          <div class="card-tags">
-               <div class="category-wrapper" style="${!hasCategory ? 'display: none;' : 'margin-bottom: 8px;'}">
+               <div class="category-wrapper" style="margin-bottom: 8px; ${!hasCategory ? 'visibility: hidden;' : ''}">
                 <span class="category-link">${categoryText}</span>
-            </div>
+               </div>
             <h3>${drink.name}</h3>
-           
-            <div class="tag-row">Sweetness: ${drink.sweetnessScore}</div>
-            </div>
+            
+           <div class="tag-row">Sweetness: ${drink.sweetnessScore}</div>
+         </div>
         </div>
     `;
 

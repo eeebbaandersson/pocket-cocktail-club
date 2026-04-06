@@ -162,7 +162,10 @@ main {
     transition: opacity 0.3s ease;
 }
 
-
+.category-wrapper {
+    display: flex;
+    align-items: center;
+}
 
 .card-content {
     padding: 15px;
@@ -174,6 +177,8 @@ main {
     font-size: 1.1rem;
     letter-spacing: 0.05em;
     color: rgba(255, 255, 255, 0.8);
+
+
 }
 
 .card-tags {
@@ -188,12 +193,17 @@ main {
 
 .tag-row {
     letter-spacing: 0.05em;
+    font-weight: 550;
+    color: rgba(255, 255, 255, 0.6);
+    width: fit-content;
+    border-radius: 10px;
+
 }
 
 .category-link {
     background-color: rgba(98, 151, 189, 0.2);
     /*border: 1px solid rgba(255, 255, 255, 0.1);*/
-    border-radius: 10px;
+    border-radius: 8px;
     color: #87cefa;
 
     padding: 4px 14px;
@@ -207,15 +217,13 @@ main {
     text-transform: capitalize;
 }
 
-
 .recipe-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 25px;
     width: 90%;
-    max-width: 1200px;
+    max-width: 1250px;
     margin-top: 10px;
-
 }
 
 .result-info {
