@@ -18,24 +18,18 @@ function searchDrinks() {
 
     if (!query) return;
 
-    // Skapa bas-URL:en för första sidan
     let targetUrl = 'searchDisplay.html';
 
     if (query === 'random') {
-        // Specialfall för random-sökning
         targetUrl += '?type=random';
     } else if (query.includes(',')) {
-        // Ingredienssökning (separerat med ,)
         const ingredients = query.split(',').map(s => s.trim()).filter(s => s !== "");
         targetUrl += `?ingredients=${encodeURIComponent(ingredients.join(','))}`;
     } else {
-        // Vanlig textbaserad sökning
         targetUrl += `?query=${encodeURIComponent(query)}`;
     }
 
-    // Skicka användaren till korrekt vy
     window.location.href = targetUrl;
-
 }
 
 async function initSearchFromUrl() {
@@ -55,11 +49,9 @@ async function initSearchFromUrl() {
 
     let apiUrl = '';
 
-    // Logik för att välja RÄTT API-endpoint
     if (type === 'random') {
         apiUrl = '/api/drinks/random';
     } else if (ingredients) {
-        // Bygg om ingredienserna till api-formatet (names=gin&names=lime)
         const list = ingredients.split(',');
         const apiParams = new URLSearchParams();
         list.forEach(name => apiParams.append('names',name));
@@ -87,7 +79,6 @@ async function executeFetchAndDisplay(apiUrl) {
         if (!response.ok) throw new Error("Serverfel");
         const drinks = await response.json();
 
-        // Hantera både enstaka drinkar (random) och listor
         const drinkList = Array.isArray(drinks) ? drinks : [drinks];
 
         if (countText) {
@@ -109,7 +100,7 @@ async function executeFetchAndDisplay(apiUrl) {
 }
 
 function renderDrinkGrid(drinks, container) {
-    container.innerHTML = ''; // Rensar placeholders
+    container.innerHTML = '';
 
     drinks.forEach(drink => {
         const card = document.createElement('article');
@@ -158,10 +149,8 @@ function updateLabelHighlights (value) {
 
 function updateButtonCounter() {
     const showResultButton = document.getElementById('showResultsButton');
-    // Avbryt om knappet eller datan inte laddats ännu
     if (!showResultButton || !allDrinks || allDrinks.length === 0) return;
 
-    // Om ingen spritsort är vald -> Visa neutral text/inaktiverad knapp
     if (!currentSelectedSpirit) {
         showResultButton.innerText = "Show Matches";
         showResultButton.disabled = true;
@@ -169,12 +158,10 @@ function updateButtonCounter() {
         return;
     }
 
-    // Filtrerar listan med drinkar
     const matches = allDrinks.filter(drink => {
         let searchTerms = [];
         const selected = currentSelectedSpirit.toLowerCase();
 
-        // Filtreringslogik som matchar DrinkController(backend)
         if (selected === "whiskey") {
             searchTerms = ["whiskey", "bourbon", "rye", "scotch", "rye whiskey", "scottish whiskey", "Single malt scottish whiskey"];
         } else if (selected === "rum") {
@@ -190,11 +177,11 @@ function updateButtonCounter() {
             searchTerms = [selected];
         }
 
-        // Spirit Match --> Leta efter hela ordet för att undvika "Ginger" vid "Gin"-sökning
+        // Spirit Match
         const spiritMatch = drink.ingredients.some(ing => {
             const ingName = ing.name.toLowerCase();
             return searchTerms.some(term => {
-                // Regex \b (word boundary) --> Se till att ordet matchar exakt
+                // Regex \b (word boundary)
                 const regex = new RegExp(`\\b${term}\\b`, 'i');
                 return regex.test(ingName);
             });
@@ -209,17 +196,14 @@ function updateButtonCounter() {
     console.log("Matchade drinkar:", matches.map(d => d.name));
 
 
-    // Uppdaterar knappen dynamiskt
     if (matches.length > 0) {
-        // Träff: Aktivera
         showResultButton.innerText = `Show Matches (${matches.length}) `;
         showResultButton.disabled = false;
         showResultButton.style.opacity = "1";
     } else {
-        // Ingen träff: avaktivera
         showResultButton.innerText = "No matches found"
         showResultButton.disabled = true;
-        showResultButton.style.opacity = "0.3"; // Gör knappen blekare om inga träffar hittades
+        showResultButton.style.opacity = "0.3";
     }
 }
 
@@ -227,14 +211,12 @@ let currentSelectedSpirit = null;
 let currentSweetnessValue = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Hämta alla element en gång när sidan laddats
     const searchInput = document.getElementById('searchInput');
     const recipeGrid = document.querySelector('.recipe-grid');
     const showResultButton = document.getElementById('showResultsButton');
 
-    // Gemensam logik (Sökfältet på båda sidorna)
     if (searchInput) {
-        searchInput.focus();  // Sätter markör direkt i sökfältet
+        searchInput.focus();
         searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') searchDrinks();
         });
@@ -245,21 +227,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Specifik logik för RESULTATSIDAN
     if (recipeGrid) {
         initSearchFromUrl();
     }
 
-    // Specifikk logik för STARTSIDAN/index.html
     if (showResultButton) {
         const spiritButtons = document.querySelectorAll('.spirit-btn');
         const slider = document.getElementById('sweetnessSlider');
 
-        loadAllDrinks(); // Endast på startsidan, för att kunna visa existerande recept i utvecklarläge?
+        loadAllDrinks();
 
-        // Logik för sweetness-slider
         if (slider) {
-            currentSweetnessValue = slider.value; // Sätter startvärde för sötma direkt från sliderns HTML-värde
+            currentSweetnessValue = slider.value;
             updateLabelHighlights(currentSweetnessValue);
             slider.addEventListener('input', function() {
                 updateLabelHighlights(this.value);
@@ -268,24 +247,22 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Logik för sprit-knappar
         spiritButtons.forEach(button => {
             button.addEventListener('click', function() {
-                const wasAlreadyActive = this.classList.contains('active'); // Kontrollerar om en knapp redan aktiv
+                const wasAlreadyActive = this.classList.contains('active');
 
-                spiritButtons.forEach(btn => btn.classList.remove('active'));  // Tar bort 'active' från ALLA knappar (nollställning)
+                spiritButtons.forEach(btn => btn.classList.remove('active'));
 
                 if (wasAlreadyActive) {
-                    currentSelectedSpirit = null;  // Om den redan var aktiv --> Avmarkera/sätt till null
+                    currentSelectedSpirit = null;
                 } else {
-                    this.classList.add('active');  // Om den inte var aktiv --> Aktivera knappen
+                    this.classList.add('active');
                     currentSelectedSpirit = this.innerText.trim().toLowerCase();
                 }
                 updateButtonCounter();
             });
         });
 
-        // När knapp = active --> visa resultat från sprit-knapp/sweetness-slidern
             showResultButton.addEventListener('click', () => {
                 if (currentSelectedSpirit) {
                     const url = `searchDisplay.html?spirit=${encodeURIComponent(currentSelectedSpirit)}&sweetness=${currentSweetnessValue}`;
