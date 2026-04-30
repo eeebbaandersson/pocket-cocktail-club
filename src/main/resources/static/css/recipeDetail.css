@@ -1,20 +1,37 @@
 body {
     margin: 0;
     min-height: 100vh;
-    background: linear-gradient(135deg, #e0e6ed 0%, #f5f7fa 100%);
-    background-attachment: fixed;
+    background: linear-gradient(
+            135deg,
+            #6297bd 0%,
+            #3d6383 30%,
+            #224363 70%,
+            #182c43 100%
+    ) fixed;
+    font-family: sans-serif;
+}
+
+.recipePage-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 50px;
+    margin-top: 20px;
+    /*border: 1px solid black;*/
+
 }
 
 .hero-title {
     font-size: 2.4rem;
     font-weight: 800;
-    line-height: 0.9;
-    letter-spacing: -0.04em;
+    line-height: 0.82;
+    letter-spacing: -0.05em;
     margin-top: 10px;
-
-    transform: translateX(0px);
     min-width: fit-content;
-    color: #224363;
+    color: white;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .hero-logo-link {
@@ -28,12 +45,11 @@ body {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #224363;
-    border-radius: 20px;
-    padding: 0;
+
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    /*box-shadow: 0 10px 30px rgba(0,0,0,0.1);*/
     width: 100%;
-    max-width: 900px;
+    max-width: 100%;
     margin-top: 20px;
 }
 
@@ -51,7 +67,7 @@ body {
     font-size: 3.0rem;
     margin: 0 0 20px 0;
     font-weight: bold;
-    letter-spacing: -1px;
+    letter-spacing: -0.8px;
 
     position: relative;
     display: block;
@@ -71,10 +87,12 @@ body {
     border-radius: 12px;
 }
 
-
-
 .category-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     margin-bottom: 4px;
+    line-height: 1;
 }
 
 .sweetness-wrapper {
@@ -90,6 +108,7 @@ body {
     text-decoration: none;
     transition: all 0.2s ease;
     border-bottom: 1px solid transparent;
+    margin: 0;
 }
 
 .category-link2:hover {
@@ -100,8 +119,9 @@ body {
 
 .category-separator {
     color: rgba(61, 99, 131, 0.69);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     pointer-events: none;
+
 }
 
 .sweetness-badge {

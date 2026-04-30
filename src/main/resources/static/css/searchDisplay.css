@@ -16,8 +16,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 50px;
-    margin-top: 80px;
+    padding: 10px 50px;
+    margin-top: 20px;
 
 }
 
@@ -32,15 +32,15 @@ main {
 .hero-title {
     font-size: 2.4rem;
     font-weight: 800;
-    line-height: 0.9;
-    letter-spacing: -0.04em;
+    line-height: 0.82;
+    letter-spacing: -0.05em;
     margin-top: 10px;
-
-    transform: translateX(0px);
     min-width: fit-content;
-
     color: white;
     opacity: 0.8;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .hero-logo-link {
@@ -48,12 +48,6 @@ main {
     color: inherit;
     display: block;
     width: fit-content;
-}
-
-.hero-logo-link:hover .hero-title {
-    opacity: 1;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-    transition: all 0.3s ease;
 }
 
 .search-area {
@@ -80,8 +74,8 @@ main {
     background-size: contain;
     background-repeat: no-repeat;
     filter: invert(1);
-    color: rgba(255, 255, 255, 0.6);
-    opacity: 0.6;
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 0.8;
     pointer-events: none;
     z-index: 2;
 }
@@ -107,7 +101,7 @@ main {
     width: 20px;
     height: 20px;
     filter: invert(1);
-    opacity: 0.6;
+    opacity: 0.8;
 }
 
 .glass-inputField {
@@ -120,10 +114,9 @@ main {
     box-sizing: border-box;
     padding: 12px 16px 12px 45px;
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
     outline: none;
 }
-
 
 .glass-inputField::placeholder {
     color: rgba(255, 255, 255, 0.6);
@@ -134,9 +127,9 @@ main {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 15px;
+    border-radius: 14px;
     overflow: hidden;
-    padding: 10px;
+    padding:  0 0 10px 10px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -156,7 +149,6 @@ main {
     width: 100%;
     height: 140px;
     object-fit: cover;
-    border-radius: 10px;
     /*background: rgba(0,0,0,0.1);*/
     background: transparent;
     transition: opacity 0.3s ease;
@@ -173,11 +165,11 @@ main {
 
 .card-content h3 {
     margin-top: 0;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     font-size: 1.1rem;
+    font-weight: 550;
     letter-spacing: 0.05em;
     color: rgba(255, 255, 255, 0.8);
-
 
 }
 
@@ -188,15 +180,15 @@ main {
     margin-top: 10px;
     font-size: 0.75rem;
     text-transform: uppercase;
-    opacity: 0.7;
+    opacity: 1;
 }
 
 .tag-row {
     letter-spacing: 0.05em;
-    font-weight: 550;
-    color: rgba(255, 255, 255, 0.6);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 0.8;
     width: fit-content;
-    border-radius: 10px;
 
 }
 
@@ -205,12 +197,10 @@ main {
     /*border: 1px solid rgba(255, 255, 255, 0.1);*/
     border-radius: 8px;
     color: #87cefa;
-
     padding: 4px 14px;
     display: inline-block;
     width: fit-content;
     max-width: none;
-
     font-weight: 550;
     font-size: 0.75rem;
     letter-spacing: 0.05em;
@@ -237,7 +227,7 @@ main {
 
 #resultCountText {
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 300;

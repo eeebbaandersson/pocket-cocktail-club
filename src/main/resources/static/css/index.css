@@ -21,21 +21,21 @@ body {
     align-items: center;
     min-height: 100vh;
     padding-left: 12%;
-    /* Gap styr avståndet mellan rubriken och sökfältet */
     gap: 150px;
 }
 
 .hero-title {
-    font-size: 4.7rem;
+    font-size: 6.0rem;
     font-weight: 800;
-    line-height: 0.9;
-    letter-spacing: -0.02em;
+    line-height: 0.82;
+    letter-spacing: -0.05em;
     margin: 0;
-    transform: translateX(0px);
     min-width: fit-content;
-
     color: white;
-    opacity: 0.8;
+    opacity: 0.85;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .search-area {
@@ -43,15 +43,16 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 0;
-    transform: translateY(90px);
-    width: 450px;
+    transform: translateY(110px);
+    width: 400px;
+    /*border: 1px solid black;*/
 }
 
 .search-input-wrapper {
     position: relative;
     width: 100%;
-    max-width: 450px;
-    margin-bottom: 25px;
+    max-width: 400px;
+    margin-bottom: 30px;
 }
 
 .search-icon {
@@ -66,8 +67,8 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     filter: invert(1);
-    color: rgba(255, 255, 255, 0.6);
-    opacity: 0.6;
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 0.8;
     pointer-events: none;
     z-index: 2;
 }
@@ -93,7 +94,7 @@ body {
     width: 20px;
     height: 20px;
     filter: invert(1);
-    opacity: 0.6;
+    opacity: 0.8;
 }
 
 .search-submit-btn:hover {
@@ -106,43 +107,45 @@ body {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
+    border-radius: 14px;
     width: 100%;
     box-sizing: border-box;
-    padding: 12px 16px 12px 45px;
+    padding: 16px 18px 16px 50px;
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.6);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
     outline: none;
 }
 
-/* Place holder-färg */
+
 .glass-inputField::placeholder {
     color: rgba(255, 255, 255, 0.6);
+    font-weight: 300;
 }
 
 .filter-buttons {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
-    max-width: 450px;
+    gap: 14px;
+    max-width: 400px;
     width: 100%;
-    margin-bottom: 30px;
+    margin: 0 0 20px 0;
 }
 
 .glass-button {
-    background: rgba(255, 255, 255, 0.03); /* Transparens */
+    background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15); /* Lysande kant */
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 12px;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.90rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+    font-weight: 400;
     letter-spacing: 0.05em;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    padding: 10px 14px;
-    display: flex;
+    padding: 12px 18px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -150,7 +153,7 @@ body {
 
 .glass-button.active {
     background: rgb(70, 141, 204, 0.7);
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
     color: #fff;
     box-shadow: 0 0 8px rgba(103, 181, 255, 0.6);
     transform: scale(0.98);
@@ -163,7 +166,6 @@ body {
     color: #fff;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     transform: none;
-
 }
 
 .glass-button.active:hover {
@@ -175,7 +177,6 @@ body {
 .sweetness-container {
     max-width: 450px;
     width: 100%;
-    /* Centrerar behållaren */
     display: flex;
     flex-direction: column;
     margin: 0 0 50px 0;
@@ -183,10 +184,11 @@ body {
 }
 
 .sweetness-container label {
-    font-size: 0.9rem;
+    font-size: 0.80rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
-    opacity: 0.5;
+    font-weight: 500;
+    opacity: 0.6;
     display: block;
     text-align: left;
     margin-left: 2px;
@@ -218,7 +220,7 @@ body {
 .slider-wrapper {
     position: relative;
     width: 100%;
-    max-width: 450px;
+    max-width: 420px;
     margin-top: 10px;
     padding: 0;
     box-sizing: border-box;
@@ -234,20 +236,19 @@ body {
 }
 
 .slider-labels span {
-    font-size: 0.95rem;
+    font-size: 0.90rem;
     letter-spacing: 0.1rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.6);
     transition: all 0.2s ease;
-
     width: 30px;
     display: flex;
     justify-content:center;
     margin-left: -10px;
     margin-right: -10px;
-
     white-space: nowrap;
     pointer-events: none;
+
 }
 
 .slider-labels span.active {
@@ -259,24 +260,22 @@ body {
 
 #showResultsButton {
     width: 100%;
-    max-width: 450px;
-    padding: 15px;
+    max-width: 420px;
+    padding: 14px 18px;
     background: rgba(255, 255, 255, 0.02);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    font-weight: 500;
+    font-weight: 400;
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.7);
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-
 }
 
 #showResultsButton:disabled {
     cursor: not-allowed;
     background: rgba(255, 255, 255, 0.05);
-
     color: rgba(255, 255, 255, 0.3);
     border-color: rgba(255, 255, 255, 0.05);
     box-shadow: none !important;
