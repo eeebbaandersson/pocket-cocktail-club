@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <title>🍸Pocket Cocktail Club</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pocket Cocktail Club</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-<header>
-    <div class="page-wrapper">
-        <h1 class="hero-title">Pocket <br> Cocktail <br> Club </h1>
+
+<div class="page-wrapper">
+
+    <!-- SEKTION 1: HERO & SÖKFILTER -->
+    <header class="hero-section">
+        <div class="hero-title-container">
+            <h1 class="hero-main-title">POCKET</h1>
+            <span class="hero-sub-title">COCKTAIL CLUB</span>
+        </div>
 
         <div class="search-area">
             <div class="search-input-wrapper">
                 <span class="search-icon"></span>
-                <input type="text" id="searchInput" class="glass-inputField" placeholder="Enter name, category or ingredients..." >
-                <button class="search-submit-btn">
-                    <img src="assets/search-arrow.svg" alt="Search">
-                </button>
+                <input type="text" id="searchInput" class="glass-inputField" placeholder="Search drink or list available ingredients...">
+                <button class="search-submit-btn" aria-label="Search" title="Search"><img src="assets/search-arrow.svg" alt="Search"></button>
             </div>
 
             <div class="filter-buttons">
@@ -26,36 +31,85 @@
                 <button class="glass-button spirit-btn">Liqueur</button>
                 <button class="glass-button spirit-btn">Non-alcoholic</button>
                 <button class="glass-button spirit-btn">Rum</button>
+                <button class="glass-button spirit-btn">Sparkling</button>
                 <button class="glass-button spirit-btn">Tequila</button>
                 <button class="glass-button spirit-btn">Vodka</button>
                 <button class="glass-button spirit-btn">Whiskey</button>
-
             </div>
 
             <div class="sweetness-container">
+                <label>Sweetness: <span id="sweetnessValue"></span></label>
+
                 <div class="slider-wrapper">
-                    <label>Sweetness: <span id="sweetnessValue"></span></label>
                     <input type="range" min="-5" max="5" value="0" class="glass-slider" id="sweetnessSlider">
 
                     <div class="slider-labels">
-                        <span>-5</span><span>-4</span><span>-3</span><span>-2</span><span>-1</span>
-                        <span class="spacer"></span>
-                        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                        <span>-5</span>
+                        <span>-4</span>
+                        <span>-3</span>
+                        <span>-2</span>
+                        <span>-1</span>
+                        <span></span>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
                     </div>
                 </div>
             </div>
 
-            <div class="search-action-container">
-                <button id="showResultsButton" class="glass-button ">Show Matches</button>
+            <div class="action-buttons-group">
+                <button id="showResultsButton" class="glass-button">Show Matches</button>
+                <button type="button" id="randomBtn" class="surprise-btn">Surprise me</button>
             </div>
         </div>
-    </div>
-    
-</header>
+    </header>
 
-<main id="drinkDisplay" class="drinkCard">
-</main>
+    <!-- MAIN  -->
+    <main class="main-content">
 
-<script src="/js/app.js"></script>
+        <!-- SEKTION: KATEGORIER (Snabbfilter) -->
+        <section class="category-section">
+            <span class="category-section-title">Explore Categories</span>
+            <div class="category-chips">
+                <button class="category-chip" data-category="classic">Classic</button>
+                <button class="category-chip" data-category="martini">Martini</button>
+                <button class="category-chip" data-category="moscow mule"> Moscow Mule</button>
+                <button class="category-chip" data-category="tropical">Tropical</button>
+                <button class="category-chip" data-category="sour">Sour</button>
+            </div>
+        </section>
+
+        <!-- SEKTION 2: STATUS & SORTERING -->
+        <section class="results-bar">
+            <div class="sort-wrapper">
+                <select id="sortSelect" class="glass-select">
+                    <option value="name-asc">Sort: A–Z</option>
+                    <option value="name-desc">Sort: Z–A</option>
+
+                </select>
+            </div>
+            <div class="results-count">
+                <span id="resultsText">Current recipes</span>
+            </div>
+        </section>
+
+        <!-- SEKTION 3: DRINKKORT (GRID) -->
+        <section id="drinkDisplay" class="recipe-grid">
+            <!-- Dynamiskt rendering av drinkkort -->
+        </section>
+
+    </main>
+
+    <!-- SEKTION 4: FOOTER -->
+    <footer class="site-footer">
+        <p class="footer-title">POCKET COCKTAIL CLUB</p>
+        <p class="footer-copy">&copy; 2026 Pocket Cocktail Club. All rights reserved.</p>
+    </footer>
+
+</div>
+
+<script src="js/app.js"></script>
 </body>
 </html>
