@@ -241,7 +241,9 @@ function renderDrinkGrid(drinks, customTitle = null) {
                 
                 <p class="card-ingredients">${ingredientsFormatted}</p>
                 
-                <div class="tag-row">Sweetness: ${drink.sweetnessScore}</div>
+                <div class="tag-row">
+                <span class="sweetness-score">Sweetness: ${drink.sweetnessScore}</span>
+                </div>
             </div>
         `;
 

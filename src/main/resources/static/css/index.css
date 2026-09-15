@@ -519,11 +519,15 @@ body {
 }
 
 .tag-row {
+    margin-top: 0.5rem;
+}
+
+.sweetness-score {
+    border: none;
+    padding: 0;
     font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
     letter-spacing: 0.05em;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.7);
-    margin-top: auto;
 }
 
 /* --- FOOTER --- */
