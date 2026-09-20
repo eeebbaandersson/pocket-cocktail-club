@@ -427,10 +427,11 @@ body {
 }
 
 .recipe-card {
-    background: rgba(255, 255, 255, 0.01);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--border-subtle);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
     border-radius: 14px;
     overflow: hidden;
     display: flex;
@@ -441,9 +442,8 @@ body {
 }
 
 .recipe-card:hover {
-    background: rgba(255, 255, 255, 0.03);
-    border-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
 }
 
@@ -484,7 +484,7 @@ body {
     background-color: rgba(98, 151, 189, 0.25);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(135, 206, 250, 0.35);
     border-radius: 6px;
     color: #87cefa;
     padding: 4px 10px;
