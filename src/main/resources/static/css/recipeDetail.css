@@ -1,3 +1,11 @@
+:root {
+    --text-primary: white;
+    --border-subtle: rgba(255, 255, 255, 0.15);
+    --border-radius-field: 14px;
+    --border-radius-btn: 12px;
+    --font-main: Inter, system-ui, -apple-system, sans-serif;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -8,16 +16,17 @@ body {
             #224363 70%,
             #182c43 100%
     ) fixed;
-    font-family: sans-serif;
+    font-family: var(--font-main);
+    color: var(--text-primary);
 }
 
 .recipePage-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px 50px;
+    padding: 10px 250px;
     margin-top: 20px;
-    /*border: 1px solid black;*/
+
 
 }
 
@@ -32,6 +41,7 @@ body {
     text-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
 }
 
 .hero-logo-link {
@@ -44,6 +54,7 @@ body {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
     color: #224363;
 
     overflow: hidden;
@@ -65,14 +76,14 @@ body {
 
 .recipe-title {
     font-size: 3.0rem;
-    margin: 0 0 20px 0;
+    margin: 0 0 20px 20px;
     font-weight: bold;
     letter-spacing: -0.8px;
-
     position: relative;
     display: block;
     width: 60%;
     padding-bottom: 15px;
+
 }
 
 .recipe-title::after {
@@ -80,7 +91,6 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-
     width: 90px;
     height: 5px;
     background-color: #224363;
@@ -91,12 +101,12 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 4px;
+    margin: 0 0 4px 20px;
     line-height: 1;
 }
 
 .sweetness-wrapper {
-    margin-bottom: 10px;
+    margin: 0 0 10px 20px;
 }
 
 .category-link2 {
@@ -113,8 +123,9 @@ body {
 
 .category-link2:hover {
     color: #3d6383;
-    border-bottom: 1px solid #3d6383;
+    /*border-bottom: 1px solid #3d6383;*/
     cursor: pointer;
+    text-decoration: none;
 }
 
 .category-separator {
@@ -136,7 +147,8 @@ body {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 40px;
-    padding: 40px 60px;
+    padding: 40px 50px;
+
 }
 
 .ingredients-list ul {
@@ -153,6 +165,7 @@ body {
     margin-bottom: 2px;
     padding-left: 3px;
     line-height: 1.6;
+
 }
 
 .back-btn {
@@ -161,7 +174,7 @@ body {
     border: 1px solid #3d6383;
     color: #3d6383;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 12px;
     cursor: pointer;
     opacity: 0.7;
 }
