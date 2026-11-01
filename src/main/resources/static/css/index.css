@@ -446,7 +446,6 @@ body {
 }
 
 /* --- DRINKKORT & GRID --- */
-
 .recipe-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -464,9 +463,11 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     transition: all 0.3s ease;
     cursor: pointer;
-    position: relative;
+    padding: 20px 24px;
+    min-height: 140px;
 }
 
 .recipe-card:hover {
@@ -475,29 +476,28 @@ body {
     transform: translateY(-2px);
 }
 
-.card-image {
-    width: 100%;
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+.card-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
 }
 
 .card-content {
-    padding: 20px;
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
-    text-align: center;
+    text-align: left;
+    gap: 8px;
 }
 
 .category-wrapper {
     position: absolute;
-    top: 15px;
-    left: 15px;
+    top: 14px;
+    left: 20px;
     z-index: 2;
-    margin-bottom: 0;
 }
 
 .card-main-info {
@@ -507,39 +507,47 @@ body {
     text-align: center;
 }
 
+.category-placeholder {
+    height: 26px;
+    display: flex;
+    align-items: center;
+}
 
 .category-badge {
     background-color: rgba(98, 151, 189, 0.25);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(18px);
     border: 1px solid rgba(135, 206, 250, 0.35);
-    border-radius: 6px;
+    border-radius: var(--border-radius-pills);
     color: #87cefa;
-    padding: 4px 10px;
-    font-size: 0.7rem;
+    padding: 3px 10px;
+    font-size: 0.65rem;
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
+    display: inline-block;
 }
 
 .card-content h3 {
-    margin: 4px 0 8px 0;
-    font-size: 1.15rem;
-    font-weight: 650;
-    letter-spacing: 0.03em;
-    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.95);
+    text-transform: uppercase;
 }
 
 .card-ingredients {
-    font-size: 0.72rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    font-size: 0.80rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.06em;
     color: rgba(255, 255, 255, 0.65);
     line-height: 1.4;
-    margin: 6px 0 12px 0;
 
-    /* Begränsa till 2 rader om drinken har många ingredienser */
+    word-break: normal;
+    overflow-wrap: normal;
+
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -547,15 +555,15 @@ body {
 }
 
 .tag-row {
-    margin-top: 0.5rem;
+    margin-top: 2px;
 }
 
 .sweetness-score {
-    border: none;
-    padding: 0;
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.5);
-    letter-spacing: 0.05em;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 /* --- FOOTER --- */
@@ -613,5 +621,8 @@ body {
         font-size: 0.85rem;
         padding: 14px 18px;
     }
+
+
+
 
 }

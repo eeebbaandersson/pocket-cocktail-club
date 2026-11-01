@@ -157,7 +157,7 @@ function handleSearch() {
             });
         });
 
-    renderDrinkGrid(results, `Search result for "${rawQuery}"`);
+    renderDrinkGrid(results, `Result for "${rawQuery}"`);
     scrollToResults();
 }
 
@@ -252,24 +252,24 @@ function renderDrinkGrid(drinks, customTitle = null) {
         card.className = 'recipe-card';
 
         const hasCategory = drink.categories && drink.categories.length > 0 && drink.categories[0].trim() !== "";
-        const categoryText = hasCategory ? drink.categories[0] : '&nbsp;';
+        const categoryText = hasCategory ? drink.categories[0] : '';
 
         const ingredientsFormatted = drink.ingredients && drink.ingredients.length > 0
-            ? drink.ingredients.map(ing => ing.name).join(' – ') : '';
-
+            ? drink.ingredients.map(ing => ing.name).join(' &#8209; ') : '';
 
         card.innerHTML = `
-            <div class="card-image" style="background-image: url('${drink.imageUrl || 'assets/default-drink.jpg'}')"></div>
             <div class="card-content">
-                <div class="category-wrapper" style="${!hasCategory ? 'visibility: hidden;' : ''}">
-                    <span class="category-badge">${categoryText}</span>
+                <div class="card-top">
+                    <div class="category-placeholder">
+                        <span class="category-badge" style="${!hasCategory ? 'visibility: hidden;' : ''}">${hasCategory ? categoryText : '&nbsp;'}</span>
+                    </div>
+                    <h3>${drink.name}</h3>
                 </div>
-                <h3>${drink.name}</h3>
                 
                 <p class="card-ingredients">${ingredientsFormatted}</p>
                 
                 <div class="tag-row">
-                <span class="sweetness-score">Sweetness: ${drink.sweetnessScore}</span>
+                    <span class="sweetness-score">Sweetness: ${drink.sweetnessScore}</span>
                 </div>
             </div>
         `;
@@ -281,6 +281,7 @@ function renderDrinkGrid(drinks, customTitle = null) {
 
         grid.append(card);
     });
+
 }
 
 function sortAndRenderCurrent(sortType) {
