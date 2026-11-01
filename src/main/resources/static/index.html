@@ -8,9 +8,11 @@
 </head>
 <body>
 
+<div class="bg-overlay"></div>
+
 <div class="page-wrapper">
 
-    <!-- SEKTION 1: HERO & SÖKFILTER -->
+    <!-- HERO & SÖKFILTER -->
     <header class="hero-section">
         <div class="hero-title-container">
             <h1 class="hero-main-title">POCKET</h1>
@@ -20,7 +22,7 @@
         <div class="search-area">
             <div class="search-input-wrapper">
                 <span class="search-icon"></span>
-                <input type="text" id="searchInput" class="glass-inputField" placeholder="Search drink or list available ingredients...">
+                <input type="text" id="searchInput" class="glass-inputField" placeholder="Drink or list available ingredients...">
                 <button class="search-submit-btn" aria-label="Search" title="Search"><img src="assets/search-arrow.svg" alt="Search"></button>
             </div>
 
@@ -60,19 +62,23 @@
             </div>
 
             <div class="action-buttons-group">
-                <button id="showResultsButton" class="glass-button">Show Matches</button>
-                <button type="button" id="randomBtn" class="surprise-btn">Surprise me</button>
+                <div class="secondary-buttons-row">
+                    <button type="button" id="resetFiltersBtn" class="glass-button secondary-btn">Reset Filters</button>
+                    <button type="button" id="randomBtn" class="surprise-btn">Surprise me</button>
+                </div>
+                <button id="showResultsButton" class="glass-button primary-btn">Show Matches</button>
             </div>
+
         </div>
     </header>
 
     <!-- MAIN  -->
     <main class="main-content">
 
-        <!-- SEKTION: KATEGORIER (Snabbfilter) -->
+        <!-- KATEGORIER (Snabbfilter) -->
         <section class="category-section">
             <span class="category-section-title">Explore Categories</span>
-            <div class="category-chips">
+            <div class="category-chips-wrapper">
                 <button class="category-chip" data-category="classic">Classic</button>
                 <button class="category-chip" data-category="martini">Martini</button>
                 <button class="category-chip" data-category="moscow mule"> Moscow Mule</button>
@@ -81,13 +87,12 @@
             </div>
         </section>
 
-        <!-- SEKTION 2: STATUS & SORTERING -->
+        <!-- STATUS & SORTERING -->
         <section class="results-bar">
             <div class="sort-wrapper">
                 <select id="sortSelect" class="glass-select">
                     <option value="name-asc">Sort: A–Z</option>
                     <option value="name-desc">Sort: Z–A</option>
-
                 </select>
             </div>
             <div class="results-count">
@@ -95,17 +100,16 @@
             </div>
         </section>
 
-        <!-- SEKTION 3: DRINKKORT (GRID) -->
+        <!-- DRINKKORT (GRID) -->
         <section id="drinkDisplay" class="recipe-grid">
             <!-- Dynamiskt rendering av drinkkort -->
         </section>
-
     </main>
 
-    <!-- SEKTION 4: FOOTER -->
+    <!-- FOOTER -->
     <footer class="site-footer">
         <p class="footer-title">POCKET COCKTAIL CLUB</p>
-        <p class="footer-copy">&copy; 2026 Pocket Cocktail Club. All rights reserved.</p>
+        <p class="footer">&copy; 2026 Pocket Cocktail Club. <br> All rights reserved.</p>
     </footer>
 
 </div>

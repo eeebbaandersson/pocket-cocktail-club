@@ -3,6 +3,7 @@
     --border-subtle: rgba(255, 255, 255, 0.15);
     --border-radius-field: 14px;
     --border-radius-btn: 12px;
+    --border-radius-pills: 18px;
     --font-main: Inter, system-ui, -apple-system, sans-serif;
 }
 
@@ -15,16 +16,28 @@
 body {
     margin: 0;
     min-height: 100vh;
+    font-family: var(--font-main);
+    color: var(--text-primary);
+    position: relative;
+    background-color: #182c43;
+}
+
+.bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
     background: linear-gradient(
             135deg,
             #6297bd 0%,
             #3d6383 30%,
             #224363 70%,
             #182c43 100%
-    ) fixed;
-    /*background-color: rgb(81, 120, 137);*/
-    font-family: var(--font-main);
-    color: var(--text-primary);
+    );
+    z-index: -1;
+    pointer-events: none;
 }
 
 .page-wrapper {
@@ -55,7 +68,7 @@ body {
 }
 
 .hero-main-title {
-    font-size: 3.8rem;
+    font-size: 4rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: -0.03em;
@@ -67,7 +80,7 @@ body {
 
 .hero-sub-title {
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.90rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.68em;
@@ -82,13 +95,14 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
 }
 
 .search-input-wrapper {
     position: relative;
     width: 100%;
-    margin-bottom: 25px;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .search-icon {
@@ -153,9 +167,10 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     width: 100%;
-    margin-bottom: 35px;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
 }
 
 .glass-button {
@@ -178,7 +193,6 @@ body {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 255, 255, 0.4);
     color: #fff;
-    /*box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);*/
 }
 
 .glass-button.active {
@@ -186,7 +200,6 @@ body {
     border-color: rgba(255, 255, 255, 0.5);
     color: #fff;
     box-shadow: 0 0 12px rgba(70, 141, 204, 0.7);
-    /*box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);*/
 }
 
 .sweetness-container {
@@ -198,7 +211,7 @@ body {
 }
 
 .sweetness-container label {
-    font-size: 0.80rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     font-weight: 500;
@@ -213,7 +226,6 @@ body {
     background: rgba(255, 255, 255, 0.15);
     border-radius: 2px;
     outline: none;
-
 }
 
 .glass-slider::-webkit-slider-thumb {
@@ -245,7 +257,6 @@ body {
     width: 24px;
     text-align: center;
     transition: transform 0.2s ease, color 0.2s ease;
-
 }
 
 .slider-labels span.active {
@@ -256,9 +267,11 @@ body {
 
 .action-buttons-group {
     display: flex;
+    flex-direction: column;
     gap: 12px;
     width: 100%;
-    margin-bottom: 30px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 .action-buttons-group #showResultsButton {
@@ -266,15 +279,29 @@ body {
     margin-bottom: 0;
 }
 
+.secondary-buttons-row {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.secondary-buttons-row .secondary-btn,
+.secondary-buttons-row .surprise-btn {
+    flex: 1;
+    padding: 16px 20px; /* Ökat från 12px till 16px för mer höjd */
+    min-height: 52px;    /* Ger en stabil, fyllig form */
+    font-size: 0.82rem;
+}
+
 #showResultsButton {
     width: 100%;
-    padding: 14px 16px;
-    background: rgba(255, 255, 255, 0.05);
+    padding: 18px 20px;
+    background: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius-btn);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 0.85rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
@@ -286,10 +313,7 @@ body {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
 }
 
-
-.surprise-btn {
-    flex: 1;
-    padding: 14px 16px;
+.surprise-btn, .secondary-btn {
     background: transparent;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -308,53 +332,55 @@ body {
     gap: 8px;
 }
 
-.surprise-btn:hover {
-    /*background: rgba(255, 255, 255, 0.05);*/
+.surprise-btn:hover, .secondary-btn:hover {
     border-color: rgba(255, 255, 255, 0.3);
     color: rgba(255, 255, 255, 0.9);
 }
 
 /* --- MAIN CONTENT & RESULTS BAR --- */
-
 .main-content {
     width: 100%;
 }
 
 /* --- KATEGORISEKTION --- */
-
 .category-section {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 12px;
     margin-bottom: 40px;
     width: 100%;
 }
 
 .category-section-title {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 0.5rem;
 }
 
-.category-chips {
+.category-chips-wrapper {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    gap: 8px;
+   justify-content: center;
+    gap: 0.5rem;
     width: 100%;
+    margin-bottom: 0.5rem;
+
+    /*border: 1px solid black;*/
 }
 
 .category-chip {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--border-subtle);
-    border-radius: var(--border-radius-btn);
+    border-radius: var(--border-radius-pills);
     color: rgba(255, 255, 255, 0.85);
     text-transform: uppercase;
     font-size: 0.8rem;
     font-weight: 400;
-    padding: 6px 16px;
+    padding: 10px 16px;
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -362,7 +388,6 @@ body {
 .category-chip:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 255, 255, 0.4);
-
 }
 
 .category-chip.active {
@@ -381,14 +406,17 @@ body {
     border-bottom: 1px solid var(--border-subtle);
     margin-bottom: 30px;
     width: 100%;
+    gap: 10px;
 }
 
 .results-count {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 300;
+    letter-spacing: 0.05em;
+    font-weight: 400;
     color: rgba(255, 255, 255, 0.8);
+    text-align: right;
+    word-break: break-word;
 }
 
 .glass-select {
@@ -422,8 +450,9 @@ body {
 .recipe-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 20px;
+    gap: 1.5rem;
     width: 100%;
+    padding: 0.5rem;
 }
 
 .recipe-card {
@@ -431,7 +460,6 @@ body {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-
     border-radius: 14px;
     overflow: hidden;
     display: flex;
@@ -456,7 +484,7 @@ body {
 }
 
 .card-content {
-    padding: 16px 20px 20px 20px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -497,7 +525,7 @@ body {
 .card-content h3 {
     margin: 4px 0 8px 0;
     font-size: 1.15rem;
-    font-weight: 550;
+    font-weight: 650;
     letter-spacing: 0.03em;
     color: rgba(255, 255, 255, 0.9);
 }
@@ -534,8 +562,8 @@ body {
 
 .site-footer {
     width: 100%;
-    margin-top: 60px;
-    padding-top: 30px;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
     border-top: 1px solid var(--border-subtle);
     text-align: center;
 }
@@ -549,7 +577,7 @@ body {
     opacity: 0.9;
 }
 
-.footer-copy {
+.footer {
     font-size: 0.75rem;
     opacity: 0.5;
 }

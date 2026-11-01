@@ -5,16 +5,17 @@ let currentSweetnessValue = 0;
 document.addEventListener('DOMContentLoaded', async () => {
     const searchInput = document.getElementById('searchInput');
     const searchBtn = document.querySelector('.search-submit-btn');
-    const showResultButton = document.getElementById('showResultsButton');
+    const resetFilterButton = document.getElementById('resetFiltersBtn');
     const surpriseBtn = document.getElementById('randomBtn');
+    const showResultButton = document.getElementById('showResultsButton');
+
     const spiritButtons = document.querySelectorAll('.spirit-btn');
     const slider = document.getElementById('sweetnessSlider');
     const sortSelect = document.getElementById('sortSelect');
 
-    // 1. Ladda alla drinkar direkt när sidan startar
+
     await loadAllDrinks();
 
-    // 2. Sökfält med Enter eller Klick (Söker i realtid på sidan)
     if (searchInput) {
         searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') handleSearch();
@@ -24,7 +25,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         searchBtn.addEventListener('click', handleSearch);
     }
 
-    // 3. Slider-hantering
     if (slider) {
         currentSweetnessValue = slider.value;
         updateLabelHighlights(currentSweetnessValue);
@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // 4. Spritknapp-hantering
     spiritButtons.forEach(button => {
         button.addEventListener('click', function () {
             const wasAlreadyActive = this.classList.contains('active');
@@ -51,7 +50,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
 
-    // 5. Klick på "Show Matches" (Filter-sökning på samma sida)
+    if (resetFilterButton) {
+        resetFilterButton.addEventListener('click', handleResetFilter);
+    }
+
+
+    if (surpriseBtn) {
+        surpriseBtn.addEventListener('click', handleRandomDrink);
+    }
+
     if (showResultButton) {
         showResultButton.addEventListener('click', () => {
             if (currentSelectedSpirit) {
@@ -62,11 +69,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    if (surpriseBtn) {
-        surpriseBtn.addEventListener('click', handleRandomDrink);
-    }
-
-    // 6. Sortering i dropdown
     if (sortSelect) {
         sortSelect.addEventListener('change', (e) => {
             sortAndRenderCurrent(e.target.value);
@@ -80,7 +82,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const selectedCategory = this.dataset.category.toLowerCase();
             const wasActive = this.classList.contains('active');
 
-            // Nollställ aktiva chips
+
             categoryChips.forEach(c => c.classList.remove('active'));
 
             if (wasActive) {
@@ -90,7 +92,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             } else {
                 this.classList.add('active');
 
-                // Filtrera direkt på category-arrayen i drinkobjekten
                 const filtered = allDrinks.filter(drink =>
                     drink.categories && drink.categories.some(c => c.toLowerCase() === selectedCategory)
                 );
@@ -115,18 +116,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function loadAllDrinks() {
     try {
         const response = await fetch('/api/drinks');
-        if (!response.ok) throw new Error("Kunde inte hämta drinkar");
+        if (!response.ok) throw new Error("Could not fetch drink data");
         allDrinks = await response.json();
 
         currentDisplayedDrinks = [...allDrinks];
 
-        // Visa alla drinkar från start (A-Ö)
         sortAndRenderCurrent('name-asc');
         updateButtonCounter();
     } catch (error) {
-        console.error("Fel vid laddning av drinkar:", error);
+        console.error("Error during drink rendering:", error);
         const grid = document.getElementById('drinkDisplay');
-        if (grid) grid.innerHTML = '<p class="error-msg">Det gick inte att ladda recepten.</p>';
+        if (grid) grid.innerHTML = '<p class="error-msg">Could not fetch drink recipes</p>';
     }
 }
 
@@ -192,6 +192,33 @@ function getFilteredMatches() {
     });
 }
 
+function handleResetFilter() {
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) searchInput.value = '';
+
+    const spiritButtons = document.querySelectorAll('.spirit-btn');
+    spiritButtons.forEach(btn => btn.classList.remove('active'));
+    currentSelectedSpirit = null;
+
+    const categoryChips = document.querySelectorAll('.category-chip');
+    categoryChips.forEach(chip => chip.classList.remove('active'));
+
+    const slider = document.getElementById('sweetnessSlider');
+    if (slider) {}
+    slider.value = 0;
+    currentSweetnessValue = 0;
+    updateLabelHighlights(0);
+
+    currentDisplayedDrinks = [...allDrinks];
+    const sortSelect = document.getElementById('sortSelect');
+    const currentSort = sortSelect ? sortSelect.value : 'name-asc';
+    sortAndRenderCurrent(currentSort);
+
+    updateButtonCounter();
+
+}
+
+
 /* --- PRESENTATION & RENDERING --- */
 
 let currentDisplayedDrinks = [];
@@ -209,7 +236,7 @@ function renderDrinkGrid(drinks, customTitle = null) {
         if (customTitle) {
             resultsText.innerText = `${customTitle} (${drinks.length})`;
         } else if (currentSelectedSpirit) {
-            resultsText.innerText = `Result for ${currentSelectedSpirit.toUpperCase()} with (sweetness: ${currentSweetnessValue})`;
+            resultsText.innerText = `${currentSelectedSpirit.toUpperCase()} • Sweetness ${currentSweetnessValue} (${drinks.length})`;
         } else {
             resultsText.innerText = `Recipes (${drinks.length})`;
         }
