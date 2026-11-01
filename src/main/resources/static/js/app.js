@@ -207,18 +207,23 @@ function handleResetFilter() {
     categoryChips.forEach(chip => chip.classList.remove('active'));
 
     const slider = document.getElementById('sweetnessSlider');
-    if (slider) {}
-    slider.value = 0;
-    currentSweetnessValue = 0;
-    updateLabelHighlights(0);
+    const sweetnessValueEl = document.getElementById('sweetnessValue');
 
+    if (slider) {
+        slider.value = 0;
+    }
+    currentSweetnessValue = 0;
+
+    if (sweetnessValueEl) {
+        sweetnessValueEl.textContent = '0';
+    }
+    
     currentDisplayedDrinks = [...allDrinks];
     const sortSelect = document.getElementById('sortSelect');
     const currentSort = sortSelect ? sortSelect.value : 'name-asc';
     sortAndRenderCurrent(currentSort);
 
     updateButtonCounter();
-
 }
 
 
