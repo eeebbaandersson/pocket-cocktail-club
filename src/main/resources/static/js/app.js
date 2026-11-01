@@ -27,10 +27,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (slider) {
         currentSweetnessValue = slider.value;
-        updateLabelHighlights(currentSweetnessValue);
+        const sweetnessValueEl = document.getElementById('sweetnessValue');
+        if (sweetnessValueEl) sweetnessValueEl.textContent = currentSweetnessValue;
+
+
         slider.addEventListener('input', function () {
-            updateLabelHighlights(this.value);
             currentSweetnessValue = this.value;
+            if (sweetnessValueEl) sweetnessValueEl.textContent = currentSweetnessValue;
             updateButtonCounter();
         });
     }
@@ -231,7 +234,6 @@ function renderDrinkGrid(drinks, customTitle = null) {
     if (!grid) return;
     grid.innerHTML = '';
 
-    // Uppdatera status-text
     if (resultsText) {
         if (customTitle) {
             resultsText.innerText = `${customTitle} (${drinks.length})`;
@@ -255,7 +257,7 @@ function renderDrinkGrid(drinks, customTitle = null) {
         const categoryText = hasCategory ? drink.categories[0] : '';
 
         const ingredientsFormatted = drink.ingredients && drink.ingredients.length > 0
-            ? drink.ingredients.map(ing => ing.name).join(' &#8209; ') : '';
+            ? drink.ingredients.map(ing => ing.name).join(' \u2011 ') : '';
 
         card.innerHTML = `
             <div class="card-content">
@@ -311,19 +313,7 @@ function handleRandomDrink() {
     scrollToResults();
 }
 
-/* --- HJÄLP-FUNKTIONER --- */
-
-function updateLabelHighlights(value) {
-    const labels = document.querySelectorAll('.slider-labels span:not(.spacer)');
-    labels.forEach((label) => {
-        if (label.innerText === value) {
-            label.classList.add('active');
-        } else {
-            label.classList.remove('active');
-        }
-    });
-}
-
+/* --- HELPERS --- */
 function updateButtonCounter() {
     const showResultButton = document.getElementById('showResultsButton');
     if (!showResultButton || !allDrinks || allDrinks.length === 0) return;

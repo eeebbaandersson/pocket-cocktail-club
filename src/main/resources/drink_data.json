@@ -67,7 +67,7 @@
   {
     "name": "Gin Basil Smash",
     "sweetness_score": -1,
-    "categories": [],
+    "categories": ["Modern"],
     "ingredients": [
       {"name": "Gin", "quantity": 60, "unit": "ml", "is_alcoholic": true},
       {"name": "Lemon juice", "quantity": 2, "unit": "ml", "is_alcoholic": false},

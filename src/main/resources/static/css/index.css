@@ -219,51 +219,96 @@ body {
     margin-bottom: 5px;
 }
 
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 24px;
+}
+
+.slider-ticks {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 14px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.tick-dot {
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.tick-dot.center {
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.6);
+}
+
 .glass-slider {
     -webkit-appearance: none;
+    appearance: none;
     width: 100%;
     height: 4px;
     background: rgba(255, 255, 255, 0.15);
     border-radius: 2px;
     outline: none;
+    position: relative;
+    z-index: 2;
 }
 
 .glass-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 16px;
-    height: 16px;
-    background: white;
-    opacity: 0.9;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
     border-radius: 50%;
     cursor: pointer;
+    box-shadow: none;
 }
 
-.slider-wrapper {
-    position: relative;
-    width: 100%;
-}
 
-.slider-labels {
+.slider-labels-minimal {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
     width: 100%;
+    margin-top: 6px;
+    padding: 0 2px;
 }
 
-.slider-labels span {
+.slider-labels-minimal span {
     font-size: 0.80rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.5);
     width: 24px;
     text-align: center;
-    transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.slider-labels span.active {
-    color: #fff;
-    transform: scale(1.2);
+.sweetness-num {
+    color: #ffffff;
     font-weight: 700;
+    margin-left: 4px;
 }
+
+
+
+
+
+/*.slider-labels span.active {*/
+/*    color: #fff;*/
+/*    transform: scale(1.2);*/
+/*    font-weight: 700;*/
+/*}*/
 
 .action-buttons-group {
     display: flex;
@@ -466,8 +511,8 @@ body {
     justify-content: space-between;
     transition: all 0.3s ease;
     cursor: pointer;
-    padding: 20px 24px;
-    min-height: 140px;
+    padding: 22px 24px;
+    min-height: 155px;
 }
 
 .recipe-card:hover {
@@ -538,13 +583,12 @@ body {
 }
 
 .card-ingredients {
-    font-size: 0.80rem;
+    font-size: 0.74rem;
     font-weight: 400;
     text-transform: none;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
     color: rgba(255, 255, 255, 0.65);
     line-height: 1.4;
-
     word-break: normal;
     overflow-wrap: normal;
 
