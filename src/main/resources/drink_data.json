@@ -347,7 +347,7 @@
   {
     "name": "Old Cuban",
     "sweetness_score": -1,
-    "categories": [],
+    "categories": ["Modern"],
     "ingredients": [
       {"name": "Dark rum", "quantity": 45, "unit": "ml", "is_alcoholic": true},
       {"name": "Syrup", "quantity": 30, "unit": "ml", "is_alcoholic": false},
@@ -401,7 +401,7 @@
   {
     "name": "Espresso Martini",
     "sweetness_score": 3,
-    "categories": ["Martini"],
+    "categories": ["Martini", "Modern"],
     "ingredients": [
       {"name": "Vodka", "quantity": 40, "unit": "ml", "is_alcoholic": true},
       {"name": "Kahlua", "quantity": 20, "unit": "ml", "is_alcoholic": true},
@@ -438,7 +438,7 @@
   {
     "name": "Gold Rush",
     "sweetness_score": 2,
-    "categories": [],
+    "categories": ["Modern"],
     "ingredients": [
       {"name": "Bourbon", "quantity": 60, "unit": "ml", "is_alcoholic": true},
       {"name": "Lemon juice", "quantity": 20, "unit": "ml", "is_alcoholic": false},
@@ -454,6 +454,7 @@
       {"name": "Bourbon", "quantity": 60, "unit": "ml", "is_alcoholic": true},
       {"name": "Lemon juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
       {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
+      {"name": "Eqq white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
       {"name": "Red wine", "quantity": 15, "unit": "ml", "is_alcoholic": true}
     ],
     "instructions": "Combine bourbon, lemon juice, syrup and egg white in a shaker. Dry shake first to create foam, add ice and shake again to chill the drink. Strain into an Old-Fashioned glass. Carefully float the red wine on top off the drink by pouring it over the back of a spoon."
@@ -472,7 +473,7 @@
   {
     "name": "Penicillin",
     "sweetness_score": -2,
-    "categories": [],
+    "categories": ["Modern"],
     "ingredients": [
       {"name": "Scottish whiskey", "quantity": 60, "unit": "ml", "is_alcoholic": true},
       {"name": "Honey syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},

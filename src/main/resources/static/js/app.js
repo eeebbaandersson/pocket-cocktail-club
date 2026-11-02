@@ -217,7 +217,7 @@ function handleResetFilter() {
     if (sweetnessValueEl) {
         sweetnessValueEl.textContent = '0';
     }
-    
+
     currentDisplayedDrinks = [...allDrinks];
     const sortSelect = document.getElementById('sortSelect');
     const currentSort = sortSelect ? sortSelect.value : 'name-asc';
@@ -258,28 +258,29 @@ function renderDrinkGrid(drinks, customTitle = null) {
         const card = document.createElement('article');
         card.className = 'recipe-card';
 
-        const hasCategory = drink.categories && drink.categories.length > 0 && drink.categories[0].trim() !== "";
-        const categoryText = hasCategory ? drink.categories[0] : '';
+        const categoriesHtml = drink.categories && drink.categories.length > 0
+            ? drink.categories.map(cat => `<span class="category-badge">${cat}</span>`).join('')
+            : `<span class="category-badge" style="visibility: hidden;">&nbsp;</span>`;
 
         const ingredientsFormatted = drink.ingredients && drink.ingredients.length > 0
             ? drink.ingredients.map(ing => ing.name).join(' \u2011 ') : '';
 
         card.innerHTML = `
-            <div class="card-content">
-                <div class="card-top">
-                    <div class="category-placeholder">
-                        <span class="category-badge" style="${!hasCategory ? 'visibility: hidden;' : ''}">${hasCategory ? categoryText : '&nbsp;'}</span>
-                    </div>
-                    <h3>${drink.name}</h3>
-                </div>
-                
-                <p class="card-ingredients">${ingredientsFormatted}</p>
-                
-                <div class="tag-row">
-                    <span class="sweetness-score">Sweetness: ${drink.sweetnessScore}</span>
-                </div>
+    <div class="card-content">
+        <div class="card-top">
+            <div class="category-placeholder" style="display: flex; gap: 6px; flex-wrap: wrap;">
+                ${categoriesHtml}
             </div>
-        `;
+            <h3>${drink.name}</h3>
+        </div>
+        
+        <p class="card-ingredients">${ingredientsFormatted}</p>
+        
+        <div class="tag-row">
+            <span class="sweetness-score">Sweetness: ${drink.sweetnessScore}</span>
+        </div>
+    </div>
+`;
 
         card.addEventListener('click', () => {
             const drinkName = encodeURIComponent(drink.name);
@@ -313,7 +314,7 @@ function handleRandomDrink() {
     const randomIndex = Math.floor(Math.random() * allDrinks.length);
     const randomDrink = allDrinks[randomIndex];
 
-    renderDrinkGrid([randomDrink], `Surprise Result: ${randomDrink.name}`);
+    renderDrinkGrid([randomDrink], `Result: ${randomDrink.name}`);
 
     scrollToResults();
 }
