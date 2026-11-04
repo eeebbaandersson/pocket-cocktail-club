@@ -232,7 +232,7 @@
       {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
       {"name": "Egg white", "quantity": 30, "unit": "ml", "is_alcoholic": false}
     ],
-    "instructions": "Pour all ingredients into a shaker. Dry shake first to create foam, add ice and shake again to well-chilled. Strain into an Old-Fashioned glass an garnish with a maraschino-cherry."
+    "instructions": "Pour all ingredients into a shaker. Dry shake first to create foam, add ice and shake again to well-chilled. Strain into an Old-Fashioned glass and garnish with a maraschino-cherry."
   },
   {
     "name": "Limoncello Sour",

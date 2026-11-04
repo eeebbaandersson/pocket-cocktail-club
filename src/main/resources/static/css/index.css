@@ -124,16 +124,24 @@ body {
 
 .search-submit-btn {
     position: absolute;
-    right: 15px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    background: transparent;
-    border: none;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius-btn);
+    padding: 0.4rem 0.65rem;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     z-index: 5;
+    transition: all 0.2s ease;
+}
+
+.search-submit-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .search-submit-btn img,
@@ -151,7 +159,7 @@ body {
     border: 1px solid var(--border-subtle);
     border-radius: var(--border-radius-field);
     width: 100%;
-    padding: 14px 18px 14px 48px;
+    padding: 14px 48px 14px 48px;
     font-size: 1rem;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.9);
@@ -444,7 +452,7 @@ body {
 }
 
 .results-count {
-    font-size: 0.75rem;
+    font-size: 0.80rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-weight: 400;
