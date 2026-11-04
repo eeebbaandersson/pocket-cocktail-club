@@ -1,7 +1,6 @@
 
 [
   // BITTER
-  // EXTRAS
 
   // GIN
   {
@@ -72,7 +71,7 @@
       {"name": "Gin", "quantity": 60, "unit": "ml", "is_alcoholic": true},
       {"name": "Lemon juice", "quantity": 2, "unit": "ml", "is_alcoholic": false},
       {"name": "Syrup", "quantity": 2, "unit": "ml", "is_alcoholic": false},
-      {"name": "Basil", "quantity": 12, "unit": "leaf", "is_alcoholic": false}
+      {"name": "Fresh basil", "quantity": 12, "unit": "leaves", "is_alcoholic": false}
     ],
     "instructions": "Muddle the basil together with syrup in a shaker. Add gin, lemon juice and ice. Shake until well-chilled and strain into an ice-filled Old-Fashioned glass. Garnish with a basil sprig."
   },
@@ -151,7 +150,7 @@
       {"name": "Syrup", "quantity": 15, "unit": "ml", "is_alcoholic": false},
       {"name": "Cream", "quantity": 30, "unit": "ml", "is_alcoholic": false},
       {"name": "Orange blossom water", "quantity": 30, "unit": "dashes", "is_alcoholic": false},
-      {"name": "Eqq white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Egg white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
       {"name": "Soda", "quantity": 30, "unit": "ml", "is_alcoholic": false}
 
     ],
@@ -181,7 +180,7 @@
       {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
       {"name": "Fresh mint", "quantity": 8, "unit": "leaves", "is_alcoholic": false}
     ],
-    "instructions": "Carefully muddle the mint leafs together with the syrup in a shaker. Add the remaining ingredients as well as ice and shake until well-chilled. Double strain into a coupe glass and garnish with a mint leaf. "
+    "instructions": "Carefully muddle the mint leaves together with the syrup in a shaker. Add the remaining ingredients as well as ice and shake until well-chilled. Double strain into a coupe glass and garnish with a mint leaf. "
   },
   {
     "name": "Tom Collins",
@@ -217,7 +216,7 @@
       {"name": "Liqueur 43", "quantity": 60, "unit": "ml", "is_alcoholic": true},
       {"name": "Lemon juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
       {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
-      {"name": "Eqq white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Egg white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
       {"name": "Angostura bitter", "quantity": 3, "unit": "dashes", "is_alcoholic": true}
     ],
     "instructions": "Combine Liqueur 43, lemon juice, syrup and egg white in a shaker. Dry shake first to create foam, add ice and shake again to chill the drink. Strain into a coupe glass and add a few drops of Angostura bitter."
@@ -292,7 +291,7 @@
       {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
       {"name": "Ginger beer", "quantity": 100, "unit": "ml", "is_alcoholic": false}
     ],
-    "instructions": "Pour rum and lime juice into a ice-filled highball glass. Add ginger beer and stir the drink carefully. Garnish with a lime while."
+    "instructions": "Pour rum and lime juice into a ice-filled highball glass. Add ginger beer and stir the drink carefully. Garnish with a lime wedge."
   },
   {
     "name": "Fidel Castro",
@@ -397,7 +396,21 @@
   },
   // SPARKLING
   // TEQUILA
+  {
+    "name": "Mexican Mule",
+    "sweetness_score": 0,
+    "categories": ["Moscow Mule"],
+    "ingredients": [
+      {"name": "Tequila blanco ", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
+      {"name": "Ginger beer", "quantity": 9, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Pour tequila and lime juice into an ice-filled copper mug or other glass of choice. Top it off with ginger beer and stir carefully, garnish with a lime wedge."
+  },
+
+
   // VODKA
+
   {
     "name": "Espresso Martini",
     "sweetness_score": 3,
@@ -405,9 +418,10 @@
     "ingredients": [
       {"name": "Vodka", "quantity": 40, "unit": "ml", "is_alcoholic": true},
       {"name": "Kahlua", "quantity": 20, "unit": "ml", "is_alcoholic": true},
-      {"name": "Espresso", "quantity": 60, "unit": "ml", "is_alcoholic": false}
+      {"name": "Espresso", "quantity": 60, "unit": "ml", "is_alcoholic": false},
+      {"name": "Syrup", "quantity": 10, "unit": "ml", "is_alcoholic": false}
     ],
-    "instructions": "To be added..."
+    "instructions": "Shake all ingredients in a shaker with ice. Strain into a chilled Martini glass and garnish with three coffee beans."
   },
   {
     "name": "Kamikaze",
@@ -432,6 +446,17 @@
     ],
     "instructions": "Coat the rim of a Martini-glass with lemon juice and and dip it in sugar. Pour all ingredients into a shaker, add ice and shake until well-chilled. Stain onto the prepared glass and garnish with a lemon peel."
   },
+  {
+    "name": "Moscow Mule",
+    "sweetness_score": 0,
+    "categories": ["Moscow Mule"],
+    "ingredients": [
+      {"name": "Vodka", "quantity": 60, "unit": "ml", "is_alcoholic": true},
+      {"name": "Lime juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Ginger beer", "quantity": 12, "unit": "ml", "is_alcoholic": false}
+    ],
+    "instructions": "Pour vodka and lime juice into an ice-filled copper mug or other glass of choice. Top it off with ginger beer and stir carefully, garnish with a lime wedge."
+  },
 
   // WHISKEY
 
@@ -454,7 +479,7 @@
       {"name": "Bourbon", "quantity": 60, "unit": "ml", "is_alcoholic": true},
       {"name": "Lemon juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
       {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
-      {"name": "Eqq white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Egg white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
       {"name": "Red wine", "quantity": 15, "unit": "ml", "is_alcoholic": true}
     ],
     "instructions": "Combine bourbon, lemon juice, syrup and egg white in a shaker. Dry shake first to create foam, add ice and shake again to chill the drink. Strain into an Old-Fashioned glass. Carefully float the red wine on top off the drink by pouring it over the back of a spoon."
@@ -493,7 +518,7 @@
       {"name": "Lemon juice", "quantity": 20, "unit": "ml", "is_alcoholic": false},
       {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
       {"name": "Absint", "quantity": 2, "unit": "dashes", "is_alcoholic": true},
-      {"name": "Eqq white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Egg white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
       {"name": "Angostura bitter", "quantity": 2, "unit": "dashes", "is_alcoholic": true}
     ],
     "instructions": "Combine all ingredients in a shaker. Dry shake to create foam, add ice and shake again to chill the drink. Strain into a cocktail glass of choice and garnish with a few dashes of Angostura bitter."
@@ -543,7 +568,7 @@
       {"name": "Bourbon", "quantity": 60, "unit": "ml", "is_alcoholic": true},
       {"name": "Lemon juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
       {"name": "Syrup", "quantity": 20, "unit": "ml", "is_alcoholic": false},
-      {"name": "Eqq white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
+      {"name": "Egg white", "quantity": 30, "unit": "ml", "is_alcoholic": false},
       {"name": "Angostura bitter", "quantity": 3, "unit": "dashes", "is_alcoholic": true}
     ],
     "instructions": "Combine bourbon, lemon juice, syrup and egg white in a shaker. Dry shake first to create foam, add ice and shake again to chill the drink. Strain into a coupe glass and add a few drops of Angostura bitter."

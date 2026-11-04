@@ -65,7 +65,7 @@ function renderFullRecipe(drink) {
             </ul>
         </div>
         <div class="instructions-text">
-            <h3>Instructions</h3>
+            <h3>How to mix</h3>
             <ol>
                 ${instructionSteps.map(step => `
                     <li>${step}.</li>

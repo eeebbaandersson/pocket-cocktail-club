@@ -51,6 +51,7 @@ body {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    margin-top: -0.5rem;
 }
 
 /* --- HERO SEKTION --- */
@@ -353,7 +354,21 @@ body {
 
 #showResultsButton:hover:not(:disabled) {
     border-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.15)
+}
+
+#showResultsButton:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    border-color: rgba(255, 255, 255, 0.08); /* Behåller den subtila ramen utan att lysa upp */
+    box-shadow: none;
+}
+
+#showResultsButton:hover:disabled {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+    cursor: not-allowed;
 }
 
 .surprise-btn, .secondary-btn {
