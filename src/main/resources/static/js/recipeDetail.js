@@ -22,31 +22,32 @@ function renderFullRecipe(drink) {
 
     const hasCategory = drink.categories && drink.categories.length > 0;
 
-    const categoryDisplay = hasCategory ? drink.categories.join(' |') : '&nbsp';
-
     const instructionSteps = drink.instructions
         .split('.')
         .map(step => step.trim())
         .filter(step => step.length > 0);
 
+    const words = drink.name.split(' ');
+    const formattedTitle = words.length > 2
+        ? `${words[0]} ${words[1]}<br>${words.slice(2).join(' ')}`
+        : drink.name;
+
     content.innerHTML = `
     <div class="recipe-header">
-            <div class="recipe-title-section">
-                <h2 class="recipe-title">${drink.name}</h2>
-                
-          <div class="category-wrapper">
+        <div class="recipe-title-section">
+            <h2 class="recipe-title">${formattedTitle}</h2>
+            
+            <div class="category-wrapper">
                 ${hasCategory
-                    ? `<span class="sweetness-badge">Category:</span>` +
-                    drink.categories.map((cat, index) => `
-                      <a href="index.html?query=${encodeURIComponent(cat)}" class="category-link2">${cat}</a>
-                       ${index < drink.categories.length - 1 ? '<span class="category-separator">|</span>' : ''}
-                        `).join('')
-                    : `<span class="category-link2" style="visibility: hidden;">&nbsp;</span>`
-                }
+        ? drink.categories.map(cat => `
+                        <a href="index.html?query=${encodeURIComponent(cat)}" class="category-link">${cat}</a>
+                      `).join('')
+        : ''
+    }
             </div>
 
-            <div class="sweetness-wrapper">
-                <span class="sweetness-badge">Sweetness: ${drink.sweetnessScore}</span>
+            <div class="sweetness-wrapper" style="margin-top: 8px;">
+                <span class="sweetness-pill">Sweetness: ${drink.sweetnessScore}</span>
             </div>
         </div>
     </div>
@@ -56,7 +57,10 @@ function renderFullRecipe(drink) {
             <h3>Ingredients</h3>
             <ul>
                 ${drink.ingredients.map(ing => `
-                    <li><strong>${ing.quantity} ${ing.unit}</strong> ${ing.name}</li>
+                    <li>
+                        <span class="ingredient-measure">${ing.quantity} ${ing.unit}</span>
+                        <span class="ingredient-name">${ing.name}</span>
+                    </li>
                 `).join('')}
             </ul>
         </div>

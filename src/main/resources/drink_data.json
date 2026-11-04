@@ -361,7 +361,7 @@
   {
     "name": "Piña Colada",
     "sweetness_score": 4,
-    "categories": [],
+    "categories": ["Tropical"],
     "ingredients": [
       {"name": "White rum", "quantity": 60, "unit": "ml", "is_alcoholic": true},
       {"name": "Sweetened coconut milk", "quantity": 45, "unit": "ml", "is_alcoholic": false},
