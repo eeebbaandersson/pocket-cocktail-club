@@ -360,7 +360,7 @@ body {
 #showResultsButton:disabled {
     opacity: 0.4;
     cursor: not-allowed;
-    border-color: rgba(255, 255, 255, 0.08); /* Behåller den subtila ramen utan att lysa upp */
+    border-color: rgba(255, 255, 255, 0.08);
     box-shadow: none;
 }
 
@@ -524,7 +524,7 @@ body {
     transition: all 0.3s ease;
     cursor: pointer;
     padding: 22px 24px;
-    min-height: 155px;
+    min-height: 180px;
 }
 
 .recipe-card:hover {
@@ -537,6 +537,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    min-height: 28px;
+    margin-bottom: 4px;
     gap: 12px;
 }
 
@@ -601,12 +603,14 @@ body {
     letter-spacing: 0.04em;
     color: rgba(255, 255, 255, 0.65);
     line-height: 1.4;
+    height: 2.8em;
     word-break: normal;
     overflow-wrap: normal;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    margin-top: auto;
 }
 
 .tag-row {
@@ -619,6 +623,7 @@ body {
     color: rgba(255, 255, 255, 0.45);
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    margin-top: 12px;
 }
 
 /* --- FOOTER --- */
@@ -674,10 +679,33 @@ body {
 
     .glass-button {
         font-size: 0.85rem;
-        padding: 14px 18px;
+        padding: 14px 20px;
     }
 
+    .action-buttons-group {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        width: 100%;
+        max-width: 600px;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
 
+    .secondary-buttons-row {
+        display: contents;
+    }
 
+    .action-buttons-group #showResultsButton,
+    .action-buttons-group .secondary-btn,
+    .action-buttons-group .surprise-btn {
+        flex: 1;
+        width: auto;
+        min-height: 52px;
+        padding: 16px 10px;
+        font-size: 0.80rem;
+        white-space: nowrap;
+        margin-bottom: 0;
+    }
 
 }
