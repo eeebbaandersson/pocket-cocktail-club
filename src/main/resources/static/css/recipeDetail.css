@@ -145,16 +145,19 @@ body {
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: rgba(255, 255, 255, 0.9);
-    padding: 4px 8px;
+    width: 28px;
+    height: 24px;
+    padding: 0;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 600;
     transition: all 0.2s ease;
     user-select: none;
+    flex-shrink: 0;
 }
 
 .counter-button:hover {
