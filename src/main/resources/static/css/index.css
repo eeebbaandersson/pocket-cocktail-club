@@ -339,7 +339,7 @@ body {
 
 #showResultsButton {
     width: 100%;
-    padding: 18px 20px;
+    padding: 20px 20px;
     background: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius-btn);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -524,7 +524,7 @@ body {
     transition: all 0.3s ease;
     cursor: pointer;
     padding: 22px 24px;
-    min-height: 180px;
+    min-height: 160px;
 }
 
 .recipe-card:hover {
@@ -537,9 +537,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    min-height: 28px;
-    margin-bottom: 4px;
-    gap: 12px;
+    min-height: 22px;
+    margin-bottom: 2px;
+    gap: 8px;
 }
 
 .card-content {
@@ -597,7 +597,7 @@ body {
 }
 
 .card-ingredients {
-    font-size: 0.74rem;
+    font-size: 0.75rem;
     font-weight: 400;
     text-transform: none;
     letter-spacing: 0.04em;
@@ -623,7 +623,7 @@ body {
     color: rgba(255, 255, 255, 0.45);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    margin-top: 12px;
+    margin-top: 8px;
 }
 
 /* --- FOOTER --- */

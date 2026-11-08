@@ -1,3 +1,6 @@
+let currentMultiplier = 1;
+let currentDrinkData = null;
+
 document.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const drinkName = params.get('name');
@@ -9,17 +12,53 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Använder redan existerande endpoint för sökning via namn
         const response = await fetch(`/api/drinks?name=${encodeURIComponent(drinkName)}`);
         const drinks = await response.json();
-        const drink = drinks[0];
+        currentDrinkData = drinks[0];
 
-        renderFullRecipe(drink);
+        renderFullRecipe(currentDrinkData);
     } catch (error) {
         content.innerHTML = "<p>Could not load recipe.</p>";
     }
 });
 
+function changeServings(amount) {
+    currentMultiplier += amount;
+    if (currentMultiplier < 1) currentMultiplier = 1;
+    if (currentMultiplier > 20) currentMultiplier = 20;
+
+    const counterText = document.getElementById('drinkCountText');
+    if (counterText) {
+        counterText.textContent = `${currentMultiplier} ${currentMultiplier === 1 ? 'Drink' : 'Drinks'}`;
+    }
+
+    const decreaseBtn = document.getElementById('decreaseBtn');
+    if (decreaseBtn) {
+        decreaseBtn.disabled = currentMultiplier === 1;
+    }
+
+    updateIngredientQuantities();
+}
+
+function updateIngredientQuantities() {
+    if (!currentDrinkData) return;
+
+    const ingredientItems = document.querySelectorAll('.ingredient-measure');
+
+    currentDrinkData.ingredients.forEach((ing,  index) => {
+        const measureSpan = ingredientItems[index];
+        if (!measureSpan) return;
+
+        if (ing.quantity) {
+            const calculatedQty = ing.quantity * currentMultiplier;
+            const formattedQty = Number.isInteger(calculatedQty) ? calculatedQty : calculatedQty.toFixed(1);
+            measureSpan.textContent = `${formattedQty} ${ing.unit}`;
+        } else {
+            measureSpan.textContent = ing.unit;
+        }
+    });
+}
+
 function renderFullRecipe(drink) {
     const content = document.getElementById('recipeContent');
-
     const hasCategory = drink.categories && drink.categories.length > 0;
 
     const instructionSteps = drink.instructions
@@ -54,6 +93,11 @@ function renderFullRecipe(drink) {
     
     <div class="recipe-grid-layout">
         <div class="ingredients-list">
+        <div class="drink-counter">
+       <button type="button" id="decreaseBtn" class="counter-button" onclick="changeServings(-1)" ${currentMultiplier === 1 ? 'disabled' : ''}>-</button>
+        <span id="drinkCountText">1 Drink</span>
+        <span class="counter-button" onclick="changeServings(1)">+</span>
+        </div>
             <h3>Ingredients</h3>
             <ul>
                 ${drink.ingredients.map(ing => `
