@@ -650,6 +650,51 @@ body {
     opacity: 0.5;
 }
 
+.back-to-top-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    background: rgba(24, 44, 67, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius-btn);
+    color: rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.back-to-top-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.back-to-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top-btn:hover {
+    background: rgba(70, 141, 204, 0.4);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(70, 141, 204, 0.5);
+}
+
+.back-to-top-btn:active {
+    transform: scale(0.92);
+}
+
 /* --- TABLET & DESKTOP ANPASSNING --- */
 
 @media screen and (min-width: 768px) {

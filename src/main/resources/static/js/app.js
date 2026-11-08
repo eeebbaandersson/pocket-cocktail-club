@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const slider = document.getElementById('sweetnessSlider');
     const sortSelect = document.getElementById('sortSelect');
 
+    const backToTopBtn = document.getElementById('backToTopBtn');
 
     await loadAllDrinks();
 
@@ -112,6 +113,25 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
     });
+
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+
 });
 
 /* --- API & DATA HÄMTNING --- */
