@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         showResultButton.addEventListener('click', () => {
             if (currentSelectedSpirit) {
                 const matches = getFilteredMatches();
+                clearCategorySelection();
                 renderDrinkGrid(matches);
                 scrollToResults();
             }
@@ -91,6 +92,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             if (wasActive) {
                currentDisplayedDrinks = [...allDrinks];
+                currentResultsTitle = 'Recipes';
+
                const currentSort = sortSelect ? sortSelect.value : 'name-asc';
                sortAndRenderCurrent(currentSort);
             } else {
@@ -101,15 +104,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                 );
 
                currentDisplayedDrinks = [...filtered];
+               currentResultsTitle = `Category: ${this.innerText.trim()}`;
 
                const currentSort = sortSelect ? sortSelect.value : 'name-asc';
 
                sortAndRenderCurrent(currentSort);
 
-               const resultsText = document.getElementById('resultsText');
-               if (resultsText) {
-                   resultsText.innerText = `Category: ${this.innerText} (${filtered.length})`;
-               }
             }
         });
     });
@@ -143,6 +143,7 @@ async function loadAllDrinks() {
         allDrinks = await response.json();
 
         currentDisplayedDrinks = [...allDrinks];
+        currentResultsTitle = 'Recipes';
 
         sortAndRenderCurrent('name-asc');
         updateButtonCounter();
@@ -160,10 +161,11 @@ function handleSearch() {
     const searchInput = document.getElementById('searchInput');
     if (!searchInput) return;
 
+    clearCategorySelection();
     const rawQuery = searchInput.value.trim().toLowerCase();
 
     if (!rawQuery) {
-        renderDrinkGrid(allDrinks);
+        renderDrinkGrid(allDrinks, 'Recipes');
         return;
     }
     const searchTerms = rawQuery
@@ -240,6 +242,7 @@ function handleResetFilter() {
     }
 
     currentDisplayedDrinks = [...allDrinks];
+    currentResultsTitle = 'Recipes';
     const sortSelect = document.getElementById('sortSelect');
     const currentSort = sortSelect ? sortSelect.value : 'name-asc';
     sortAndRenderCurrent(currentSort);
@@ -251,9 +254,21 @@ function handleResetFilter() {
 /* --- PRESENTATION & RENDERING --- */
 
 let currentDisplayedDrinks = [];
+let currentResultsTitle = 'Recipes';
+
+
+function clearCategorySelection() {
+    document.querySelectorAll('.category-chip.active')
+        .forEach(chip => chip.classList.remove('active'));
+}
 
 function renderDrinkGrid(drinks, customTitle = null) {
     currentDisplayedDrinks = [...drinks];
+    currentResultsTitle = customTitle ?? (
+        currentSelectedSpirit
+            ? `${currentSelectedSpirit.toUpperCase()} • Sweetness ${currentSweetnessValue}`
+            : 'Recipes'
+    );
     const grid = document.getElementById('drinkDisplay');
     const resultsText = document.getElementById('resultsText');
 
@@ -261,13 +276,7 @@ function renderDrinkGrid(drinks, customTitle = null) {
     grid.innerHTML = '';
 
     if (resultsText) {
-        if (customTitle) {
-            resultsText.innerText = `${customTitle} (${drinks.length})`;
-        } else if (currentSelectedSpirit) {
-            resultsText.innerText = `${currentSelectedSpirit.toUpperCase()} • Sweetness ${currentSweetnessValue} (${drinks.length})`;
-        } else {
-            resultsText.innerText = `Recipes (${drinks.length})`;
-        }
+        resultsText.innerText = `${currentResultsTitle} (${drinks.length})`;
     }
 
     if (drinks.length === 0) {
@@ -326,15 +335,13 @@ function sortAndRenderCurrent(sortType) {
         sorted.sort((a, b) => b.sweetnessScore - a.sweetnessScore);
     }
 
-    const activeChip = document.querySelector('.category-chip.active');
-    const categoryLabel = activeChip ? `Category: ${activeChip.innerText.trim()}` : null;
-
-    renderDrinkGrid(sorted, categoryLabel);
+    renderDrinkGrid(sorted, currentResultsTitle);
 }
 
 function handleRandomDrink() {
     if (!allDrinks || allDrinks.length === 0) return;
 
+    clearCategorySelection();
     const randomIndex = Math.floor(Math.random() * allDrinks.length);
     const randomDrink = allDrinks[randomIndex];
 
@@ -364,6 +371,7 @@ function applyCategoryFromUrl() {
     );
 
     currentDisplayedDrinks = [...filtered];
+    currentResultsTitle = `Category: ${matchingChip.innerText.trim()}`;
     const sortSelect = document.getElementById('sortSelect');
     const currentSort = sortSelect ? sortSelect.value : 'name-asc';
     sortAndRenderCurrent(currentSort);

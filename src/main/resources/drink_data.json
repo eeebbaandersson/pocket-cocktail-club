@@ -403,7 +403,7 @@
     "ingredients": [
       {"name": "Tequila blanco", "quantity": 60, "unit": "ml", "is_alcoholic": true},
       {"name": "Lime juice", "quantity": 15, "unit": "ml", "is_alcoholic": false},
-      {"name": "Ginger beer", "quantity": 9, "unit": "ml", "is_alcoholic": false}
+      {"name": "Ginger beer", "quantity": 90, "unit": "ml", "is_alcoholic": false}
     ],
     "instructions": "Pour tequila and lime juice into an ice-filled copper mug or other glass of choice. Top it off with ginger beer and stir carefully, garnish with a lime wedge."
   },
@@ -466,7 +466,7 @@
     "ingredients": [
       {"name": "Vodka", "quantity": 60, "unit": "ml", "is_alcoholic": true},
       {"name": "Lime juice", "quantity": 30, "unit": "ml", "is_alcoholic": false},
-      {"name": "Ginger beer", "quantity": 12, "unit": "ml", "is_alcoholic": false}
+      {"name": "Ginger beer", "quantity": 120, "unit": "ml", "is_alcoholic": false}
     ],
     "instructions": "Pour vodka and lime juice into an ice-filled copper mug or other glass of choice. Top it off with ginger beer and stir carefully, garnish with a lime wedge."
   },

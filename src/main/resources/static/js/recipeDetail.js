@@ -96,7 +96,7 @@ function renderFullRecipe(drink) {
         <div class="drink-counter">
        <button type="button" id="decreaseBtn" class="counter-button" onclick="changeServings(-1)" ${currentMultiplier === 1 ? 'disabled' : ''}>-</button>
         <span id="drinkCountText">1 Drink</span>
-        <span class="counter-button" onclick="changeServings(1)">+</span>
+       <button type="button" class="counter-button" onclick="changeServings(1)" aria-label="Increase servings">+</button>
         </div>
             <h3>Ingredients</h3>
             <ul>
