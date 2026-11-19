@@ -79,7 +79,7 @@ function renderFullRecipe(drink) {
             <div class="category-wrapper">
                 ${hasCategory
         ? drink.categories.map(cat => `
-                        <a href="index.html?query=${encodeURIComponent(cat)}" class="category-link">${cat}</a>
+                        <a href="index.html?category=${encodeURIComponent(cat)}" class="category-link">${cat}</a>
                       `).join('')
         : ''
     }

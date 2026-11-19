@@ -146,6 +146,7 @@ async function loadAllDrinks() {
 
         sortAndRenderCurrent('name-asc');
         updateButtonCounter();
+        applyCategoryFromUrl();
     } catch (error) {
         console.error("Error during drink rendering:", error);
         const grid = document.getElementById('drinkDisplay');
@@ -325,7 +326,10 @@ function sortAndRenderCurrent(sortType) {
         sorted.sort((a, b) => b.sweetnessScore - a.sweetnessScore);
     }
 
-    renderDrinkGrid(sorted);
+    const activeChip = document.querySelector('.category-chip.active');
+    const categoryLabel = activeChip ? `Category: ${activeChip.innerText.trim()}` : null;
+
+    renderDrinkGrid(sorted, categoryLabel);
 }
 
 function handleRandomDrink() {
@@ -336,6 +340,35 @@ function handleRandomDrink() {
 
     renderDrinkGrid([randomDrink], `Result: ${randomDrink.name}`);
 
+    scrollToResults();
+}
+
+function applyCategoryFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const categoryParam = params.get('category');
+    if (!categoryParam || !allDrinks || allDrinks.length === 0) return;
+
+    const targetCategory = categoryParam.trim().toLowerCase();
+    const categoryChips = document.querySelectorAll('.category-chip');
+    const matchingChip = Array.from(categoryChips).find(
+        chip => (chip.dataset.category || chip.textContent).trim().toLowerCase() === targetCategory
+    );
+
+    if (!matchingChip) return;
+
+    categoryChips.forEach(c => c.classList.remove('active'));
+    matchingChip.classList.add('active');
+
+    const filtered = allDrinks.filter(drink =>
+        drink.categories && drink.categories.some(c => c.toLowerCase() === targetCategory)
+    );
+
+    currentDisplayedDrinks = [...filtered];
+    const sortSelect = document.getElementById('sortSelect');
+    const currentSort = sortSelect ? sortSelect.value : 'name-asc';
+    sortAndRenderCurrent(currentSort);
+
+    window.history.replaceState({}, '', 'index.html');
     scrollToResults();
 }
 
