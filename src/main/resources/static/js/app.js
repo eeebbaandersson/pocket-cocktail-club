@@ -5,16 +5,18 @@ let currentSweetnessValue = 0;
 document.addEventListener('DOMContentLoaded', async () => {
     const searchInput = document.getElementById('searchInput');
     const searchBtn = document.querySelector('.search-submit-btn');
-    const showResultButton = document.getElementById('showResultsButton');
+    const resetFilterButton = document.getElementById('resetFiltersBtn');
     const surpriseBtn = document.getElementById('randomBtn');
+    const showResultButton = document.getElementById('showResultsButton');
+
     const spiritButtons = document.querySelectorAll('.spirit-btn');
     const slider = document.getElementById('sweetnessSlider');
     const sortSelect = document.getElementById('sortSelect');
 
-    // 1. Ladda alla drinkar direkt när sidan startar
+    const backToTopBtn = document.getElementById('backToTopBtn');
+
     await loadAllDrinks();
 
-    // 2. Sökfält med Enter eller Klick (Söker i realtid på sidan)
     if (searchInput) {
         searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') handleSearch();
@@ -24,18 +26,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         searchBtn.addEventListener('click', handleSearch);
     }
 
-    // 3. Slider-hantering
     if (slider) {
         currentSweetnessValue = slider.value;
-        updateLabelHighlights(currentSweetnessValue);
+        const sweetnessValueEl = document.getElementById('sweetnessValue');
+        if (sweetnessValueEl) sweetnessValueEl.textContent = currentSweetnessValue;
+
+
         slider.addEventListener('input', function () {
-            updateLabelHighlights(this.value);
             currentSweetnessValue = this.value;
+            if (sweetnessValueEl) sweetnessValueEl.textContent = currentSweetnessValue;
             updateButtonCounter();
         });
     }
 
-    // 4. Spritknapp-hantering
     spiritButtons.forEach(button => {
         button.addEventListener('click', function () {
             const wasAlreadyActive = this.classList.contains('active');
@@ -51,22 +54,26 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
 
-    // 5. Klick på "Show Matches" (Filter-sökning på samma sida)
+    if (resetFilterButton) {
+        resetFilterButton.addEventListener('click', handleResetFilter);
+    }
+
+
+    if (surpriseBtn) {
+        surpriseBtn.addEventListener('click', handleRandomDrink);
+    }
+
     if (showResultButton) {
         showResultButton.addEventListener('click', () => {
             if (currentSelectedSpirit) {
                 const matches = getFilteredMatches();
+                clearCategorySelection();
                 renderDrinkGrid(matches);
                 scrollToResults();
             }
         });
     }
 
-    if (surpriseBtn) {
-        surpriseBtn.addEventListener('click', handleRandomDrink);
-    }
-
-    // 6. Sortering i dropdown
     if (sortSelect) {
         sortSelect.addEventListener('change', (e) => {
             sortAndRenderCurrent(e.target.value);
@@ -80,34 +87,51 @@ document.addEventListener('DOMContentLoaded', async () => {
             const selectedCategory = this.dataset.category.toLowerCase();
             const wasActive = this.classList.contains('active');
 
-            // Nollställ aktiva chips
+
             categoryChips.forEach(c => c.classList.remove('active'));
 
             if (wasActive) {
                currentDisplayedDrinks = [...allDrinks];
+                currentResultsTitle = 'Recipes';
+
                const currentSort = sortSelect ? sortSelect.value : 'name-asc';
                sortAndRenderCurrent(currentSort);
             } else {
                 this.classList.add('active');
 
-                // Filtrera direkt på category-arrayen i drinkobjekten
                 const filtered = allDrinks.filter(drink =>
                     drink.categories && drink.categories.some(c => c.toLowerCase() === selectedCategory)
                 );
 
                currentDisplayedDrinks = [...filtered];
+               currentResultsTitle = `Category: ${this.innerText.trim()}`;
 
                const currentSort = sortSelect ? sortSelect.value : 'name-asc';
 
                sortAndRenderCurrent(currentSort);
 
-               const resultsText = document.getElementById('resultsText');
-               if (resultsText) {
-                   resultsText.innerText = `Category: ${this.innerText} (${filtered.length})`;
-               }
             }
         });
     });
+
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+
 });
 
 /* --- API & DATA HÄMTNING --- */
@@ -115,18 +139,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function loadAllDrinks() {
     try {
         const response = await fetch('/api/drinks');
-        if (!response.ok) throw new Error("Kunde inte hämta drinkar");
+        if (!response.ok) throw new Error("Could not fetch drink data");
         allDrinks = await response.json();
 
         currentDisplayedDrinks = [...allDrinks];
+        currentResultsTitle = 'Recipes';
 
-        // Visa alla drinkar från start (A-Ö)
         sortAndRenderCurrent('name-asc');
         updateButtonCounter();
+        applyCategoryFromUrl();
     } catch (error) {
-        console.error("Fel vid laddning av drinkar:", error);
+        console.error("Error during drink rendering:", error);
         const grid = document.getElementById('drinkDisplay');
-        if (grid) grid.innerHTML = '<p class="error-msg">Det gick inte att ladda recepten.</p>';
+        if (grid) grid.innerHTML = '<p class="error-msg">Could not fetch drink recipes</p>';
     }
 }
 
@@ -136,10 +161,11 @@ function handleSearch() {
     const searchInput = document.getElementById('searchInput');
     if (!searchInput) return;
 
+    clearCategorySelection();
     const rawQuery = searchInput.value.trim().toLowerCase();
 
     if (!rawQuery) {
-        renderDrinkGrid(allDrinks);
+        renderDrinkGrid(allDrinks, 'Recipes');
         return;
     }
     const searchTerms = rawQuery
@@ -157,7 +183,7 @@ function handleSearch() {
             });
         });
 
-    renderDrinkGrid(results, `Search result for "${rawQuery}"`);
+    renderDrinkGrid(results, `Result for "${rawQuery}"`);
     scrollToResults();
 }
 
@@ -192,27 +218,65 @@ function getFilteredMatches() {
     });
 }
 
+function handleResetFilter() {
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) searchInput.value = '';
+
+    const spiritButtons = document.querySelectorAll('.spirit-btn');
+    spiritButtons.forEach(btn => btn.classList.remove('active'));
+    currentSelectedSpirit = null;
+
+    const categoryChips = document.querySelectorAll('.category-chip');
+    categoryChips.forEach(chip => chip.classList.remove('active'));
+
+    const slider = document.getElementById('sweetnessSlider');
+    const sweetnessValueEl = document.getElementById('sweetnessValue');
+
+    if (slider) {
+        slider.value = 0;
+    }
+    currentSweetnessValue = 0;
+
+    if (sweetnessValueEl) {
+        sweetnessValueEl.textContent = '0';
+    }
+
+    currentDisplayedDrinks = [...allDrinks];
+    currentResultsTitle = 'Recipes';
+    const sortSelect = document.getElementById('sortSelect');
+    const currentSort = sortSelect ? sortSelect.value : 'name-asc';
+    sortAndRenderCurrent(currentSort);
+
+    updateButtonCounter();
+}
+
+
 /* --- PRESENTATION & RENDERING --- */
 
 let currentDisplayedDrinks = [];
+let currentResultsTitle = 'Recipes';
+
+
+function clearCategorySelection() {
+    document.querySelectorAll('.category-chip.active')
+        .forEach(chip => chip.classList.remove('active'));
+}
 
 function renderDrinkGrid(drinks, customTitle = null) {
     currentDisplayedDrinks = [...drinks];
+    currentResultsTitle = customTitle ?? (
+        currentSelectedSpirit
+            ? `${currentSelectedSpirit.toUpperCase()} • Sweetness ${currentSweetnessValue}`
+            : 'Recipes'
+    );
     const grid = document.getElementById('drinkDisplay');
     const resultsText = document.getElementById('resultsText');
 
     if (!grid) return;
     grid.innerHTML = '';
 
-    // Uppdatera status-text
     if (resultsText) {
-        if (customTitle) {
-            resultsText.innerText = `${customTitle} (${drinks.length})`;
-        } else if (currentSelectedSpirit) {
-            resultsText.innerText = `Result for ${currentSelectedSpirit.toUpperCase()} with (sweetness: ${currentSweetnessValue})`;
-        } else {
-            resultsText.innerText = `Recipes (${drinks.length})`;
-        }
+        resultsText.innerText = `${currentResultsTitle} (${drinks.length})`;
     }
 
     if (drinks.length === 0) {
@@ -224,28 +288,29 @@ function renderDrinkGrid(drinks, customTitle = null) {
         const card = document.createElement('article');
         card.className = 'recipe-card';
 
-        const hasCategory = drink.categories && drink.categories.length > 0 && drink.categories[0].trim() !== "";
-        const categoryText = hasCategory ? drink.categories[0] : '&nbsp;';
+        const categoriesHtml = drink.categories && drink.categories.length > 0
+            ? drink.categories.map(cat => `<span class="category-badge">${cat}</span>`).join('')
+            : `<span class="category-badge" style="visibility: hidden;">&nbsp;</span>`;
 
         const ingredientsFormatted = drink.ingredients && drink.ingredients.length > 0
-            ? drink.ingredients.map(ing => ing.name).join(' – ') : '';
-
+            ? drink.ingredients.map(ing => ing.name).join(' \u2011 ') : '';
 
         card.innerHTML = `
-            <div class="card-image" style="background-image: url('${drink.imageUrl || 'assets/default-drink.jpg'}')"></div>
-            <div class="card-content">
-                <div class="category-wrapper" style="${!hasCategory ? 'visibility: hidden;' : ''}">
-                    <span class="category-badge">${categoryText}</span>
-                </div>
-                <h3>${drink.name}</h3>
-                
-                <p class="card-ingredients">${ingredientsFormatted}</p>
-                
-                <div class="tag-row">
-                <span class="sweetness-score">Sweetness: ${drink.sweetnessScore}</span>
-                </div>
+    <div class="card-content">
+        <div class="card-top">
+            <div class="category-placeholder" style="display: flex; gap: 6px; flex-wrap: wrap;">
+                ${categoriesHtml}
             </div>
-        `;
+            <h3>${drink.name}</h3>
+        </div>
+        
+        <p class="card-ingredients">${ingredientsFormatted}</p>
+        
+        <div class="tag-row">
+            <span class="sweetness-score">Sweetness: ${drink.sweetnessScore}</span>
+        </div>
+    </div>
+`;
 
         card.addEventListener('click', () => {
             const drinkName = encodeURIComponent(drink.name);
@@ -254,6 +319,7 @@ function renderDrinkGrid(drinks, customTitle = null) {
 
         grid.append(card);
     });
+
 }
 
 function sortAndRenderCurrent(sortType) {
@@ -269,33 +335,52 @@ function sortAndRenderCurrent(sortType) {
         sorted.sort((a, b) => b.sweetnessScore - a.sweetnessScore);
     }
 
-    renderDrinkGrid(sorted);
+    renderDrinkGrid(sorted, currentResultsTitle);
 }
 
 function handleRandomDrink() {
     if (!allDrinks || allDrinks.length === 0) return;
 
+    clearCategorySelection();
     const randomIndex = Math.floor(Math.random() * allDrinks.length);
     const randomDrink = allDrinks[randomIndex];
 
-    renderDrinkGrid([randomDrink], `Surprise Result: ${randomDrink.name}`);
+    renderDrinkGrid([randomDrink], `Result: ${randomDrink.name}`);
 
     scrollToResults();
 }
 
-/* --- HJÄLP-FUNKTIONER --- */
+function applyCategoryFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const categoryParam = params.get('category');
+    if (!categoryParam || !allDrinks || allDrinks.length === 0) return;
 
-function updateLabelHighlights(value) {
-    const labels = document.querySelectorAll('.slider-labels span:not(.spacer)');
-    labels.forEach((label) => {
-        if (label.innerText === value) {
-            label.classList.add('active');
-        } else {
-            label.classList.remove('active');
-        }
-    });
+    const targetCategory = categoryParam.trim().toLowerCase();
+    const categoryChips = document.querySelectorAll('.category-chip');
+    const matchingChip = Array.from(categoryChips).find(
+        chip => (chip.dataset.category || chip.textContent).trim().toLowerCase() === targetCategory
+    );
+
+    if (!matchingChip) return;
+
+    categoryChips.forEach(c => c.classList.remove('active'));
+    matchingChip.classList.add('active');
+
+    const filtered = allDrinks.filter(drink =>
+        drink.categories && drink.categories.some(c => c.toLowerCase() === targetCategory)
+    );
+
+    currentDisplayedDrinks = [...filtered];
+    currentResultsTitle = `Category: ${matchingChip.innerText.trim()}`;
+    const sortSelect = document.getElementById('sortSelect');
+    const currentSort = sortSelect ? sortSelect.value : 'name-asc';
+    sortAndRenderCurrent(currentSort);
+
+    window.history.replaceState({}, '', 'index.html');
+    scrollToResults();
 }
 
+/* --- HELPERS --- */
 function updateButtonCounter() {
     const showResultButton = document.getElementById('showResultsButton');
     if (!showResultButton || !allDrinks || allDrinks.length === 0) return;

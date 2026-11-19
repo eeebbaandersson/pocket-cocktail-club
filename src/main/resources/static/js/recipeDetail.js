@@ -1,3 +1,6 @@
+let currentMultiplier = 1;
+let currentDrinkData = null;
+
 document.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const drinkName = params.get('name');
@@ -9,59 +12,104 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Använder redan existerande endpoint för sökning via namn
         const response = await fetch(`/api/drinks?name=${encodeURIComponent(drinkName)}`);
         const drinks = await response.json();
-        const drink = drinks[0];
+        currentDrinkData = drinks[0];
 
-        renderFullRecipe(drink);
+        renderFullRecipe(currentDrinkData);
     } catch (error) {
         content.innerHTML = "<p>Could not load recipe.</p>";
     }
 });
 
+function changeServings(amount) {
+    currentMultiplier += amount;
+    if (currentMultiplier < 1) currentMultiplier = 1;
+    if (currentMultiplier > 20) currentMultiplier = 20;
+
+    const counterText = document.getElementById('drinkCountText');
+    if (counterText) {
+        counterText.textContent = `${currentMultiplier} ${currentMultiplier === 1 ? 'Drink' : 'Drinks'}`;
+    }
+
+    const decreaseBtn = document.getElementById('decreaseBtn');
+    if (decreaseBtn) {
+        decreaseBtn.disabled = currentMultiplier === 1;
+    }
+
+    updateIngredientQuantities();
+}
+
+function updateIngredientQuantities() {
+    if (!currentDrinkData) return;
+
+    const ingredientItems = document.querySelectorAll('.ingredient-measure');
+
+    currentDrinkData.ingredients.forEach((ing,  index) => {
+        const measureSpan = ingredientItems[index];
+        if (!measureSpan) return;
+
+        if (ing.quantity) {
+            const calculatedQty = ing.quantity * currentMultiplier;
+            const formattedQty = Number.isInteger(calculatedQty) ? calculatedQty : calculatedQty.toFixed(1);
+            measureSpan.textContent = `${formattedQty} ${ing.unit}`;
+        } else {
+            measureSpan.textContent = ing.unit;
+        }
+    });
+}
+
 function renderFullRecipe(drink) {
     const content = document.getElementById('recipeContent');
-
     const hasCategory = drink.categories && drink.categories.length > 0;
-
-    const categoryDisplay = hasCategory ? drink.categories.join(' |') : '&nbsp';
 
     const instructionSteps = drink.instructions
         .split('.')
         .map(step => step.trim())
         .filter(step => step.length > 0);
 
+    const words = drink.name.split(' ');
+    const formattedTitle = words.length > 2
+        ? `${words[0]} ${words[1]}<br>${words.slice(2).join(' ')}`
+        : drink.name;
+
     content.innerHTML = `
     <div class="recipe-header">
-            <div class="recipe-title-section">
-                <h2 class="recipe-title">${drink.name}</h2>
-                
-          <div class="category-wrapper">
+        <div class="recipe-title-section">
+            <h2 class="recipe-title">${formattedTitle}</h2>
+            
+            <div class="category-wrapper">
                 ${hasCategory
-                    ? `<span class="sweetness-badge">Category:</span>` +
-                    drink.categories.map((cat, index) => `
-                      <a href="index.html?query=${encodeURIComponent(cat)}" class="category-link2">${cat}</a>
-                       ${index < drink.categories.length - 1 ? '<span class="category-separator">|</span>' : ''}
-                        `).join('')
-                    : `<span class="category-link2" style="visibility: hidden;">&nbsp;</span>`
-                }
+        ? drink.categories.map(cat => `
+                        <a href="index.html?category=${encodeURIComponent(cat)}" class="category-link">${cat}</a>
+                      `).join('')
+        : ''
+    }
             </div>
 
-            <div class="sweetness-wrapper">
-                <span class="sweetness-badge">Sweetness: ${drink.sweetnessScore}</span>
+            <div class="sweetness-wrapper" style="margin-top: 8px;">
+                <span class="sweetness-pill">Sweetness: ${drink.sweetnessScore}</span>
             </div>
         </div>
     </div>
     
     <div class="recipe-grid-layout">
         <div class="ingredients-list">
+        <div class="drink-counter">
+       <button type="button" id="decreaseBtn" class="counter-button" onclick="changeServings(-1)" ${currentMultiplier === 1 ? 'disabled' : ''}>-</button>
+        <span id="drinkCountText">1 Drink</span>
+       <button type="button" class="counter-button" onclick="changeServings(1)" aria-label="Increase servings">+</button>
+        </div>
             <h3>Ingredients</h3>
             <ul>
                 ${drink.ingredients.map(ing => `
-                    <li><strong>${ing.quantity} ${ing.unit}</strong> ${ing.name}</li>
+                    <li>
+                        <span class="ingredient-measure">${ing.quantity} ${ing.unit}</span>
+                        <span class="ingredient-name">${ing.name}</span>
+                    </li>
                 `).join('')}
             </ul>
         </div>
         <div class="instructions-text">
-            <h3>Instructions</h3>
+            <h3>How to mix</h3>
             <ol>
                 ${instructionSteps.map(step => `
                     <li>${step}.</li>
